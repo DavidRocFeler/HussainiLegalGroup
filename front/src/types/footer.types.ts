@@ -24,4 +24,8 @@ export interface FooterSection {
     ar: FooterLanguageData;
   }
   
+export interface FooterProps {
+    language: Language;
+  }
+
   export type Language = 'en' | 'ar';

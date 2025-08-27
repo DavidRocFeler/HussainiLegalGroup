@@ -9,14 +9,12 @@ import {
 } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { Language } from '@/types/navigation.types';
 import { footerMock } from '@/mock/footer.mock';
+import React from 'react';
+import { FooterProps } from '@/types/footer.types';
 
-interface FooterProps {
-  language: Language;
-}
 
-const Footer = ({ language }: FooterProps) => {
+const Footer: React.FC<FooterProps> = ({ language }) => {
   const footerData = footerMock[language];
 
   return (
@@ -39,8 +37,8 @@ const Footer = ({ language }: FooterProps) => {
           maxWidth: '100% !important',
         }}
       >
-        <Grid container spacing={4} sx={{ justifyContent: 'space-between' }}>
-          <Grid size={{ xs: 12, lg: 3 }}>
+        <Grid container spacing={2} sx={{ justifyContent: 'space-between' }}>
+          <Grid size={{ xs: 12, lg: 2.5 }}>
             <Box
               sx={{
                 display: 'flex',
@@ -155,7 +153,7 @@ const Footer = ({ language }: FooterProps) => {
             </Box>
           </Grid>
 
-          <Grid size={{ xs: 12, lg: 3 }}>
+          <Grid size={{ xs: 12, lg: 3.5 }}>
             <Box
               sx={{
                 width: 'fit-content',
