@@ -17,13 +17,11 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import LanguageIcon from '@mui/icons-material/Language';
 import { navigationMock } from '@/mock/navigation.mock';
-import { HeaderProps } from '@/types/header.types';
 
-const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
+const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const navItems = navigationMock[language];
+  const navItems = navigationMock;
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -57,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
           maxWidth: '100% !important',
         }}
       >
-        {/* First line: Logo, hamburger menu and language/contact buttons */}
+        {/* First line: Logo, hamburger menu and contact button */}
         <Toolbar
           sx={{
             justifyContent: 'space-between',
@@ -109,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
             }}
           >
             {navItems
-              .filter(item => !["Contact Us", "اتصل بنا"].includes(item.name))
+              .filter(item => item.name !== "Contact Us")
               .map((item) => (
                 <Button 
                   key={item.name} 
@@ -131,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
               ))}
           </Box>
 
-          {/* Right section - Language, Contact and Hamburger */}
+          {/* Right section - Contact and Hamburger */}
           <Box 
             sx={{ 
               display: 'flex',
@@ -141,34 +139,6 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
               padding: '0 !important',
             }}
           >
-            {/* Language button - Only visible on desktop */}
-            <Button
-              onClick={toggleLanguage}
-              sx={{
-                color: 'white',
-                minWidth: 'auto',
-                display: { xs: 'none', md: 'flex' },
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                flexDirection: language === 'ar' ? 'row-reverse' : 'row', 
-                padding: '6px 12px',
-                '& .MuiButton-startIcon': {
-                  display: 'none', 
-                }
-              }}
-            >
-              <LanguageIcon />
-              <Typography 
-                component="span"
-                sx={{
-                  fontSize: '0.9rem'
-                }}
-              >
-                {language === "ar" ? "EN" : "AR"}
-              </Typography>
-            </Button>
-
             {/* Contact button - Only on desktop */}
             <Button 
               href="/contact"
@@ -188,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
                 }
               }}
             >
-              {language === "ar" ? "اتصل بنا" : "Contact Us"}
+              Contact Us
             </Button>
 
             {/* Hamburger/Close Button - Only on mobile */}
@@ -244,37 +214,6 @@ const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
                 </ListItem>
               ))}
             </List>
-            
-            {/* Language button - Centered with other buttons */}
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-              <Button
-                onClick={toggleLanguage}
-                sx={{
-                  color: 'white',
-                  minWidth: 'auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  flexDirection: language === 'ar' ? 'row-reverse' : 'row', 
-                  padding: '12px 24px',
-                  border: '1px solid rgba(255,255,255,0.3)',
-                  '& .MuiButton-startIcon': {
-                    display: 'none', 
-                  }
-                }}
-              >
-                <LanguageIcon />
-                <Typography 
-                  component="span"
-                  sx={{
-                    fontSize: '0.9rem'
-                  }}
-                >
-                  {language === "ar" ? "Switch to English" : "التغيير إلى العربية"}
-                </Typography>
-              </Button>
-            </Box>
           </Box>
         </Collapse>
       </Container>

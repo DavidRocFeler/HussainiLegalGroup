@@ -11,21 +11,16 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { footerMock } from '@/mock/footer.mock';
 import React from 'react';
-import { FooterProps } from '@/types/footer.types';
 
-
-const Footer: React.FC<FooterProps> = ({ language }) => {
-  const footerData = footerMock[language];
-
+const Footer: React.FC = () => {
   return (
     <Box
       component="footer"
       sx={{
         backgroundColor: '#24363A',
         color: 'white',
-        padding: {
-          md: '3rem 3.5rem' 
-        },
+        paddingY: '3rem',
+        paddingX: '3.5rem',
         marginTop: 'auto',
       }}
     >
@@ -71,7 +66,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     color: 'white'
                   }}
                 >
-                  {footerData.companyName}
+                  {footerMock.companyName}
                 </Typography>
               </Box>
             </Box>
@@ -91,7 +86,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   mb: 2
                 }}
               >
-                {footerData.sections.locations.title}
+                {footerMock.sections.locations.title}
               </Typography>
               <Box
                 sx={{
@@ -100,7 +95,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   gap: 1,
                 }}
               >
-                {footerData.sections.locations.items.map((location, index) => (
+                {footerMock.sections.locations.items.map((location, index) => (
                   <Typography
                     key={index}
                     sx={{
@@ -129,7 +124,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   mb: 2
                 }}
               >
-                {footerData.sections.contact.title}
+                {footerMock.sections.contact.title}
               </Typography>
               <Box
                 sx={{
@@ -138,7 +133,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   gap: 1,
                 }}
               >
-                {footerData.sections.contact.items.map((contactInfo, index) => (
+                {footerMock.sections.contact.items.map((contactInfo, index) => (
                   <Typography
                     key={index}
                     sx={{
@@ -173,7 +168,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     mb: 2,
                 }}
               >
-                {footerData.sections.newsletter.title}
+                {footerMock.sections.newsletter.title}
               </Typography>
               <Typography
                 sx={{
@@ -183,7 +178,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   mb: 3,
                 }}
               >
-                {footerData.sections.newsletter.description}
+                {footerMock.sections.newsletter.description}
               </Typography>
               <Box
                 sx={{
@@ -208,7 +203,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     }
                   }}
                 >
-                  {footerData.sections.newsletter.buttonText}
+                  {footerMock.sections.newsletter.buttonText}
                 </Button>
               </Box>
               
@@ -269,7 +264,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               color: 'rgba(255,255,255,0.6)'
             }}
           >
-            {footerData.copyright}
+            {footerMock.copyright}
           </Typography>
         </Box>
       </Container>

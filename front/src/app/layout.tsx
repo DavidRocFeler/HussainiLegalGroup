@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Container } from '@mui/material';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import ClientLayout from "./ClientLayout";
 
 const geistSans = Geist({
@@ -15,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Hussaini Legal Group",
-  description: "Wen site",
+  description: "Web site",
 };
 
 export default function RootLayout({
@@ -24,10 +27,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl">
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ClientLayout>
-          {children}
+          <Header />
+          <Container
+            component="main"
+            maxWidth="lg"
+            sx={{
+              py: 4,
+              minHeight: '80vh'
+            }}
+          >
+            {children}
+          </Container>
+          <Footer />
         </ClientLayout>
       </body>
     </html>
