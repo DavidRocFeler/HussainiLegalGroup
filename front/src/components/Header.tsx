@@ -20,13 +20,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import LanguageIcon from '@mui/icons-material/Language';
 import { Language } from '@/types/navigation.types';
 import { navigationMock } from '@/mock/navigation.mock';
+import { HeaderProps } from '@/types/header.types';
 
-interface HeaderProps {
-  language: Language;
-  toggleLanguage: () => void;
-}
-
-const Header = ({ language, toggleLanguage }: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({ language, toggleLanguage }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navItems = navigationMock[language];
 
