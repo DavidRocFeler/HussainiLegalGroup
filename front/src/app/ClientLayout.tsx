@@ -4,7 +4,7 @@ import { Container } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Language } from '@/types/navigation.types';
+import { Language } from '@/types/header.types';
 import Header from '@/components/Header';
 import theme from "@/theme/pallete";
 import Footer from '@/components/Footer';

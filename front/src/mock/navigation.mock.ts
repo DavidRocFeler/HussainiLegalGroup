@@ -1,4 +1,4 @@
-import { Navigation } from "@/types/navigation.types";
+import { Navigation } from "@/types/header.types";
 
 export const navigationMock: Navigation = {
   en: [

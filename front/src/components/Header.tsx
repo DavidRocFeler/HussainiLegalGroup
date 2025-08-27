@@ -18,7 +18,6 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import LanguageIcon from '@mui/icons-material/Language';
-import { Language } from '@/types/navigation.types';
 import { navigationMock } from '@/mock/navigation.mock';
 import { HeaderProps } from '@/types/header.types';
 
