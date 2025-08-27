@@ -1,0 +1,36 @@
+/* Estilos base y normalización */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Asegurar que las fuentes de Geist se apliquen correctamente */
+body {
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+code, pre {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mejoras de rendimiento */
+img {
+  max-width: 100%;
+  height: auto;
+}

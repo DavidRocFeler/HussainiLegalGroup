@@ -1,0 +1,56 @@
+import { FooterData } from "@/types/footer.types";
+
+export const footerMock: FooterData = {
+  en: {
+    sections: {
+      locations: {
+        title: "Locations",
+        items: [
+          "Damascus",
+          "Amsterdam"
+        ]
+      },
+      contact: {
+        title: "Contact",
+        items: [
+          "Email: info@hussainilaw.com.au",
+          "Phone: 02 8764 7885",
+          "Mobile: 0470 343 103"
+        ]
+      },
+      newsletter: {
+        title: "Stay in the loop",
+        description: "To receive our regular updates please register your areas of interest below.",
+        buttonText: "Subscribe To Our Updates"
+      }
+    },
+    copyright: "© 2025 All Rights Reserved.",
+    companyName: "HUSSAINI LEGAL GROUP"
+  },
+  ar: {
+    sections: {
+      locations: {
+        title: "المواقع",
+        items: [
+          "دمشق",
+          "أمستردام"
+        ]
+      },
+      contact: {
+        title: "اتصل بنا",
+        items: [
+          "البريد الإلكتروني: info@hussainilaw.com.au",
+          "الهاتف: 02 8764 7885",
+          "الجوال: 0470 343 103"
+        ]
+      },
+      newsletter: {
+        title: "ابق على اطلاع",
+        description: "لتلقي تحديثاتنا المنتظمة، يرجى تسجيل مجالات اهتمامك أدناه.",
+        buttonText: "اشترك في تحديثاتنا"
+      }
+    },
+    copyright: "© 2025 جميع الحقوق محفوظة.",
+    companyName: "HUSSAINI LEGAL GROUP"
+  }
+};
