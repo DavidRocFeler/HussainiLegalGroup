@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Epe Sociale Evenementen - Platform voor sociale evenementen in Epe",
-  description: "Ontdek en organiseer sociale evenementen in Epe. Samenwerken aan een levendige gemeenschap.",
+  title: "Hussaini Legal Group",
+  description: "Wen site",
 };
 
 export default function RootLayout({
