@@ -36,10 +36,11 @@ const Header: React.FC = () => {
         color: 'white',
         position: 'fixed',
         backgroundColor: '#7E1A19', 
+        borderBottom: 'white 1px solid',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         padding: {
-          xs: '1.5rem 1rem',   
-          md: '1.5rem 3.5rem' 
+          xs: '0.8rem 1rem',   
+          md: '2.3rem 4.5rem 2.3rem 5rem' 
         },
         transition: 'height 0.3s ease-in-out',
         height: mobileOpen ? 'auto' : 'auto',
@@ -79,16 +80,17 @@ const Header: React.FC = () => {
             <Image 
               src="/logoHussaini.png" 
               alt="Company Logo" 
-              width={50} 
-              height={35} 
+              width={55}
+              height={50}
               priority
             />
             <Typography
               component="span"
               sx={{
-                fontSize: '0.7rem',
-                marginTop: '0.1rem',
-                lineHeight: 1.2
+                fontSize: '0.6rem',
+                marginTop: '0.2rem',
+                lineHeight: 1.2,
+                fontWeight: 1000
               }}
             >      
               HUSSAINI LEGAL GROUP
@@ -98,25 +100,26 @@ const Header: React.FC = () => {
           {/* Desktop Navigation - Aligned with logo */}
           <Box 
             sx={{ 
+              width: 'fit-content',
+              gap: '0rem',
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center', 
               justifyContent: 'center',
-              flexGrow: 1,
-              margin: '0 !important',
-              padding: '0 !important',
             }}
           >
             {navItems
               .filter(item => item.name !== "Contact Us")
               .map((item) => (
                 <Button 
+                  variant='text'
                   key={item.name} 
                   href={item.href}
                   sx={{ 
                     color: 'white', 
                     minWidth: 'auto',
-                    padding: '8px 16px',
+                    padding: '8px 10px',
                     borderRadius: '0px',
+                    fontSize: '1.1rem',
                     mx: 1,
                     '&:hover': { 
                       backgroundColor: 'rgba(255,255,255,0.1)', 
@@ -124,7 +127,9 @@ const Header: React.FC = () => {
                     }
                   }}
                 >
-                  {item.name}
+                   <Typography variant="h3" component="span">
+                    {item.name}
+                  </Typography>
                 </Button>
               ))}
           </Box>
@@ -144,9 +149,10 @@ const Header: React.FC = () => {
               href="/contact"
               sx={{ 
                 display: { xs: 'none', md: 'block' },
+                fontSize: '1.1rem',
                 color: 'white',
                 border: '1px solid white',
-                padding: '0.3rem 1.5rem',
+                padding: '0.6rem 2rem',
                 backgroundColor: 'transparent',
                 minWidth: 'auto',
                 transition: 'all 0.3s ease-in-out',
@@ -169,11 +175,19 @@ const Header: React.FC = () => {
               sx={{ 
                 display: { xs: 'block', md: 'none' },
                 color: 'white',
-                padding: '8px',
-                margin: '0 !important'
               }}
             >
-              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+              {mobileOpen ? 
+              <CloseIcon
+              sx={{
+                fontSize: '2.5rem'
+              }}
+              /> : 
+              <MenuIcon 
+              sx={{
+                fontSize: '2.5rem'
+              }}
+              />}
             </IconButton>
           </Box>
         </Toolbar>
@@ -204,10 +218,20 @@ const Header: React.FC = () => {
                   onClick={handleDrawerToggle}
                 >
                   <ListItemText 
-                    primary={item.name} 
+                    primary={item.name}
+                    slotProps={{
+                      primary: {
+                        variant: "h2",
+                        sx: {
+                          fontFamily: '"Exo", sans-serif',
+                          fontSize: '1.125rem',
+                          fontWeight: 400,
+                          textAlign: 'center',
+                          color: 'white',
+                        }
+                      }
+                    }}
                     sx={{ 
-                      textAlign: 'center',
-                      color: 'white',
                       padding: '12px 0'
                     }} 
                   />

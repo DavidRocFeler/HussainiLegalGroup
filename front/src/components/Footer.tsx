@@ -53,17 +53,17 @@ const Footer: React.FC = () => {
                 <Image
                   src="/logoHussaini.png"
                   alt="Logo"
-                  width={50}
-                  height={35}
+                  width={55}
+                  height={50}
                   priority
                 />
                 <Typography
                   component="span"
                   sx={{
-                    fontSize: '0.7rem',
+                    fontSize: '0.6rem',
                     marginTop: '0.2rem',
                     lineHeight: 1.2,
-                    color: 'white'
+                    fontWeight: 1000
                   }}
                 >
                   {footerMock.companyName}
@@ -97,11 +97,8 @@ const Footer: React.FC = () => {
               >
                 {footerMock.sections.locations.items.map((location, index) => (
                   <Typography
+                    variant="h3"
                     key={index}
-                    sx={{
-                      fontSize: '1rem',
-                      color: 'rgba(255,255,255,0.9)'
-                    }}
                   >
                     {location}
                   </Typography>
@@ -136,10 +133,7 @@ const Footer: React.FC = () => {
                 {footerMock.sections.contact.items.map((contactInfo, index) => (
                   <Typography
                     key={index}
-                    sx={{
-                      fontSize: '0.95rem',
-                      color: 'rgba(255,255,255,0.9)'
-                    }}
+                    variant="h3"
                   >
                     {contactInfo}
                   </Typography>
@@ -171,6 +165,7 @@ const Footer: React.FC = () => {
                 {footerMock.sections.newsletter.title}
               </Typography>
               <Typography
+                variant='h3'
                 sx={{
                   fontSize: '0.9rem',
                   width: '17rem',

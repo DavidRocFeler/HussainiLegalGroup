@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Merriweather, Exo } from "next/font/google";
 import "./globals.css";
-import { Container } from '@mui/material';
+import { Box } from '@mui/material'; // ← Cambiar Container por Box
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ClientLayout from "./ClientLayout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ['300', '400', '700'], // Incluye 400 que es el que usa Figma
+});
+
+const exo = Exo({
+  variable: "--font-exo",
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -28,19 +35,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${inter.variable} ${merriweather.variable} ${exo.variable}`}>
         <ClientLayout>
           <Header />
-          <Container
+          <Box
             component="main"
-            maxWidth="lg"
             sx={{
-              py: 4,
+              margin: 0,
+              padding: 0,
+              width: '100%',
               minHeight: '80vh'
             }}
           >
             {children}
-          </Container>
+          </Box>
           <Footer />
         </ClientLayout>
       </body>
