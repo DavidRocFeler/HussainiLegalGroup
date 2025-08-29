@@ -6,57 +6,84 @@ import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { heroTextContent } from '@/mock/heroContent.mock';
 import { strategyContent } from '@/mock/strategyContent.mock';
-import { VisionaryHeroProps } from '@/types/visionary.types';
+import { VisionaryHeroProps } from '@/types/home.types';
 import ButtonCustom from '../ui/ButtomCustom';
 
 const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => {
-  // Convert pixels to rem for responsive design
-  const pxToRem = (px: number) => `${px / 16}rem`;
 
   return (
     <Box
       sx={{
         backgroundColor: '#EEE9DD',
-        minHeight: '100vh',
         position: 'relative',
-        py: 6,
-        px: { xs: 2, md: 4, lg: 8 }
+        maxHeight: 'fit-content',
+        padding: {
+          xs: '4rem 1rem 3rem 1.5rem',
+          md: '5rem 4.5rem 8em 4.8rem',
+        },
       }}
     >
       {/* Top section with three overlapping components */}
       <Box
         sx={{
           display: 'flex',
-          position: 'relative',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
+          position: 'relative',        
           gap: 0,
-          mb: 8
+          width: 'full',
         }}
       >
         {/* Red background box */}
         <Box
           sx={{
+            display: 'block',
             backgroundColor: '#891C1B',
-            borderRadius: pxToRem(10),
-            width: pxToRem(200),
-            height: pxToRem(300),
-            position: 'relative',
+            borderRadius: '0.62rem',
+            width: {
+              xs: '20.75rem',
+              md: '18.75rem'
+            },
+            height: {
+              xs: '12.5rem',
+              md: '12.5rem',
+            },
+            position: 'absolute',
             zIndex: 1,
-            mt: 4
+            mt: 0,
+            '@media (max-width:650px)': {
+              display: 'none',
+            },
           }}
         />
 
         {/* Main hero image */}
         <Box
           sx={{
-            position: 'relative',
+            position: 'absolute',
             zIndex: 2,
-            marginLeft: '-3rem',
-            borderRadius: pxToRem(10),
+            mt: {
+              xs: '3rem',
+              md: '2rem'
+            },
+            ml: {
+              xs: '3rem',
+              md: '1.9rem'
+            },
+            borderRadius: '0.62rem',
             overflow: 'hidden',
-            width: pxToRem(635),
-            height: pxToRem(476.25)
+            width: {
+              xs: '93.5%',
+              md: '39rem'
+            },
+            height: {
+              xs: '41rem',
+              md: "30rem"
+            },
+            '@media (max-width:650px)': {
+              mt: '0',
+              ml: '0',
+              width: '100%',
+              height: '23rem'
+            },
           }}
         >
           <Image
@@ -65,7 +92,7 @@ const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => 
             fill
             style={{
               objectFit: 'cover',
-              borderRadius: pxToRem(10)
+              borderRadius: '0.62rem',
             }}
             priority
           />
@@ -75,13 +102,22 @@ const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => 
         <Box
           sx={{
             backgroundColor: 'white',
-            borderRadius: pxToRem(10),
+            borderRadius: '0.62rem',
             padding: 4,
-            maxWidth: pxToRem(500),
-            marginLeft: '-3rem',
-            mt: 20,
-            zIndex: 1,
-            boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)'
+            maxWidth: {
+              xs: '54rem',
+              md: '39.5rem'
+            },
+            mt: {
+              xs: '46rem',
+              md: '17rem'
+            },
+            ml: 'auto',
+            zIndex: 3,
+            boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+            '@media (max-width:650px)': {
+              mt: '25rem'
+            },
           }}
         >
           {heroTextContent.map((content) => (
@@ -141,7 +177,15 @@ const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => 
       </Box>
 
       {/* Bottom strategy section */}
-      <Box sx={{ maxWidth: '60rem', mx: 'auto' }}>
+      <Box 
+        sx={{ 
+          width: 'full',
+          mt: {
+            xs: '3rem',
+            md: '9rem'
+          },
+          border: '1px solid black',
+          }}>
         {strategyContent.map((item) => (
           <Box key={item.id} mb={3}>
             {item.label && (

@@ -30,7 +30,7 @@ export const typography: ThemeOptions['typography'] = {
     letterSpacing: '-0.01rem',
     '@media (max-width:899px)': {
       fontSize: '1.5rem',
-      lineHeight: '1.5rem',  
+      lineHeight: '1.8rem',  
     },
     '@media (max-width:450px)': {
       fontSize: '1rem',
@@ -39,8 +39,8 @@ export const typography: ThemeOptions['typography'] = {
   },
   h3: {
     fontFamily: '"Exo", sans-serif',
-    fontSize: '1.125rem',    
-    fontWeight: 500,
+    fontSize: '1rem',    
+    fontWeight: 300,
     lineHeight: '1.8rem',    
     letterSpacing: '-0.01rem',
     '@media (max-width:899px)': {
@@ -49,10 +49,12 @@ export const typography: ThemeOptions['typography'] = {
     },
   },
   h4: {
-    fontFamily: '"Inter", sans-serif',
-    fontSize: '2.125rem',
-    fontWeight: 600,
-    lineHeight: 1.235,
+    fontFamily: '"Merriweather", serif',
+    fontSize: '1rem', 
+    fontWeight: 500,
+    '@media (max-width:899px)': {
+      fontSize: '1.8rem', 
+    },
   },
   h5: {
     fontFamily: '"Inter", sans-serif',

@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   IconButton,
-  Grid,
 } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -19,27 +18,67 @@ const Footer: React.FC = () => {
       sx={{
         backgroundColor: '#24363A',
         color: 'white',
-        paddingY: '3rem',
-        paddingX: '3.5rem',
-        marginTop: 'auto',
+        padding: '3rem 0rem 1rem 0rem',
       }}
     >
       <Container
+        maxWidth={false}
         sx={{
           width: '100%',
-          padding: '0 !important',
-          margin: '0 !important',
-          maxWidth: '100% !important',
+          position: 'relative',
         }}
       >
-        <Grid container spacing={2} sx={{ justifyContent: 'space-between' }}>
-          <Grid size={{ xs: 12, lg: 2.5 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              position: 'absolute',
+              left: '4.8rem',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              '@media (max-width:899px)': {
+                display: 'none'
+              },
+              '@media (max-width:1000px)': {
+                left: '3.5rem'
+              },
+            }}
+          >
+            <Image
+              src="/logoHussaini.png"
+              alt="Logo"
+              width={55}
+              height={50}
+              priority
+            />
+              <Typography
+                component="span"
+                sx={{
+                fontSize: '0.6rem',
+                marginTop: '0.2rem',
+                lineHeight: 1.2,
+                fontWeight: 1000
+                }}
+              >
+                {footerMock.companyName}
+              </Typography>
+          </Box>
+        <Box 
+          sx={{ 
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            justifyContent: { xs: 'center', md: 'space-evenly' },
+            alignItems: { xs: 'center', md: 'flex-start' },
+            gap: { xs: 4, md: 0 },
+          }}
+        >
+          <Box>
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 width: 'fit-content',
-                marginX: { xs: 'auto', lg: 0 }
+                justifyContent: 'center'
               }}
             >
               <Box
@@ -48,6 +87,10 @@ const Footer: React.FC = () => {
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center',
+                  opacity: {
+                    xs: 100,
+                    md: 0
+                  },
                 }}
               >
                 <Image
@@ -70,16 +113,15 @@ const Footer: React.FC = () => {
                 </Typography>
               </Box>
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid size={{ xs: 12, lg: 2 }}>
+          <Box>
             <Box sx={{
-                textAlign: { xs: 'center', lg: 'left' },
+                textAlign: { xs: 'center', md: 'left' },
                 width: 'fit-content',
-                marginX: { xs: 'auto', lg: 0 }
             }}>
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{
                   fontSize: '1.2rem',
                   fontWeight: 'bold',
@@ -105,16 +147,15 @@ const Footer: React.FC = () => {
                 ))}
               </Box>
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid size={{ xs: 12, lg: 2 }}>
+          <Box>
             <Box sx={{
-              textAlign: { xs: 'center', lg: 'left' },
+              textAlign: { xs: 'center', md: 'left' },
               width: 'fit-content',
-              marginX: { xs: 'auto', lg: 0 }
             }}>
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{
                   fontSize: '1.2rem',
                   fontWeight: 'bold',
@@ -128,6 +169,7 @@ const Footer: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 1,
+
                 }}
               >
                 {footerMock.sections.contact.items.map((contactInfo, index) => (
@@ -140,24 +182,20 @@ const Footer: React.FC = () => {
                 ))}
               </Box>
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid size={{ xs: 12, lg: 3.5 }}>
+          <Box>
             <Box
               sx={{
                 width: 'fit-content',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: { xs: 'center', lg: 'flex-start' },
-                textAlign: { xs: 'center', lg: 'left' },
-                marginX: { xs: 'auto', lg: 0 },
-                marginLeft: { lg: 'auto' },
+                textAlign: { xs: 'center', md: 'left' },
               }}
             >
               <Typography
-                variant="h6"
-                sx={{
-                    fontSize: '1.2rem',
+                variant="h4"
+                sx={{     
                     fontWeight: 'bold',
                     mb: 2,
                 }}
@@ -167,9 +205,7 @@ const Footer: React.FC = () => {
               <Typography
                 variant='h3'
                 sx={{
-                  fontSize: '0.9rem',
                   width: '17rem',
-                  color: 'rgba(255,255,255,0.8)',
                   mb: 3,
                 }}
               >
@@ -178,7 +214,7 @@ const Footer: React.FC = () => {
               <Box
                 sx={{
                   display: 'flex',
-                  justifyContent: { xs: 'center', lg: 'flex-start' },
+                  justifyContent: { xs: 'center', md: 'flex-start' },
                   mb: 3
                 }}
               >
@@ -188,6 +224,8 @@ const Footer: React.FC = () => {
                     color: '#324344',
                     padding: '12px 24px',
                     fontSize: '0.9rem',
+                    fontFamily: '"Merriweather", serif', 
+                    fontWeight: 500,
                     borderRadius: '0px',
                     textTransform: 'none',
                     transition: 'all 0.3s ease-in-out',
@@ -195,8 +233,11 @@ const Footer: React.FC = () => {
                     '&:hover': {
                       backgroundColor: '#B38F59',
                       color: 'white'
-                    }
-                  }}
+                    },
+                    '@media (max-width:899px)': {
+                      fontSize: '1.2rem', 
+                    },
+                  }} 
                 >
                   {footerMock.sections.newsletter.buttonText}
                 </Button>
@@ -206,7 +247,7 @@ const Footer: React.FC = () => {
                 sx={{
                   display: 'flex',
                   gap: 2,
-                  justifyContent: { xs: 'center', lg: 'flex-start' },
+                  justifyContent: { xs: 'center', md: 'flex-start' },
                 }}
               >
                 <IconButton
@@ -243,20 +284,31 @@ const Footer: React.FC = () => {
                 </IconButton>
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         <Box
           sx={{
             mt: 4,
+            pr: {
+              xs: 0,
+              md: 10
+            },
             pt: 2,
-            textAlign: 'right'
+            textAlign: {
+              xs: 'center',
+              md: 'right'
+            },
           }}
         >
           <Typography
             sx={{
-              fontSize: '0.85rem',
-              color: 'rgba(255,255,255,0.6)'
+              fontSize: {
+                xs: '1.25rem',
+                md: '1rem'
+              },
+              fontFamily: 'var(--font-family-Font-4, Inter)',
+              color: 'white',
             }}
           >
             {footerMock.copyright}

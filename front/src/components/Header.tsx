@@ -56,7 +56,6 @@ const Header: React.FC = () => {
           maxWidth: '100% !important',
         }}
       >
-        {/* First line: Logo, hamburger menu and contact button */}
         <Toolbar
           sx={{
             justifyContent: 'space-between',
@@ -192,7 +191,6 @@ const Header: React.FC = () => {
           </Box>
         </Toolbar>
 
-        {/* Expandable content - Only visible when mobileOpen is true */}
         <Collapse in={mobileOpen} timeout="auto" unmountOnExit>
           <Box 
             sx={{ 

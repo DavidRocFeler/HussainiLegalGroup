@@ -40,12 +40,6 @@ export default function RootLayout({
           <Header />
           <Box
             component="main"
-            sx={{
-              margin: 0,
-              padding: 0,
-              width: '100%',
-              minHeight: '80vh'
-            }}
           >
             {children}
           </Box>

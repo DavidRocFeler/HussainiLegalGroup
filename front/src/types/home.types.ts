@@ -12,3 +12,11 @@ export interface HeroTextContent {
     imageUrl: string | StaticImageData; 
     imageAlt: string;
   }
+
+  export interface Section {
+  id: string;
+  title: string;
+  description: string;
+  backgroundColor: string;
+  image: StaticImageData;
+}
