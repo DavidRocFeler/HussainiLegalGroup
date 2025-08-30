@@ -2,20 +2,17 @@
 'use client';
 
 import React from 'react';
-import { Button, ButtonProps } from '@mui/material';
-import { SxProps, Theme } from '@mui/material/styles';
-
-interface ButtonCustomProps extends Omit<ButtonProps, 'children'> {
-  text: string;
-  sx?: SxProps<Theme>;
-}
+import { Button } from '@mui/material';
+import { ButtonCustomProps } from '@/types/button';
 
 const ButtonCustom: React.FC<ButtonCustomProps> = ({ 
   text, 
   variant = 'contained',
   color = 'primary',
   sx,
-  ...restProps 
+  disabledHover = false, 
+  customHoverColor,      
+  ...restProps           
 }) => {
   return (
     <Button
@@ -23,19 +20,20 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
       color={color}
       sx={{
         textTransform: 'none',
-        fontWeight: 600,
-        px: 3,
-        py: 1.5,
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        transition: 'all 0.3s ease',
-        '&:hover': {
-          transform: 'translateY(-2px)',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+        padding: '0.875rem 2.1625rem',
+        fontSize: '1rem',
+        fontWeight: 400,
+        borderRadius: '0.1875rem',
+        '&:hover': disabledHover ? {} : {
+          backgroundColor: customHoverColor || undefined,
+          transition: 'background-color 0.3s ease',
+        },
+        '@media (max-width:440px)': {
+          padding: '0.5rem 1rem'
         },
         ...sx
       }}
-      {...restProps}
+      {...restProps} 
     >
       {text}
     </Button>

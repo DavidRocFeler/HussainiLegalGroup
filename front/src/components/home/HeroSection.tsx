@@ -12,15 +12,13 @@ const HeroSection: React.FC = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        padding: {
-          xs: '13.5rem 1rem 5.5rem 1.5rem',
-          md: '23.5rem 2rem 17.5rem 5rem',
+        px: {
+          xs: '1.5rem',
+          md: '5rem'
         },
+        py: '20rem',
         backgroundImage: `url(/BackgroundCover.png)`,
-        backgroundSize: {
-          xs: '300%',
-          sm: 'cover',
-        },
+        backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
@@ -33,9 +31,12 @@ const HeroSection: React.FC = () => {
           bottom: 0,
           zIndex: 1,
         },
+        '@media (max-width:899px)': {
+          minHeight: '0vh',
+        },
         '@media (max-width:450px)': {
           padding: '5rem 1rem 0rem 1.5rem',
-          minHeight: '80vh',
+          minHeight: '60vh',
         },
       }}
     >
@@ -46,6 +47,11 @@ const HeroSection: React.FC = () => {
           fontWeight: 400,
           lineHeight: '5.5rem',
           letterSpacing: '0px',
+          width: { xs: '100%', md: '70%' },
+          color: '#FAF5EF',
+          position: 'relative',
+          zIndex: 2,
+          mb: 4,
           '@media (max-width:899px)': {
             fontSize: '4.5rem',
           },
@@ -57,11 +63,6 @@ const HeroSection: React.FC = () => {
             fontSize: '2.5rem',
             lineHeight: '3rem',
           },
-          width: { xs: '100%', md: '70%' },
-          color: '#FAF5EF',
-          position: 'relative',
-          zIndex: 2,
-          mb: 4,
         }}
       >
         Where Legal Insight Meets Business Vision
@@ -73,7 +74,6 @@ const HeroSection: React.FC = () => {
         sx={{
           width: { xs: '100%', md: '70%' },
           color: 'white',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
           position: 'relative',
           zIndex: 2,
           mb: 4,

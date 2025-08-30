@@ -6,14 +6,20 @@ import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import ButtonCustom from './ButtomCustom';
 import { ReusableContainersProps } from '@/types/reusable';
+import { heroButtons } from '@/mock/heroButtons';
 
 const ReusableContainers: React.FC<ReusableContainersProps> = ({ 
   imageUrl, 
   imageAlt,
   content,
-  buttons = [],
   backgroundColor = 'transparent'
 }) => {
+
+  const handleButtonClick = (href?: string) => {
+    if (href) {
+      window.location.href = href;
+    }
+  };
 
   return (
     <Box
@@ -161,16 +167,26 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
           ))}
 
           {/* Action buttons */}
-          {buttons.length > 0 && (
-            <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
-              {buttons.map((button, index) => (
+          {heroButtons.length > 0 && (
+            <Box 
+              sx={{ 
+                mt: 4, 
+                display: 'flex',
+                gap: {
+                  xs: '1rem',
+                  md: '1.875rem' 
+                }
+              }}>
+              {heroButtons.map((button, index) => (
                 <ButtonCustom
                   key={index}
                   variant={button.variant || "contained"}
-                  color={button.color || "primary"}
+                  color={button.color}
                   text={button.text}
                   sx={button.sx}
-                  onClick={button.onClick}
+                  disabledHover={button.disabledHover}
+                  customHoverColor={button.customHoverColor} 
+                  onClick={() => handleButtonClick(button.href)} 
                 />
               ))}
             </Box>

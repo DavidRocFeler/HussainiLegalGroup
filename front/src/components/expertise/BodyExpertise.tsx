@@ -22,7 +22,6 @@ const BodyExpertise = () => {
         imageUrl={expertiseImage}
         imageAlt="Legal expertise and services"
         content={expertiseContentContainer}
-        // No pasamos buttons (queda undefined y el componente no renderiza botones)
       />
     </Box>
   )

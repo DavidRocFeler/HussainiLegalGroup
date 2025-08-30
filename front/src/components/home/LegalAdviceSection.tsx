@@ -1,119 +1,124 @@
+// components/LegalAdviceSection.tsx
 'use client';
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { legalAdviceContent } from '@/mock/legalAdvice.mock';
 import ButtonCustom from '../ui/ButtomCustom';
 import { EarthSvg } from '../ui/EarthSvg';
+import { legalAdviceButtons } from '@/mock/legalAdviceButtons';
 
 const LegalAdviceSection: React.FC = () => {
+  const handleButtonClick = (href?: string) => {
+    if (href) {
+      window.location.href = href;
+    }
+  };
+
   return (
     <Box
       sx={{
         backgroundColor: '#EEE9DD',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: {
+          xs: 'column-reverse',
+          md: 'column'
+        },
         alignItems: 'center',
-        py: { xs: '1.5rem', md: '5rem' },
-        px: { xs: '1rem', md: '3rem' },
+        padding: {
+          xs: '1.5rem 1.5rem',
+          md: '6rem 5rem'
+        },
       }}
     >
       <Box
         sx={{
-          width: { xs: '100%', md: '60%' },
+          width: 'full',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
         }}
       >
-        {/* Title */}
-        <Typography
-          variant="h6"
+       <Box
+       sx={{
+        width: { xs: '100%', md: '70%' },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: {
+          xs: 'flex-start',
+          md: 'center',
+        },
+        mb: 1,
+       }}
+       >
+         {/* Title section */}
+         <Typography
+          variant="h1"
           sx={{
-            fontFamily: '"Merriweather", serif',
-            fontSize: '2rem',
+            fontSize: '2.5rem',
             fontWeight: 400,
-            color: '#8B4513',
+            color: '#891C1B',
             mb: 3,
-            '@media (max-width:899px)': {
-              fontSize: '1.8rem',
-            },
+            textAlign: {
+              xs: 'start',
+              md: 'center'
+            }
           }}
         >
           {legalAdviceContent.title}
         </Typography>
 
-        {/* Description */}
+        {/* Description text */}
         <Typography
           variant="h5"
           sx={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: '1.5rem',
-            fontWeight: 600,
-            lineHeight: 1.334,
-            color: '#333',
+            fontSize: '1rem',
+            fontWeight: 400,
+            lineHeight: '1.6rem',
+            color: '#131313',
             mb: 4,
-            maxWidth: '100%',
+            width: '80%',
+            textAlign: {
+              xs: 'start',
+              md: 'center'
+            }
           }}
         >
           {legalAdviceContent.description}
         </Typography>
 
-        {/* Buttons */}
+        {/* Action buttons */}
         <Box
           sx={{
             display: 'flex',
-            gap: 2,
-            flexDirection: { xs: 'column', sm: 'row' },
+            gap: {
+              xs: '1rem',
+              md: '1.875rem' 
+            },
+            flexDirection: 'row',
             alignItems: 'center',
           }}
         >
-          <ButtonCustom
-            text={legalAdviceContent.buttons.moreDetails}
-            variant="contained"
-            sx={{
-              fontFamily: '"Merriweather", serif',
-              fontSize: '1.35138rem',
-              fontWeight: 700,
-              lineHeight: '1.75681rem',
-              letterSpacing: '-0.0135rem',
-              backgroundColor: '#C4975A',
-              color: 'white',
-              '&:hover': {
-                backgroundColor: '#B8864D',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
-              },
-            }}
-          />
-          
-          <ButtonCustom
-            text={legalAdviceContent.buttons.contactUs}
-            variant="contained"
-            sx={{
-              fontFamily: '"Merriweather", serif',
-              fontSize: '1.35138rem',
-              fontWeight: 700,
-              lineHeight: '1.75681rem',
-              letterSpacing: '-0.0135rem',
-              backgroundColor: '#8B2635',
-              color: 'white',
-              '&:hover': {
-                backgroundColor: '#7A1F2E',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
-              },
-            }}
-          />
+          {legalAdviceButtons.map((button, index) => (
+            <ButtonCustom
+              key={index}
+              text={button.text}
+              variant={button.variant || "contained"}
+              sx={button.sx}
+              disabledHover={button.disabledHover}
+              customHoverColor={button.customHoverColor}
+              onClick={() => handleButtonClick(button.href)}
+            />
+          ))}
         </Box>
+       </Box>
 
-        {/* Earth SVG */}
-        <Box sx={{ 
-          mt: 4, 
-          }}>
+      </Box>
+
+        {/* Decorative SVG */}
+        <Box sx={{ mt: 4 }}>
           <EarthSvg />
         </Box>
-      </Box>
     </Box>
   );
 };

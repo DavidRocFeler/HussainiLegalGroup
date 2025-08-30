@@ -24,8 +24,4 @@ export interface HeroTextContent {
 export interface LegalAdviceContent {
   title: string;
   description: string;
-  buttons: {
-    moreDetails: string;
-    contactUs: string;
-  };
 }

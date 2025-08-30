@@ -49,30 +49,37 @@ const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => 
       {/* Bottom strategy section */}
       <Box 
         sx={{ 
-          width: 'full',
+          width: {
+            xs: '100%',
+            md: '78%'
+          },
           mt: {
             xs: '3rem',
             md: '9rem'
           },
-          border: '1px solid black',
           }}>
         {strategyContent.map((item) => (
           <Box key={item.id} mb={3}>
             {item.label && (
               <Typography
-                variant="overline"
+                variant="h5"
                 color="error"
-                sx={{ fontWeight: 600 }}
+                sx={{ 
+                  color: '#891C1B',
+                  mb: '1.8rem',
+                  fontWeight: 700,
+                  fontSize: '1.25rem',
+                }}
               >
                 {item.label}
               </Typography>
             )}
             <Typography
-              variant={item.id === 1 ? 'h3' : 'body1'}
+              variant={item.id === 1 ? 'h1' : 'body1'}
               sx={{
-                fontWeight: item.id === 1 ? 700 : 400,
-                color: item.id === 1 ? 'text.primary' : 'text.secondary',
-                lineHeight: 1.6
+                fontSize: item.id === 1 ? '2.5rem' : '1rem',
+                fontWeight: item.id === 1 ? 400 : 500,
+                color: '#131313',
               }}
             >
               {item.value}

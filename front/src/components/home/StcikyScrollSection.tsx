@@ -6,8 +6,6 @@ import Image from 'next/image';
 import { sectionsData } from '@/mock/stickyScrollSection.mock';
 
 const StickyScrollSections: React.FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const getFlexDirection = (index: number) => {
     if (index === 1) { 
@@ -20,52 +18,30 @@ const StickyScrollSections: React.FC = () => {
     <Box
       sx={{
         bgcolor: '#D6D0B3',
-        minHeight: '100vh',
+        padding: {
+          xs: '4rem 1rem',
+          md: '5rem 4.5rem',
+        },
         position: 'relative',
       }}
     >
-      {/* Progress Indicator */}
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          backgroundColor: 'rgba(214, 208, 179, 0.9)',
-          backdropFilter: 'blur(10px)',
-        }}
-      >
-        <LinearProgress
-          variant="determinate"
-          value={0}
-          sx={{
-            height: 4,
-            '& .MuiLinearProgress-bar': {
-              backgroundColor: '#8B3A62',
-              transition: 'background-color 0.5s ease',
-            },
-          }}
-        />
-      </Box>
-
       {/* Sections Container */}
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          pt: 1,
+          border: 'black 2px solid',
+          p: 0,
+          m: 0
         }}
       >
         {sectionsData.map((section, index) => (
           <Box
             key={section.id}
             sx={{
-              minHeight: '100vh',
               display: 'flex',
               flexDirection: getFlexDirection(index),
               position: 'relative',
-              backgroundColor: '#D6D0B3',
             }}
           >
             {/* Image Section */}
@@ -74,14 +50,8 @@ const StickyScrollSections: React.FC = () => {
                 flex: '1',
                 position: 'relative',
                 overflow: 'hidden',
-                borderRadius: 4,
-                m: 2,
+                borderRadius: '0.625rem',
                 minHeight: { xs: '300px', md: 'auto' },
-                boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-                transition: 'transform 0.5s ease',
-                '&:hover': {
-                  transform: 'scale(1.02)',
-                },
               }}
             >
               <Box
@@ -91,9 +61,6 @@ const StickyScrollSections: React.FC = () => {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  backgroundColor: section.backgroundColor,
-                  opacity: 0.9,
-                  borderRadius: 4,
                 }}
               />
               <Image
@@ -125,10 +92,10 @@ const StickyScrollSections: React.FC = () => {
             <Box
               sx={{
                 flex: '1',
+                bgcolor: 'white',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                p: { xs: 3, md: 6 },
                 gap: 3,
               }}
             >
@@ -183,8 +150,10 @@ const StickyScrollSections: React.FC = () => {
                 See more
               </Link>
             </Box>
+            
           </Box>
         ))}
+
       </Box>
     </Box>
   );
