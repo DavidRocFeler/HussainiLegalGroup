@@ -1,4 +1,4 @@
-import { NavItem } from "@/types/header.types";
+import { NavItem } from "@/types/header";
 
 export const navigationMock: NavItem[] = [
   { name: "About Us", href: "/" },

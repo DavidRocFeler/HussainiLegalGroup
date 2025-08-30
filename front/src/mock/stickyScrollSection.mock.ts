@@ -1,4 +1,4 @@
-import { Section } from '@/types/home.types';
+import { Section } from '@/types/home';
 import VisionaryHeroImage from '@/assets/VisionaryHero.jpg';
 
 export const sectionsData: Section[] = [

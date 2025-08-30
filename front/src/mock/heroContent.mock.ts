@@ -1,6 +1,6 @@
 // mock/heroContent.mock.ts
 
-import { HeroTextContent } from "@/types/home.types";
+import { HeroTextContent } from "@/types/home";
 
 export const heroTextContent: HeroTextContent[] = [
   {

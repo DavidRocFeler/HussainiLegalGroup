@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   AppBar,
@@ -23,6 +24,10 @@ const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navItems = navigationMock;
 
+  const router = useRouter()
+  const handleRedirectHome = () => {
+    router.push('/')
+  }
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -70,6 +75,7 @@ const Header: React.FC = () => {
           <Box
             sx={{ 
               display: 'flex',
+              cursor: 'pointer',
               flexDirection: 'column',
               alignItems: 'center',
               fontWeight: 'normal', 
@@ -77,6 +83,7 @@ const Header: React.FC = () => {
             }}
           >
             <Image 
+              onClick={handleRedirectHome}
               src="/logoHussaini.png" 
               alt="Company Logo" 
               width={55}
@@ -110,7 +117,6 @@ const Header: React.FC = () => {
               .filter(item => item.name !== "Contact Us")
               .map((item) => (
                 <Button 
-                  variant='text'
                   key={item.name} 
                   href={item.href}
                   sx={{ 
@@ -126,7 +132,18 @@ const Header: React.FC = () => {
                     }
                   }}
                 >
-                   <Typography variant="h3" component="span">
+                   <Typography 
+                   variant="h1" 
+                   component="span"
+                   sx={{
+                    fontSize: '1rem',    
+                    fontWeight: 300,
+                    '@media (max-width:899px)': {
+                      fontSize: '1.5rem',
+                      lineHeight: '1.5rem',  
+                    },
+                   }}
+                   >
                     {item.name}
                   </Typography>
                 </Button>
@@ -148,7 +165,9 @@ const Header: React.FC = () => {
               href="/contact"
               sx={{ 
                 display: { xs: 'none', md: 'block' },
-                fontSize: '1.1rem',
+                fontSize: '1rem',    
+                fontWeight: 300,
+                fontFamily: '"Merriweather", serif',
                 color: 'white',
                 border: '1px solid white',
                 padding: '0.6rem 2rem',

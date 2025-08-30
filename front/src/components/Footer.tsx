@@ -123,8 +123,6 @@ const Footer: React.FC = () => {
               <Typography
                 variant="h4"
                 sx={{
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold',
                   mb: 2
                 }}
               >
@@ -157,8 +155,6 @@ const Footer: React.FC = () => {
               <Typography
                 variant="h4"
                 sx={{
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold',
                   mb: 2
                 }}
               >

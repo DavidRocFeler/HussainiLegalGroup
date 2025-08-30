@@ -6,21 +6,6 @@ export const typography: ThemeOptions['typography'] = {
   
   h1: {
     fontFamily: '"Merriweather", serif',
-    fontSize: '5rem', 
-    fontWeight: 400,
-    lineHeight: '5.5rem',
-    letterSpacing: '0px',
-    '@media (max-width:899px)': {
-      fontSize: '4.5rem',
-    },
-    '@media (max-width:650px)': {
-      fontSize: '3.8rem',
-      lineHeight: '4.5rem',
-    },
-    '@media (max-width:450px)': {
-      fontSize: '2.5rem',
-      lineHeight: '3rem',
-    },
   },
   h2: {
     fontFamily: '"Exo", sans-serif',
@@ -50,23 +35,22 @@ export const typography: ThemeOptions['typography'] = {
   },
   h4: {
     fontFamily: '"Merriweather", serif',
-    fontSize: '1rem', 
-    fontWeight: 500,
+    fontSize: '1.2rem', 
+    fontWeight: 600,
     '@media (max-width:899px)': {
       fontSize: '1.8rem', 
     },
   },
   h5: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '1.5rem',
-    fontWeight: 600,
-    lineHeight: 1.334,
+    letterSpacing: '-0.01rem',
   },
   h6: {
-    fontFamily: '"Inter", sans-serif',
-    fontSize: '1.25rem',
-    fontWeight: 600,
-    lineHeight: 1.6,
+    fontFamily: '"Merriweather", serif',
+    fontSize: '2.5rem',
+    fontWeight: 700,
+    lineHeight: '3.25rem',
+    color: '#131313',
   },
   
   body1: {

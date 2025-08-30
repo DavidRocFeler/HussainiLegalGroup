@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
           xs: '13.5rem 1rem 5.5rem 1.5rem',
           md: '23.5rem 2rem 17.5rem 5rem',
         },
-        backgroundImage: `url(/BackgroundCover.jpg)`,
+        backgroundImage: `url(/BackgroundCover.png)`,
         backgroundSize: {
           xs: '300%',
           sm: 'cover',
@@ -42,6 +42,21 @@ const HeroSection: React.FC = () => {
       <Typography
         variant="h1"
         sx={{
+          fontSize: '5rem', 
+          fontWeight: 400,
+          lineHeight: '5.5rem',
+          letterSpacing: '0px',
+          '@media (max-width:899px)': {
+            fontSize: '4.5rem',
+          },
+          '@media (max-width:650px)': {
+            fontSize: '3.8rem',
+            lineHeight: '4.5rem',
+          },
+          '@media (max-width:450px)': {
+            fontSize: '2.5rem',
+            lineHeight: '3rem',
+          },
           width: { xs: '100%', md: '70%' },
           color: '#FAF5EF',
           position: 'relative',
