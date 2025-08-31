@@ -56,7 +56,6 @@ export const typography: ThemeOptions['typography'] = {
   body1: {
     fontFamily: '"Inter", sans-serif',
     fontSize: '1rem',
-    fontWeight: 400,
     lineHeight: 1.5,
   },
   body2: {

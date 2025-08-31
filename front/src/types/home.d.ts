@@ -13,12 +13,24 @@ export interface HeroTextContent {
     imageAlt: string;
   }
 
-  export interface Section {
+  export interface SectionScrollStiky {
   id: string;
   title: string;
   description: string;
-  backgroundColor: string;
+  href: string; 
+}
+
+export interface SectionScrollStikyResponsive {
+  id: string;
+  title: string;
+  description: string;
+  href: string; 
   image: StaticImageData;
+}
+
+export interface SectionScrollStikyImage {
+  image: StaticImageData;
+  style: React.CSSProperties;
 }
 
 export interface LegalAdviceContent {

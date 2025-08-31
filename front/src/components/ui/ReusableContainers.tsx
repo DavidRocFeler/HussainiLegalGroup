@@ -77,11 +77,11 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
             overflow: 'hidden',
             width: {
               xs: '93.5%',
-              md: '39rem'
+              md: '41rem'
             },
             height: {
               xs: '41rem',
-              md: "30rem"
+              md: "32rem"
             },
             '@media (max-width:650px)': {
               mt: '0',
