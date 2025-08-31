@@ -1,15 +1,16 @@
 // theme/palette.ts
-import { red, blue } from '@mui/material/colors';
 
 export const palette = {
   primary: {
-    main: blue[700], 
+    main: '#EEE9DD',
   },
   secondary: {
-    main: red[500], 
+    main: '#D6D0B3',
   },
-  background: {
-    default: '#f5f5f5',
-    paper: '#ffffff',
+  tertiary: {
+    main: '#233631',
+  },
+  header: {
+    main: '#891C1B',
   },
 };

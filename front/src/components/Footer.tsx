@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: '#24363A',
+        backgroundColor: 'tertiary.main',
         color: 'white',
         padding: '3rem 0rem 1rem 0rem',
       }}
@@ -52,13 +52,13 @@ const Footer: React.FC = () => {
               priority
             />
               <Typography
-                variant='h1'
-                sx={{
-                fontSize: '0.6rem',
-                marginTop: '0.2rem',
-                lineHeight: 1.2,
-                fontWeight: 1000
-                }}
+                 variant='h1'
+                 sx={{
+                   fontSize: '0.6rem',
+                   marginTop: '0.2rem',
+                   lineHeight: 1.2,
+                   fontWeight: 1000
+                 }}
               >
                 {footerMock.companyName}
               </Typography>

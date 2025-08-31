@@ -13,7 +13,7 @@ const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => 
   return (
     <Box
       sx={{
-        backgroundColor: '#EEE9DD',
+        backgroundColor: 'primary.main',
         position: 'relative',
         maxHeight: 'fit-content',
         padding: {

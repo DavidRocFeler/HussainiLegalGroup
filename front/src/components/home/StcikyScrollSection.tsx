@@ -12,7 +12,7 @@ const StickyScrollSections: React.FC = () => {
   return (
     <Box
       sx={{
-        bgcolor: '#D6D0B3',
+        bgcolor: 'secondary.main',
         padding: {
           xs: '4rem 1rem',
           md: '5rem 4.5rem',

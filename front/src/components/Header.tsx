@@ -40,7 +40,7 @@ const Header: React.FC = () => {
       sx={{ 
         color: 'white',
         position: 'fixed',
-        backgroundColor: '#7E1A19', 
+        backgroundColor: 'header.main', 
         borderBottom: 'white 1px solid',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         padding: {
@@ -120,21 +120,22 @@ const Header: React.FC = () => {
                   key={item.name} 
                   href={item.href}
                   sx={{ 
-                    color: 'white', 
+                    color: 'primary.main', 
                     minWidth: 'auto',
                     padding: '8px 10px',
                     borderRadius: '0px',
-                    fontSize: '1.1rem',
+                    fontSize: '1.125rem',
                     mx: 1,
+                    textTransform: 'none',
                     '&:hover': { 
-                      backgroundColor: 'rgba(255,255,255,0.1)', 
-                      color: 'white'
+                      color: 'white',
+                      backgroundColor: 'transparent', 
+                      boxShadow: 'none', 
                     }
                   }}
                 >
                    <Typography 
                    variant="h1" 
-                   component="span"
                    sx={{
                     fontSize: '1rem',    
                     fontWeight: 300,
@@ -165,16 +166,17 @@ const Header: React.FC = () => {
               href="/contact"
               sx={{ 
                 display: { xs: 'none', md: 'block' },
-                fontSize: '1rem',    
+                fontSize: '1.125rem',    
                 fontWeight: 300,
                 fontFamily: '"Merriweather", serif',
-                color: 'white',
+                color: 'primary.main',
                 border: '1px solid white',
                 padding: '0.6rem 2rem',
                 backgroundColor: 'transparent',
                 minWidth: 'auto',
                 transition: 'all 0.3s ease-in-out',
                 borderRadius: '0px',
+                textTransform: 'none',
                 '&:hover': { 
                   backgroundColor: '#AB854B',
                   borderColor: '#AB854B',
@@ -215,8 +217,8 @@ const Header: React.FC = () => {
             sx={{ 
               textAlign: 'center', 
               padding: '20px 0',
-              backgroundColor: '#7E1A19',
-              color: 'white'
+              backgroundColor: 'header.main',
+              color: 'primary.main'
             }}
           >
             <List>
@@ -228,9 +230,6 @@ const Header: React.FC = () => {
                   disablePadding
                   sx={{ 
                     justifyContent: 'center',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255,255,255,0.1)'
-                    }
                   }}
                   onClick={handleDrawerToggle}
                 >
@@ -238,13 +237,17 @@ const Header: React.FC = () => {
                     primary={item.name}
                     slotProps={{
                       primary: {
-                        variant: "h2",
+                        variant: "h1",
                         sx: {
-                          fontFamily: '"Exo", sans-serif',
                           fontSize: '1.125rem',
                           fontWeight: 400,
                           textAlign: 'center',
-                          color: 'white',
+                          color: 'primary.main',
+                          '&:hover': {
+                            color: 'white',
+                            backgroundColor: 'transparent', 
+                            boxShadow: 'none', 
+                          }
                         }
                       }
                     }}

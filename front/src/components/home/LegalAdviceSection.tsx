@@ -17,7 +17,7 @@ const LegalAdviceSection: React.FC = () => {
   return (
     <Box
       sx={{
-        backgroundColor: '#EEE9DD',
+        backgroundColor: 'primary.main',
         display: 'flex',
         flexDirection: {
           xs: 'column-reverse',
