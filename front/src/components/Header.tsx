@@ -84,14 +84,14 @@ const Header: React.FC = () => {
           >
             <Image 
               onClick={handleRedirectHome}
-              src="/logoHussaini.png" 
+              src='https://gist.githubusercontent.com/DavidRocFeler/094740b9109ecc621859ad9430a2ddc7/raw/56b2abb333cd264e1447f6e390c8eff9c4b2a956/LegalGroupLogo.svg'
               alt="Company Logo" 
               width={55}
               height={50}
               priority
             />
             <Typography
-              component="span"
+              variant='h1'
               sx={{
                 fontSize: '0.6rem',
                 marginTop: '0.2rem',
