@@ -7,7 +7,7 @@ import React from 'react'
 import StickyScrollSections from '@/components/home/StcikyScrollSection'
 import LegalAdviceSection from '@/components/home/LegalAdviceSection'
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <Box 
     sx={{

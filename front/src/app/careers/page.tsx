@@ -3,7 +3,7 @@ import CarrersPage from '@/pages/CarrersPage'
 import { Box } from '@mui/material'
 import React from 'react'
 
-const Carrers = () => {
+const Carrers: React.FC = () => {
   return (
     <Box>
         <CarrersPage/>

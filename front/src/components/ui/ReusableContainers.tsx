@@ -13,7 +13,7 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
   content,
   buttons,
   backgroundColor = 'transparent',
-  href // ✅ Usar el href que ya existe
+  href 
 }) => {
 
   const handleButtonClick = (buttonHref?: string) => {
@@ -172,7 +172,6 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
             </Box>
           ))}
 
-          {/* ✅ See More Button - Aparece solo si hay href */}
           {href && (
             <Button
               onClick={handleSeeMoreClick}

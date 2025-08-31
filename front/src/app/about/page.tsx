@@ -2,7 +2,7 @@ import AboutPage from '@/pages/AboutPage'
 import { Box } from '@mui/material'
 import React from 'react'
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <Box>
         <AboutPage/>

@@ -5,10 +5,7 @@ import React from 'react';
 import StikyScrollDesktop from '../ui/StikyScrollDesktop';
 import StikyScrollMobile from '../ui/StikyScrollMobile';
 
-
 const StickyScrollSections: React.FC = () => {
-
-
   return (
     <Box
       sx={{

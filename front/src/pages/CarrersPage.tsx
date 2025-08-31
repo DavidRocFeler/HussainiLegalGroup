@@ -1,27 +1,13 @@
-import ReusableContainers from '@/components/ui/ReusableContainers'
 import { Box } from '@mui/material'
 import React from 'react'
-import rectanguleCareers from '@/assets/RectanguleCareers.jpg'
-import { careersContentContainer } from '@/mock/careersContentContainer.mock'
+import ToApply from '@/components/careers/ToApply'
+import BodyCareers from '@/components/careers/BodyCareers'
 
-const CarrersPage = () => {
+const CarrersPage: React.FC = () => {
   return (
-    <Box
-      sx={{
-        backgroundColor: '#EEE9DD',
-        position: 'relative',
-        maxHeight: 'fit-content',
-        padding: {
-          xs: '10rem 1rem 3rem 1.5rem',
-          md: '11rem 4.5rem 8em 4.8rem',
-        },
-      }}
-    >
-      <ReusableContainers
-        imageUrl={rectanguleCareers}
-        imageAlt="Legal expertise and services"
-        content={careersContentContainer}
-      />
+    <Box>
+      <BodyCareers/>
+      <ToApply/>
     </Box>
   )
 }

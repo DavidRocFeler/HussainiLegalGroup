@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather, Exo } from "next/font/google";
 import "./globals.css";
-import { Box } from '@mui/material'; // ← Cambiar Container por Box
+import { Box } from '@mui/material'; 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ClientLayout from "./ClientLayout";
@@ -14,7 +14,7 @@ const inter = Inter({
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   subsets: ["latin"],
-  weight: ['300', '400', '700'], // Incluye 400 que es el que usa Figma
+  weight: ['300', '400', '700'], 
 });
 
 const exo = Exo({
@@ -24,8 +24,8 @@ const exo = Exo({
 });
 
 export const metadata: Metadata = {
-  title: "Hussaini Legal Group",
-  description: "Web site",
+  title: "Hussaini Legal Group | International Law Firm | Miami, Amsterdam & Damascus",
+  description: "Leading international law firm providing expert legal services across Miami, Amsterdam, and Damascus. Specializing in corporate law, arbitration, investment contracting, Islamic finance, and cross-border transactions. Trusted legal counsel for global businesses and institutions.",
 };
 
 export default function RootLayout({

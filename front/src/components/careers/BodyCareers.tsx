@@ -1,11 +1,10 @@
 import ReusableContainers from '@/components/ui/ReusableContainers'
-import { expertiseContentContainer } from '@/mock/expertiseContentContainer'
 import { Box } from '@mui/material'
 import React from 'react'
-import visionaryHero from '@/assets/VisionaryHero.jpg'
-import ExpertiseAndSectors from '@/components/expertise/ExpertiseAndSectors'
+import rectanguleCareers from '@/assets/RectanguleCareers.jpg'
+import { careersContentContainer } from '@/mock/careersContentContainer.mock'
 
-const ExpertisePage: React.FC = () => {
+const BodyCareers: React.FC = () => {
   return (
     <Box
       sx={{
@@ -14,19 +13,17 @@ const ExpertisePage: React.FC = () => {
         maxHeight: 'fit-content',
         padding: {
           xs: '10rem 1rem 3rem 1.5rem',
-          md: '11rem 4.5rem 8em 4.8rem',
+          md: '11rem 4.5rem 6rem 4.8rem',
         },
       }}
     >
       <ReusableContainers
-        imageUrl={visionaryHero}
+        imageUrl={rectanguleCareers}
         imageAlt="Legal expertise and services"
-        content={expertiseContentContainer}
+        content={careersContentContainer}
       />
-
-      <ExpertiseAndSectors/>
     </Box>
   )
 }
 
-export default ExpertisePage
+export default BodyCareers;

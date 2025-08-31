@@ -1,7 +1,6 @@
 // app/not-found.tsx
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import ButtonCustom from '@/components/ui/ButtomCustom';
 
@@ -131,7 +130,7 @@ const NotFound: React.FC = () => {
               fontWeight: 500,
             }}
           >
-            Call us at +1 (555) 123-4567
+            Call us at 0470 343 103
           </Typography>
         </Box>
       </Box>

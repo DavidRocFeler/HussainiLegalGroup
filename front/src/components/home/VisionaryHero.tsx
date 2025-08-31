@@ -9,7 +9,6 @@ import { VisionaryHeroProps } from '@/types/home';
 import ReusableContainers from '../ui/ReusableContainers';
 
 const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => {
-
   return (
     <Box
       sx={{
