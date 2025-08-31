@@ -1,4 +1,6 @@
-export const footerMock = {
+import { FooterInfo } from "@/types/footer";
+
+export const footerMock: FooterInfo = {
   sections: {
     locations: {
       title: "Locations",

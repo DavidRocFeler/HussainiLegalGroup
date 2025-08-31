@@ -1,8 +1,14 @@
 'use client'
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 const HeroSection: React.FC = () => {
+  const router = useRouter()
+  const handleRedirectContactUs = () => {
+  router.push('/contact')
+}
+
   return (
     <Box
       sx={{
@@ -90,6 +96,7 @@ const HeroSection: React.FC = () => {
 
       <Button
         variant="contained"
+        onClick={handleRedirectContactUs}
         sx={{
           alignSelf: 'flex-start',
           padding: '1.1825rem 2.92244rem 1.1825rem 2.92156rem',

@@ -165,13 +165,15 @@ const Footer: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 1,
-
-                }}
+                 }}
               >
                 {footerMock.sections.contact.items.map((contactInfo, index) => (
                   <Typography
                     key={index}
                     variant="h3"
+                    sx={{
+                      textDecoration: 'none'
+                    }}
                   >
                     {contactInfo}
                   </Typography>
