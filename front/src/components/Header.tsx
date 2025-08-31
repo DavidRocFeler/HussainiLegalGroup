@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import logoHussini from '@/assets/LogoHussaini.png'
 import {
   AppBar,
   Box,
@@ -84,7 +85,7 @@ const Header: React.FC = () => {
           >
             <Image 
               onClick={handleRedirectHome}
-              src="/logoHussaini.png" 
+              src={logoHussini} 
               alt="Company Logo" 
               width={55}
               height={50}

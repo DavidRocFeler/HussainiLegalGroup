@@ -6,6 +6,7 @@ import {
   Button,
   IconButton,
 } from '@mui/material';
+import logoHussini from '@/assets/LogoHussaini.png'
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { footerMock } from '@/mock/footer.mock';
@@ -94,7 +95,7 @@ const Footer: React.FC = () => {
                 }}
               >
                 <Image
-                  src="/logoHussaini.png"
+                  src={logoHussini}
                   alt="Logo"
                   width={55}
                   height={50}
