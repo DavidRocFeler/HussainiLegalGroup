@@ -16,7 +16,14 @@ const HeroSection: React.FC = () => {
           xs: '1.5rem',
           md: '5rem'
         },
-        py: '20rem',
+        pt: {
+          xs: '10rem',
+          md: '25rem'
+        },
+        pb: {
+          xs: '5rem',
+          md: '20rem'
+        },
         backgroundImage: `url(/BackgroundCover.png)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
@@ -31,12 +38,10 @@ const HeroSection: React.FC = () => {
           bottom: 0,
           zIndex: 1,
         },
-        '@media (max-width:899px)': {
-          minHeight: '0vh',
-        },
         '@media (max-width:450px)': {
-          padding: '5rem 1rem 0rem 1.5rem',
-          minHeight: '60vh',
+          minHeight: '0vh',
+          pb: '5rem',
+          pt: '10rem'
         },
       }}
     >
