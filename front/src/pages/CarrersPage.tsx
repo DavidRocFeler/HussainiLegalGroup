@@ -1,10 +1,10 @@
 import ReusableContainers from '@/components/ui/ReusableContainers'
-import { expertiseContentContainer } from '@/mock/expertiseContentContainer'
 import { Box } from '@mui/material'
 import React from 'react'
-import visionaryHero from '@/assets/VisionaryHero.jpg'
+import rectanguleCareers from '@/assets/RectanguleCareers.jpg'
+import { careersContentContainer } from '@/mock/careersContentContainer.mock'
 
-const ExpertisePage = () => {
+const CarrersPage = () => {
   return (
     <Box
       sx={{
@@ -18,12 +18,12 @@ const ExpertisePage = () => {
       }}
     >
       <ReusableContainers
-        imageUrl={visionaryHero}
+        imageUrl={rectanguleCareers}
         imageAlt="Legal expertise and services"
-        content={expertiseContentContainer}
+        content={careersContentContainer}
       />
     </Box>
   )
 }
 
-export default ExpertisePage
+export default CarrersPage

@@ -301,10 +301,7 @@ const Footer: React.FC = () => {
         >
           <Typography
             sx={{
-              fontSize: {
-                xs: '1.25rem',
-                md: '1rem'
-              },
+              fontSize: '1rem',
               fontFamily: 'var(--font-family-Font-4, Inter)',
               color: 'white',
             }}

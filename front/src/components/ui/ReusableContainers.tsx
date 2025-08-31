@@ -2,20 +2,27 @@
 'use client';
 
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import ButtonCustom from './ButtomCustom';
 import { ReusableContainersProps } from '@/types/reusable';
-import { heroButtons } from '@/mock/heroButtons';
 
 const ReusableContainers: React.FC<ReusableContainersProps> = ({ 
   imageUrl, 
   imageAlt,
   content,
-  backgroundColor = 'transparent'
+  buttons,
+  backgroundColor = 'transparent',
+  href // ✅ Usar el href que ya existe
 }) => {
 
-  const handleButtonClick = (href?: string) => {
+  const handleButtonClick = (buttonHref?: string) => {
+    if (buttonHref) {
+      window.location.href = buttonHref;
+    }
+  };
+
+  const handleSeeMoreClick = () => {
     if (href) {
       window.location.href = href;
     }
@@ -130,7 +137,6 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
               {item.title && (
                 <Typography
                   variant="h5"
-                  color="error"
                   sx={{ 
                     color: '#891C1B',
                     mb: '1.2rem',
@@ -166,8 +172,35 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
             </Box>
           ))}
 
+          {/* ✅ See More Button - Aparece solo si hay href */}
+          {href && (
+            <Button
+              onClick={handleSeeMoreClick}
+              sx={{
+                color: '#891C1B',
+                fontFamily: 'Inter',
+                fontSize: '1rem',
+                fontStyle: 'normal',
+                fontWeight: 500,
+                lineHeight: '1.3rem',
+                letterSpacing: '-0.01rem',
+                textTransform: 'none',
+                padding: 0,
+                minWidth: 'auto',
+                mt: 2,
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              See more
+            </Button>
+          )}
+
           {/* Action buttons */}
-          {heroButtons.length > 0 && (
+          {buttons && buttons.length > 0 && (
             <Box 
               sx={{ 
                 mt: 4, 
@@ -177,11 +210,10 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
                   md: '1.875rem' 
                 }
               }}>
-              {heroButtons.map((button, index) => (
+              {buttons.map((button, index) => (
                 <ButtonCustom
                   key={index}
                   variant={button.variant || "contained"}
-                  color={button.color}
                   text={button.text}
                   sx={button.sx}
                   disabledHover={button.disabledHover}

@@ -29,17 +29,16 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '1.8rem',    
     letterSpacing: '-0.01rem',
     '@media (max-width:899px)': {
-      fontSize: '1.5rem',
       lineHeight: '1.5rem',  
+    },
+    '@media (max-width:450px)': {
+    
     },
   },
   h4: {
     fontFamily: '"Merriweather", serif',
-    fontSize: '1.2rem', 
+    fontSize: '1.25rem', 
     fontWeight: 600,
-    '@media (max-width:899px)': {
-      fontSize: '1.8rem', 
-    },
   },
   h5: {
     fontFamily: '"Inter", sans-serif',

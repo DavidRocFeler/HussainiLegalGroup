@@ -117,6 +117,7 @@ const Header: React.FC = () => {
               .filter(item => item.name !== "Contact Us")
               .map((item) => (
                 <Button 
+                  disableRipple={true}
                   key={item.name} 
                   href={item.href}
                   sx={{ 
@@ -131,7 +132,7 @@ const Header: React.FC = () => {
                       color: 'white',
                       backgroundColor: 'transparent', 
                       boxShadow: 'none', 
-                    }
+                    },
                   }}
                 >
                    <Typography 

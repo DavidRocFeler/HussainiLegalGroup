@@ -1,6 +1,5 @@
 import { HeroTextContent } from "@/types/home";
 
-// mock/heroContent.mock.ts (o donde ya tengas definido HeroTextContent)
 export const expertiseContentContainer: HeroTextContent[] = [
     {
       id: 1,

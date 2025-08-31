@@ -105,6 +105,7 @@ const HeroSection: React.FC = () => {
           position: 'relative',
           backgroundColor: '#EEE9DD',
           zIndex: 2,
+          textTransform: 'none',
           '&:hover': {
             backgroundColor: '#CEC4A6',
           },

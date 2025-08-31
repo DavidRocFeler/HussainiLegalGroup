@@ -24,6 +24,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
         fontSize: '1rem',
         fontWeight: 400,
         borderRadius: '0.1875rem',
+        color: 'primary.main',
         '&:hover': disabledHover ? {} : {
           backgroundColor: customHoverColor || undefined,
           transition: 'background-color 0.3s ease',

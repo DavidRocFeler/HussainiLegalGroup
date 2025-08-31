@@ -9,4 +9,5 @@ export interface ReusableContainersProps {
   content: HeroTextContent[];
   buttons?: ButtonCustomProps[]; 
   backgroundColor?: string;
+  href?: string;
 }
