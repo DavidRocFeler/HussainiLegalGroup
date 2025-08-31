@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
                   priority
                 />
                 <Typography
-                  component="span"
+                  variant='h1'
                   sx={{
                     fontSize: '0.6rem',
                     marginTop: '0.2rem',
