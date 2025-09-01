@@ -1,13 +1,8 @@
-'use client'
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-const HeroSection: React.FC = () => {
-  const router = useRouter()
-  const handleRedirectContactUs = () => {
-  router.push('/contact')
-}
+const HeroSection = () => {
 
   return (
     <Box
@@ -94,26 +89,29 @@ const HeroSection: React.FC = () => {
         in the Middle East and a forward-looking presence in Europe and the United States.
       </Typography>
 
-      <Button
-        variant="contained"
-        onClick={handleRedirectContactUs}
-        sx={{
-          alignSelf: 'flex-start',
-          padding: '1.1825rem 2.92244rem 1.1825rem 2.92156rem',
-          color: '#2c3e50',
-          borderRadius: '0.25338rem',
-          position: 'relative',
-          backgroundColor: '#EEE9DD',
-          zIndex: 2,
-          textTransform: 'none',
-          '&:hover': {
-            backgroundColor: '#CEC4A6',
-          },
-          transition: 'all 0.3s ease-in-out'
-        }}
+      <Link
+      href='/contact'
       >
-        Contact Us
-      </Button>
+        <Button
+          variant="contained"
+          sx={{
+            alignSelf: 'flex-start',
+            padding: '1.1825rem 2.92244rem 1.1825rem 2.92156rem',
+            color: '#2c3e50',
+            borderRadius: '0.25338rem',
+            position: 'relative',
+            backgroundColor: '#EEE9DD',
+            zIndex: 2,
+            textTransform: 'none',
+            '&:hover': {
+              backgroundColor: '#CEC4A6',
+            },
+            transition: 'all 0.3s ease-in-out'
+          }}
+        >
+          Contact Us
+        </Button>
+      </Link>
     </Box>
   );
 };

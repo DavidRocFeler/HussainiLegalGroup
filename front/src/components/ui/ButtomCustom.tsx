@@ -1,11 +1,10 @@
 // components/ui/ButtonCustom.tsx
-'use client';
 
 import React from 'react';
 import { Button } from '@mui/material';
 import { ButtonCustomProps } from '@/types/button';
 
-const ButtonCustom: React.FC<ButtonCustomProps> = ({ 
+const ButtonCustom = ({ 
   text, 
   variant = 'contained',
   color = 'primary',
@@ -13,7 +12,7 @@ const ButtonCustom: React.FC<ButtonCustomProps> = ({
   disabledHover = false, 
   customHoverColor,      
   ...restProps           
-}) => {
+}: ButtonCustomProps) => {
   return (
     <Button
       variant={variant}

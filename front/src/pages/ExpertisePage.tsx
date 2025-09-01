@@ -5,7 +5,7 @@ import React from 'react'
 import visionaryHero from '@/assets/VisionaryHero.jpg'
 import ExpertiseAndSectors from '@/components/expertise/ExpertiseAndSectors'
 
-const ExpertisePage: React.FC = () => {
+const ExpertisePage = () => {
   return (
     <Box
       sx={{

@@ -4,7 +4,7 @@ import React from 'react'
 import rectanguleCareers from '@/assets/RectanguleCareers.jpg'
 import { careersContentContainer } from '@/mock/careersContentContainer.mock'
 
-const BodyCareers: React.FC = () => {
+const BodyCareers = () => {
   return (
     <Box
       sx={{

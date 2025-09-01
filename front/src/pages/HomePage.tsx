@@ -4,10 +4,10 @@ import VisionaryHero from '@/components/home/VisionaryHero'
 import visionaryHeroImg from '@/assets/VisionaryHero.jpg'
 import { Box } from '@mui/material'
 import React from 'react'
-import StickyScrollSections from '@/components/home/StcikyScrollSection'
+import StickyScrollSections from '@/components/home/StickyScrollSection'
 import LegalAdviceSection from '@/components/home/LegalAdviceSection'
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   return (
     <Box 
     sx={{

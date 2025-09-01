@@ -2,7 +2,7 @@ import ExpertisePage from '@/pages/ExpertisePage'
 import { Box } from '@mui/material'
 import React from 'react'
 
-const Expertise: React.FC = () => {
+const Expertise = () => {
   return (
     <Box>
         <ExpertisePage/>

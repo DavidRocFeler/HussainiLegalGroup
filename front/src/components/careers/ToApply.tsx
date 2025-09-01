@@ -2,25 +2,33 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { toApplyMock } from '@/mock/toApply.mock';
 
-const ToApply: React.FC = () => {
+const ToApply = () => {
   const data = toApplyMock; 
 
   return (
     <Box
       sx={{
-        backgroundColor: 'tertiary.main', 
+        backgroundColor: 'tertiary.main',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: { xs: '20px', md: '30px' },
         width: '100%',
-        borderBottom: '1px solid #EEE9DD'
+        borderBottom: '1px solid #EEE9DD',
+        '@media (max-width:1150px)': {
+          flexDirection: 'column'
+        },
       }}
     >
       <Typography
         variant='h1'
         sx={{
-          color: 'var(--hussainilegalgroup-a-84725-de-1-a-98112-fc-813-webflow-io-white, var(--color-white-solid, #FFF))',
+          color: 'white',
           textAlign: 'center',
           fontStyle: 'italic',
           fontWeight: 400,
+          mr: '0.35rem',
           letterSpacing: {
             xs: '0.0225rem',
             md: '0.0275rem'
@@ -36,10 +44,11 @@ const ToApply: React.FC = () => {
         }}
       >
         {data.description}{' '}
-        <Typography
+      </Typography>
+      <Typography
           variant='h1'
           sx={{
-            color: 'var(--hussainilegalgroup-a-84725-de-1-a-98112-fc-813-webflow-io-white, var(--color-white-solid, #FFF))',
+            color: 'white',
             fontStyle: 'italic',
             fontWeight: 400,
             textDecoration: 'underline',
@@ -59,7 +68,6 @@ const ToApply: React.FC = () => {
         >
           {data.email}
         </Typography>
-      </Typography>
     </Box>
   );
 };

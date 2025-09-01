@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   AppBar,
@@ -19,15 +18,12 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { navigationMock } from '@/mock/navigation.mock';
+import Link from 'next/link';
 
-const Header: React.FC = () => {
+const Header  = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navItems = navigationMock;
 
-  const router = useRouter()
-  const handleRedirectHome = () => {
-    router.push('/')
-  }
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -75,21 +71,22 @@ const Header: React.FC = () => {
           <Box
             sx={{ 
               display: 'flex',
-              cursor: 'pointer',
               flexDirection: 'column',
               alignItems: 'center',
               fontWeight: 'normal', 
               width: 'fit-content',
             }}
           >
-            <Image 
-              onClick={handleRedirectHome}
-              src='https://gist.githubusercontent.com/DavidRocFeler/094740b9109ecc621859ad9430a2ddc7/raw/56b2abb333cd264e1447f6e390c8eff9c4b2a956/LegalGroupLogo.svg'
-              alt="Company Logo" 
-              width={55}
-              height={50}
-              priority
-            />
+            <Link
+            href='/'
+            >
+              <Image 
+                src='https://gist.githubusercontent.com/DavidRocFeler/094740b9109ecc621859ad9430a2ddc7/raw/56b2abb333cd264e1447f6e390c8eff9c4b2a956/LegalGroupLogo.svg'
+                alt="Company Logo" 
+                width={55}
+                height={50}
+              />
+            </Link>
             <Typography
               variant='h1'
               sx={{

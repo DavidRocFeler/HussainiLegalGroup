@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { ExpertiseSection } from '@/types/expertise';
 import { expertiseAndSectorsMock } from '@/mock/expertise.mock';
 
-const ExpertiseAndSectors: React.FC = () => {
+const ExpertiseAndSectors = () => {
   const renderSection = (section: ExpertiseSection) => (
     <Box>
       <Typography
@@ -30,13 +30,12 @@ const ExpertiseAndSectors: React.FC = () => {
             component={NextLink}
             href={item.href}
             sx={{
-              color: 'var(--hussainilegalgroup-a-84725-de-1-a-98112-fc-813-webflow-io-outer-space, var(--color-cyan-18, #23363A))',
-              fontFamily: 'var(--font-family-Font-1, Inter)',
-              fontSize: 'var(--font-size-16, 1rem)',
+              color: '#23363A',
+              fontFamily: 'Inter)',
+              fontSize: '1rem',
               fontStyle: 'normal',
-              fontWeight: 'var(--font-weight-400, 400)',
-              lineHeight: 'var(--line-height-24, 1.5rem)',
-              letterSpacing: 'var(--letter-spacing--0_16, -0.01rem)',
+              fontWeight: 400,
+              lineHeight: '1.5rem',
               textDecoration: 'none',
               cursor: 'pointer',
               borderBottom: '1px solid #E0E0E0',

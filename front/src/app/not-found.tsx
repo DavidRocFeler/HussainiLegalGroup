@@ -4,7 +4,7 @@ import { Box, Typography, Container } from '@mui/material';
 import Link from 'next/link';
 import ButtonCustom from '@/components/ui/ButtomCustom';
 
-const NotFound: React.FC = () => {
+const NotFound = () => {
   return (
     <Container 
         maxWidth={false}

@@ -1,18 +1,13 @@
 // components/LegalAdviceSection.tsx
-'use client';
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { legalAdviceContent } from '@/mock/legalAdvice.mock';
 import ButtonCustom from '../ui/ButtomCustom';
 import { EarthSvg } from '../ui/EarthSvg';
 import { legalAdviceButtons } from '@/mock/legalAdviceButtons';
+import Link from 'next/link';
 
-const LegalAdviceSection: React.FC = () => {
-  const handleButtonClick = (href?: string) => {
-    if (href) {
-      window.location.href = href;
-    }
-  };
+const LegalAdviceSection = () => {
 
   return (
     <Box
@@ -100,15 +95,16 @@ const LegalAdviceSection: React.FC = () => {
           }}
         >
           {legalAdviceButtons.map((button, index) => (
-            <ButtonCustom
-              key={index}
-              text={button.text}
-              variant={button.variant || "contained"}
-              sx={button.sx}
-              disabledHover={button.disabledHover}
-              customHoverColor={button.customHoverColor}
-              onClick={() => handleButtonClick(button.href)}
-            />
+            <Link key={index} href={button.href || '#'} style={{ textDecoration: 'none' }}>
+              <ButtonCustom
+                key={index}
+                text={button.text}
+                variant={button.variant || "contained"}
+                sx={button.sx}
+                disabledHover={button.disabledHover}
+                customHoverColor={button.customHoverColor}
+              />
+            </Link>
           ))}
         </Box>
        </Box>

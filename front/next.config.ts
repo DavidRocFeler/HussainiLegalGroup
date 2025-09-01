@@ -8,15 +8,10 @@ const nextConfig: NextConfig = {
         as: '*.js',
       },
     },
-  },
-  webpack(config, { isServer }) {
-    if (!isServer) {
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ['@svgr/webpack']
-      });
-    }
-    return config;
+    resolveAlias: {
+      '@/assets': './src/assets',
+      '@/icons': './src/assets/icons',
+    },
   },
 };
 

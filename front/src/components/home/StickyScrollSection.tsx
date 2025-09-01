@@ -1,11 +1,9 @@
-'use client';
-
 import { Box } from '@mui/material';
 import React from 'react';
-import StikyScrollDesktop from '../ui/StikyScrollDesktop';
-import StikyScrollMobile from '../ui/StikyScrollMobile';
+import StickyScrollDesktop from '../ui/StickyScrollDesktop';
+import StickyScrollMobile from '../ui/StickyScrollMobile';
 
-const StickyScrollSections: React.FC = () => {
+const StickyScrollSections  = () => {
   return (
     <Box
       sx={{
@@ -25,7 +23,7 @@ const StickyScrollSections: React.FC = () => {
         }
       }}
       >
-        <StikyScrollDesktop/>
+        <StickyScrollDesktop/>
       </Box>
       <Box
       sx={{
@@ -35,7 +33,7 @@ const StickyScrollSections: React.FC = () => {
         }
       }}
       >
-        <StikyScrollMobile/>
+        <StickyScrollMobile/>
       </Box>
     </Box>
   );

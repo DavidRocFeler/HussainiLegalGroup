@@ -1,5 +1,4 @@
 // components/VisionaryHero.tsx
-'use client';
 
 import React from 'react';
 import { Box, Typography } from '@mui/material';
@@ -8,7 +7,7 @@ import { strategyContent } from '@/mock/strategyContent.mock';
 import { VisionaryHeroProps } from '@/types/home';
 import ReusableContainers from '../ui/ReusableContainers';
 
-const VisionaryHero: React.FC<VisionaryHeroProps> = ({ imageUrl, imageAlt }) => {
+const VisionaryHero = ({ imageUrl, imageAlt }: VisionaryHeroProps) => {
   return (
     <Box
       sx={{

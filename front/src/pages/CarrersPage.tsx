@@ -3,7 +3,7 @@ import React from 'react'
 import ToApply from '@/components/careers/ToApply'
 import BodyCareers from '@/components/careers/BodyCareers'
 
-const CarrersPage: React.FC = () => {
+const CarrersPage = () => {
   return (
     <Box>
       <BodyCareers/>

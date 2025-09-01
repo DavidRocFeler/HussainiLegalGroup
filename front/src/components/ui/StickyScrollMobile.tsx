@@ -1,11 +1,9 @@
-'use client';
-
 import React from 'react';
 import { Box, Typography, Link, Grid } from '@mui/material';
 import Image from 'next/image';
 import { sectionsDataStikyResponsive } from '@/mock/sectionScrollStikyResponsive'
 
-const StikyScrollMobile: React.FC = () => {
+const StickyScrollMobile = () => {
   return (
       <Grid
         container 
@@ -119,4 +117,4 @@ const StikyScrollMobile: React.FC = () => {
   );
 };
 
-export default StikyScrollMobile;
+export default StickyScrollMobile;

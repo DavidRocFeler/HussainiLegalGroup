@@ -1,62 +1,77 @@
 // src/components/ui/EarthSvg.tsx
 import React from 'react';
 import { Box } from '@mui/material';
-import {
-EarthSvg as EarthDesktopIcon,
-EarthTabletSvg as EarthTabletIcon,
-EarthMobileSvg as EarthMobileIcon,
-EarthMobileCustomSvg as EarthMobileCustomIcon
-} from '../../assets/icons';
+import Image from 'next/image';
+import EarthMobile from '../../assets/EarthMobile.png';
+import EarthMobileCustom from '../../assets/EarthMobileCustom.png';
+import EarthTablet from '../../assets/EarthTablet.png';
+import Earth from '../../assets/Earth.png';
 
-export const EarthSvg: React.FC = () => {
+export const EarthSvg = () => {
   return (
     <>
-    {/* Mobile - 0 a 450px */}
       <Box
         sx={{
-        display: 'block',
-        '@media (min-width: 450px)': {
-        display: 'none'
-        }
+          display: 'block',
+          '@media (min-width: 450px)': {
+            display: 'none'
+          }
         }}
       >
-        <EarthMobileIcon />
+        <Image 
+          src={EarthMobile}
+          alt="Earth Mobile View"
+          width={300}
+          height={249}
+        />
       </Box>
 
-      {/* Mobile Custom - 450px a 650px */}
       <Box
         sx={{
-        display: 'none',
-        '@media (min-width: 450px) and (max-width: 650px)': {
-        display: 'block'
-        }
+          display: 'none',
+          '@media (min-width: 450px) and (max-width: 650px)': {
+            display: 'block'
+          }
         }}
       >
-        <EarthMobileCustomIcon />
+        <Image 
+          src={EarthMobileCustom}
+          alt="Earth Mobile Custom View"
+          width={638}
+          height={443}
+        />
       </Box>
 
-      {/* Tablet - 650px a 900px */}
       <Box
         sx={{
-        display: 'none',
-        '@media (min-width: 650px) and (max-width: 900px)': {
-        display: 'block'
-        }
+          display: 'none',
+          '@media (min-width: 650px) and (max-width: 900px)': {
+            display: 'block'
+          }
         }}
       >
-        <EarthTabletIcon />
+        <Image 
+          src={EarthTablet}
+          alt="Earth Tablet View"
+          width={725}
+          height={249}
+        />
       </Box>
 
-      {/* Desktop - 900px+ */}
       <Box
         sx={{
-        display: 'none',
-        '@media (min-width: 900px)': {
-        display: 'block'
-        }
+          display: 'none',
+          '@media (min-width: 900px)': {
+            display: 'block'
+          }
         }}
       >
-        <EarthDesktopIcon />
+        <Image 
+          src={Earth}
+          alt="Earth Desktop View"
+          width={1140}
+          height={562}
+        />
       </Box>
     </>
   );

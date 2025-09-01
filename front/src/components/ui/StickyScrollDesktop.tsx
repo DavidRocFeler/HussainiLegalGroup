@@ -5,7 +5,7 @@ import { sectionsData } from '@/mock/stickyScrollSection.mock';
 import { arrayImageScrollStiky } from '@/mock/arrayImageScrollStiky';
 import { SectionScrollStiky, SectionScrollStikyImage } from '@/types/home';
 
-const StikyScrollDesktop: React.FC = () => {
+const StickyScrollDesktop = () => {
   const gridItems: Array<{
     type: 'image' | 'content';
     data: SectionScrollStikyImage | SectionScrollStiky;
@@ -128,4 +128,4 @@ const StikyScrollDesktop: React.FC = () => {
   )
 }
 
-export default StikyScrollDesktop
+export default StickyScrollDesktop

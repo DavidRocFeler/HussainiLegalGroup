@@ -11,7 +11,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { footerMock } from '@/mock/footer.mock';
 import React from 'react';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <Box
       component="footer"
@@ -49,7 +49,6 @@ const Footer: React.FC = () => {
               alt="Logo"
               width={55}
               height={50}
-              priority
             />
               <Typography
                  variant='h1'
@@ -98,7 +97,6 @@ const Footer: React.FC = () => {
                   alt="Logo"
                   width={55}
                   height={50}
-                  priority
                 />
                 <Typography
                   variant='h1'
@@ -250,15 +248,15 @@ const Footer: React.FC = () => {
               >
                 <IconButton
                   sx={{
-                    color: 'rgba(255,255,255,0.7)',
-                    border: '1px solid rgba(255,255,255,0.3)',
+                    color: 'primary.main',
+                    border: '1px solid #EEE9DD',
                     borderRadius: '50%',
                     width: '48px',
                     height: '48px',
                     zIndex: 0,
                     '&:hover': {
                       color: 'white',
-                      borderColor: 'rgba(255,255,255,0.6)'
+                      borderColor: 'white'
                     }
                   }}
                 >
@@ -266,15 +264,15 @@ const Footer: React.FC = () => {
                 </IconButton>
                 <IconButton
                   sx={{
-                    color: 'rgba(255,255,255,0.7)',
-                    border: '1px solid rgba(255,255,255,0.3)',
+                    color: 'primary.main',
+                    border: '1px solid #EEE9DD',
                     borderRadius: '50%',
                     width: '48px',
                     height: '48px',
                     zIndex: 0,
                     '&:hover': {
                       color: 'white',
-                      borderColor: 'rgba(255,255,255,0.6)'
+                      borderColor: 'white'
                     }
                   }}
                 >

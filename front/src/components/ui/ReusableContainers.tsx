@@ -1,20 +1,19 @@
 // components/ReusableContainers.tsx
-'use client';
-
+'use client'
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import ButtonCustom from './ButtomCustom';
 import { ReusableContainersProps } from '@/types/reusable';
 
-const ReusableContainers: React.FC<ReusableContainersProps> = ({ 
+const ReusableContainers = ({ 
   imageUrl, 
   imageAlt,
   content,
   buttons,
   backgroundColor = 'transparent',
   href 
-}) => {
+}: ReusableContainersProps ) => {
 
   const handleButtonClick = (buttonHref?: string) => {
     if (buttonHref) {
@@ -106,7 +105,6 @@ const ReusableContainers: React.FC<ReusableContainersProps> = ({
               objectFit: 'cover',
               borderRadius: '0.62rem',
             }}
-            priority
           />
         </Box>
 

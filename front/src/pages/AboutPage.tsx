@@ -5,7 +5,7 @@ import rectanguleAbout from '@/assets/RectangleAbout.jpg'
 import { aboutContentContainer } from '@/mock/about.mock'
 import ReusableContainers from '@/components/ui/ReusableContainers'
 
-const AboutPage: React.FC = () => {
+const AboutPage  = () => {
   return (
     <Box
       sx={{
