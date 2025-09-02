@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { legalAdviceContent } from '@/mock/legalAdvice.mock';
 import ButtonCustom from '../ui/ButtomCustom';
-import { EarthSvg } from '../ui/EarthSvg';
+import { EarthSvg } from '../ui/EarthPicture';
 import { legalAdviceButtons } from '@/mock/legalAdviceButtons';
 import Link from 'next/link';
 

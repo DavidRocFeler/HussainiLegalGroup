@@ -13,7 +13,7 @@ const ExpertisePage = () => {
         position: 'relative',
         maxHeight: 'fit-content',
         padding: {
-          xs: '10rem 1rem 3rem 1.5rem',
+          xs: '10rem 1.5rem 3rem 1.5rem',
           md: '11rem 4.5rem 8em 4.8rem',
         },
       }}

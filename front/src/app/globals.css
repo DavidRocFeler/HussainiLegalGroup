@@ -24,8 +24,10 @@ html, body {
 }
 
 :root {
-  --font-inter: 'Inter', sans-serif;
-  --font-merriweather: 'Merriweather', serif;
+  --font-inter: 'Inter';
+  --font-merriweather: 'Merriweather';
+  --font-exo: 'Exo';
+  --font-roboto: 'Roboto';
 }
 
 * {

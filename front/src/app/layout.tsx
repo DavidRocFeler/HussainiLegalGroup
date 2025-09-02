@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Merriweather, Exo } from "next/font/google";
+import { Inter, Merriweather, Exo, Roboto } from "next/font/google";
 import "./globals.css";
 import { Box } from '@mui/material'; 
 import Header from '@/components/Header';
@@ -23,6 +23,12 @@ const exo = Exo({
   weight: ['400', '500', '600', '700'],
 });
 
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '700'],
+});
+
 export const metadata: Metadata = {
   title: "Hussaini Legal Group | International Law Firm | Miami, Amsterdam & Damascus",
   description: "Leading international law firm providing expert legal services across Miami, Amsterdam, and Damascus. Specializing in corporate law, arbitration, investment contracting, Islamic finance, and cross-border transactions. Trusted legal counsel for global businesses and institutions.",
@@ -35,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${merriweather.variable} ${exo.variable}`}>
+      <body className={`${inter.variable} ${merriweather.variable} ${exo.variable} ${roboto.variable}`}>
         <ClientLayout>
           <Header />
           <Box

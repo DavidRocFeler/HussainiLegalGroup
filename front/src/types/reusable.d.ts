@@ -11,3 +11,12 @@ export interface ReusableContainersProps {
   backgroundColor?: string;
   href?: string;
 }
+
+export interface TitleReusableProps {
+  id: number;
+  title: string;
+  description: string;
+  textStyles?: {
+    color?: string;
+  };
+}

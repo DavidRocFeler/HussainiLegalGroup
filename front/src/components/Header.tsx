@@ -36,7 +36,7 @@ const Header  = () => {
       sx={{ 
         color: 'white',
         position: 'fixed',
-        backgroundColor: 'header.main', 
+        backgroundColor: 'grey.900', 
         borderBottom: 'white 1px solid',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         padding: {
@@ -85,6 +85,7 @@ const Header  = () => {
                 alt="Company Logo" 
                 width={55}
                 height={50}
+                priority
               />
             </Link>
             <Typography

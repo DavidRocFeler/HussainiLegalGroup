@@ -2,7 +2,7 @@
 import { ThemeOptions } from '@mui/material/styles';
 
 export const typography: ThemeOptions['typography'] = {
-  fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+  fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif, Roboto',
   
   h1: {
     fontFamily: '"Merriweather", serif',
@@ -31,9 +31,6 @@ export const typography: ThemeOptions['typography'] = {
     '@media (max-width:899px)': {
       lineHeight: '1.5rem',  
     },
-    '@media (max-width:450px)': {
-    
-    },
   },
   h4: {
     fontFamily: '"Merriweather", serif',
@@ -42,7 +39,6 @@ export const typography: ThemeOptions['typography'] = {
   },
   h5: {
     fontFamily: '"Inter", sans-serif',
-    letterSpacing: '-0.01rem',
   },
   h6: {
     fontFamily: '"Merriweather", serif',
@@ -54,7 +50,6 @@ export const typography: ThemeOptions['typography'] = {
   
   body1: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '1rem',
     lineHeight: 1.5,
   },
   body2: {
@@ -63,7 +58,6 @@ export const typography: ThemeOptions['typography'] = {
     fontWeight: 400,
     lineHeight: 1.43,
   },
-  
   button: {
     fontFamily: '"Merriweather", serif',
     fontSize: '1.35138rem',

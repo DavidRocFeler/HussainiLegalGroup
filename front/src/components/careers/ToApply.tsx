@@ -6,21 +6,21 @@ const ToApply = () => {
   const data = toApplyMock; 
 
   return (
-    <Box
-      sx={{
-        backgroundColor: 'tertiary.main',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: { xs: '20px', md: '30px' },
-        width: '100%',
-        borderBottom: '1px solid #EEE9DD',
-        '@media (max-width:1150px)': {
-          flexDirection: 'column'
-        },
-      }}
-    >
+      <Box
+        sx={{
+          backgroundColor: 'grey.50',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: { xs: '20px', md: '30px' },
+          width: '100%',
+          borderBottom: '1px solid #EEE9DD',
+          flexDirection: {
+            xs: 'column',
+            lg: 'row'
+          }
+        }}
+      >
       <Typography
         variant='h1'
         sx={{

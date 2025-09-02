@@ -15,7 +15,7 @@ const VisionaryHero = ({ imageUrl, imageAlt }: VisionaryHeroProps) => {
         position: 'relative',
         maxHeight: 'fit-content',
         padding: {
-          xs: '4rem 1rem 3rem 1.5rem',
+          xs: '4rem 1.5rem 3rem 1.5rem',
           md: '5rem 4.5rem 8em 4.8rem',
         },
       }}

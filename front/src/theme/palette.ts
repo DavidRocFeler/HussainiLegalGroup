@@ -7,13 +7,14 @@ export const palette = {
   secondary: {
     main: '#D6D0B3',
   },
-  tertiary: {
-    main: '#23363A',
+  grey: {
+    50: '#23363A',
+    900: '#891C1B',
   },
-  header: {
-    main: '#891C1B',
+  background: {
+    paper: '#FAF5EF'
   },
-  body: {
-    main: '#FAF5EF'
+  text: {
+    primary: '#131313',
   }
 };
