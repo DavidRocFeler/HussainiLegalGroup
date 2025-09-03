@@ -1,15 +1,16 @@
-// components/CoverBackground.tsx
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Skeleton from '@mui/material/Skeleton';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CoverBackgroundProps } from '@/types/home';
 import { coverBackgroundData } from '@/mock/coverBackgroundData.mock';
 
 const CoverBackground = () => {
-  // En el futuro, esto podría venir de props o de una API
+  const [imageLoaded, setImageLoaded] = useState(false);
   const data: CoverBackgroundProps = coverBackgroundData;
 
   return (
@@ -21,11 +22,29 @@ const CoverBackground = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
+        backgroundColor: '#1a1a1a', 
         '@media (max-width:450px)': {
           minHeight: '0vh',
         },
       }}
     >
+      <Skeleton
+        variant="rectangular"
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%',
+          bgcolor: 'grey.900',
+          zIndex: 1,
+          display: imageLoaded ? 'none' : 'block',
+        }}
+        animation="wave"
+      />
+
       <Box
         sx={{
           position: 'absolute',
@@ -47,6 +66,8 @@ const CoverBackground = () => {
             objectFit: 'cover',
             objectPosition: 'center',
           }}
+          priority
+          onLoadingComplete={() => setImageLoaded(true)}
         />
       </Box>
 
@@ -98,7 +119,6 @@ const CoverBackground = () => {
           {data.title}
         </Typography>
 
-        {/* Descripción */}
         <Typography
           variant="h2"
           sx={{
