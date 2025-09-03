@@ -7,7 +7,7 @@ import EarthMobileCustom from '../../assets/EarthMobileCustom.png';
 import EarthTablet from '../../assets/EarthTablet.png';
 import Earth from '../../assets/Earth.png';
 
-export const EarthSvg = () => {
+const EarthMapPicture = () => {
   return (
     <>
       <Box
@@ -76,3 +76,5 @@ export const EarthSvg = () => {
     </>
   );
 };
+
+export default EarthMapPicture;

@@ -1,5 +1,8 @@
 import React from 'react'
-import { Box, Typography, Link, Grid } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import { sectionsData } from '@/mock/stickyScrollSection.mock';
 import { arrayImageScrollStiky } from '@/mock/arrayImageScrollStiky';

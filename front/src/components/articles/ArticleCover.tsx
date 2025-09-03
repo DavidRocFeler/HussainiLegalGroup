@@ -1,5 +1,7 @@
 import Image from 'next/image';
-import { Box, Typography, Card } from '@mui/material';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import { coverArticlesData } from '@/mock/coverArticle.mock';
 
 const ArticleCover = () => {

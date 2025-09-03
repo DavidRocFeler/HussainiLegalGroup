@@ -1,6 +1,7 @@
 // components/casestudy/CaseStudyTitle.tsx
 import { TitleReusableProps } from '@/types/reusable';
-import { Box, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const TitleReusable = ({ data }: { data: TitleReusableProps | TitleReusableProps[] }) => {
   const item = Array.isArray(data) ? data[0] : data; 
@@ -10,8 +11,11 @@ const TitleReusable = ({ data }: { data: TitleReusableProps | TitleReusableProps
       <Typography variant="h1"
       sx={{
         color: item.textStyles?.color || 'text.primary',
-        fontWeight: 700,
-        fontSize: '3.5rem'
+        fontWeight: 380,
+        fontSize:  {
+          xs: '4rem',
+          md: '5rem'
+        }
       }}
       >
         {item.title}

@@ -1,5 +1,5 @@
 import { timelineData } from '@/mock/timeLine.mock'
-import { Box, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
 import TimelineItem from './TimeLineItem'
 
 const Timeline = () => {

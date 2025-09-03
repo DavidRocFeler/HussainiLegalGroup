@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Typography, Link, Grid } from '@mui/material';
-import Image from 'next/image';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';import Image from 'next/image';
 import { sectionsDataStikyResponsive } from '@/mock/sectionScrollStikyResponsive'
 
 const StickyScrollMobile = () => {

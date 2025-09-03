@@ -32,15 +32,25 @@ const InsightsCardItem = ({ insight }: { insight: InsightMainItem }) => {
           },
           border: 'none',
           borderRadius: 0,
+          ":hover": {
+            color: 'grey.900'
+          }
         }}
       />
       <Typography
-        variant="h5"
+        variant="h1"
         sx={{
-          fontWeight: 600,
+          fontWeight: 500,
+          fontSize: {
+            xs: '2rem',
+            md: '2rem',
+          },
           marginBottom: 9,
-          lineHeight: 1.2,
+          lineHeight: '2rem',
           color: '#333',
+          ":hover": {
+            color: 'grey.900'
+          }
         }}
       >
         {insight.title}

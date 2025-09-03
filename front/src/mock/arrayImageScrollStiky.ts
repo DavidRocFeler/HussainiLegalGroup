@@ -1,6 +1,6 @@
 import { SectionScrollStikyImage } from '@/types/home';
 import pictureCoverFir from '@/assets/pictureCoverHomefir.jpg'
-import pictureCoverSec from '@/assets/picturaCoverHomeSec.jpg'
+import pictureCoverSec from '@/assets/pictureCoverHomeSec.jpg'
 import pictureCoverThi from '@/assets/pictureCoverHomeThi.jpg'
 
 export const arrayImageScrollStiky: SectionScrollStikyImage[] = [

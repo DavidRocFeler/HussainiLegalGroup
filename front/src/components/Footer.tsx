@@ -1,11 +1,9 @@
 import Image from 'next/image';
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  IconButton,
-} from '@mui/material';
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { footerMock } from '@/mock/footer.mock';

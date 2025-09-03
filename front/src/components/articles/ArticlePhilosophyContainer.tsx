@@ -1,4 +1,5 @@
-import { Box, Grid } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import ArticleTextItem from '@/components/articles/ArticleTextItem';
 import { articlePhilosophyData } from '@/mock/articlePhilosophy.mock';
 

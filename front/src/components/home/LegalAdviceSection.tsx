@@ -1,11 +1,12 @@
 // components/LegalAdviceSection.tsx
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import EarthMapPicture from '@/components/ui/EarthPicture';
 import { legalAdviceContent } from '@/mock/legalAdvice.mock';
-import ButtonCustom from '../ui/ButtomCustom';
-import { EarthSvg } from '../ui/EarthPicture';
 import { legalAdviceButtons } from '@/mock/legalAdviceButtons';
 import Link from 'next/link';
+import ButtonCustom from '@/components/ui/ButtomCustom';
 
 const LegalAdviceSection = () => {
 
@@ -113,7 +114,7 @@ const LegalAdviceSection = () => {
 
         {/* Decorative SVG */}
         <Box sx={{ mt: 4 }}>
-          <EarthSvg />
+          <EarthMapPicture />
         </Box>
     </Box>
   );

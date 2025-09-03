@@ -1,14 +1,15 @@
-
-import CarrersPage from '@/pages/CarrersPage'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import React from 'react'
+import ToApply from '@/components/careers/ToApply'
+import BodyCareers from '@/components/careers/BodyCareers'
 
-const Carrers  = () => {
+const Careers = () => {
   return (
     <Box>
-        <CarrersPage/>
+      <BodyCareers/>
+      <ToApply/>
     </Box>
   )
 }
 
-export default Carrers
+export default Careers;

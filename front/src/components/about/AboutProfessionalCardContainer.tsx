@@ -1,4 +1,6 @@
-import { Box, Grid, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
 import CardProfessionalProfile from './CardProfessionalProfile'
 import { professionalProfilesData } from '@/mock/professionalProfile.mock'
 

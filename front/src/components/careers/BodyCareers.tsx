@@ -1,5 +1,5 @@
 import ReusableContainers from '@/components/ui/ReusableContainers'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import React from 'react'
 import rectanguleCareers from '@/assets/RectanguleCareers.jpg'
 import { careersContentContainer } from '@/mock/careersContentContainer.mock'

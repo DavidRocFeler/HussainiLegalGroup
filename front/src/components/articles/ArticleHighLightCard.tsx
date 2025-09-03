@@ -1,4 +1,5 @@
-import { Box, Typography, Button } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import Link from 'next/link';
 import { ArticleHighlightCardProps } from '@/types/article';
 

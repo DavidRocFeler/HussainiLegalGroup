@@ -1,5 +1,6 @@
 import { TimelineItemProps } from '@/types/about'
-import { Box, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
   const isEven = index % 2 === 0

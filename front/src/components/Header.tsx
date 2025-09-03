@@ -1,20 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import Collapse from '@mui/material/Collapse'
 import Image from 'next/image';
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Container,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  Collapse,
-} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { navigationMock } from '@/mock/navigation.mock';
