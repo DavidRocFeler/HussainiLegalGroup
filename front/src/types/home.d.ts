@@ -13,14 +13,14 @@ export interface HeroTextContent {
   }
 
   export interface SectionScrollStiky {
-  id: string;
+  id: number;
   title: string;
   description: string;
   href: string; 
 }
 
 export interface SectionScrollStikyResponsive {
-  id: string;
+  id: number;
   title: string;
   description: string;
   href: string; 
@@ -35,4 +35,15 @@ export interface SectionScrollStikyImage {
 export interface LegalAdviceContent {
   title: string;
   description: string;
+}
+
+export interface CoverBackgroundProps {
+  id: number;
+  title: string;
+  description: string;
+  backgroundImage: string | StaticImageData;
+  ctaButton: {
+    text: string;
+    link: string;
+  };
 }

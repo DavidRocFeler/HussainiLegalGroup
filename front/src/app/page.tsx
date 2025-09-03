@@ -1,4 +1,3 @@
-import HeroSection from '@/components/home/HeroSection'
 import VisionaryHero from '@/components/home/VisionaryHero'
 import visionaryHeroImg from '@/assets/VisionaryHero.jpg'
 import Box from '@mui/material/Box'
@@ -14,7 +13,6 @@ const Home = () => {
       width: '100%',
       }}>
         <CoverBackground/>
-        {/* <HeroSection/> */}
         <VisionaryHero
           imageUrl={visionaryHeroImg}
           imageAlt="Modern building architecture"

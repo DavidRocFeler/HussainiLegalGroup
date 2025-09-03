@@ -1,12 +1,7 @@
 import Input from '@mui/material/Input';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
-interface FormInputProps {
-  label: string;
-  placeholder: string;
-  type?: string;
-}
+import { FormInputProps } from '@/types/contact';
 
 const FormInput = ({ label, placeholder, type }: FormInputProps) => {
   return (

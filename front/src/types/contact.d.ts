@@ -1,5 +1,5 @@
 export interface ContactFormField {
-    id: string;
+    id: number;
     label: string;
     placeholder: string;
     type?: string;
@@ -19,6 +19,12 @@ export interface ContactFormField {
     };
     disclaimer: string;
   }
+
+  export interface FormInputProps {
+    label: string;
+    placeholder: string;
+    type?: string;
+  }
   
   // Data for backend
   export interface ContactFormSubmitData {
@@ -28,3 +34,5 @@ export interface ContactFormField {
     company: string;
     message: string;
   }
+
+  

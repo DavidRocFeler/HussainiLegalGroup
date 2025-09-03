@@ -1,12 +1,16 @@
+// components/CoverBackground.tsx
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import Image from 'next/image';
-import BackgroundCover from '@/assets/BackgroundCover.jpg';
+import { CoverBackgroundProps } from '@/types/home';
+import { coverBackgroundData } from '@/mock/coverBackgroundData.mock';
 
 const CoverBackground = () => {
+  // En el futuro, esto podría venir de props o de una API
+  const data: CoverBackgroundProps = coverBackgroundData;
 
   return (
     <Box
@@ -22,7 +26,6 @@ const CoverBackground = () => {
         },
       }}
     >
-      {/* Box de la imagen */}
       <Box
         sx={{
           position: 'absolute',
@@ -37,18 +40,16 @@ const CoverBackground = () => {
         }}
       >
         <Image
-          src={BackgroundCover}
-          alt="Background Cover"
+          src={data.backgroundImage}
+          alt={data.title}
           fill
           style={{
             objectFit: 'cover',
             objectPosition: 'center',
           }}
-          priority
         />
       </Box>
 
-      {/* Box del contenido superpuesto */}
       <Box
         sx={{
           position: 'relative',
@@ -94,7 +95,7 @@ const CoverBackground = () => {
             },
           }}
         >
-          Where Legal Insight Meets Business Vision
+          {data.title}
         </Typography>
 
         {/* Descripción */}
@@ -106,12 +107,11 @@ const CoverBackground = () => {
             mb: 4,
           }}
         >
-          Hussaini Legal Group is a premier international law firm with deep roots
-          in the Middle East and a forward-looking presence in Europe and the United States.
+          {data.description}
         </Typography>
 
         <Link
-          href='/contact'
+          href={data.ctaButton.link}
         >
           <Button
             variant="contained"
@@ -128,7 +128,7 @@ const CoverBackground = () => {
               transition: 'all 0.3s ease-in-out'
             }}
           >
-            Contact Us
+            {data.ctaButton.text}
           </Button>
         </Link>
       </Box>
