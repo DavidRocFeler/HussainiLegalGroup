@@ -1,5 +1,5 @@
 export interface ContactFormField {
-    id: number;
+    id: string;
     label: string;
     placeholder: string;
     type?: string;
@@ -10,6 +10,8 @@ export interface ContactFormField {
       xs: number;
       sm: number;
     };
+    required?: boolean;
+    ifAny?: string;
   }
   
   export interface ContactFormData {
@@ -24,8 +26,13 @@ export interface ContactFormField {
     label: string;
     placeholder: string;
     type?: string;
+       required?: boolean;
   }
   
+ export interface ExtendedFormInputProps extends FormInputProps {
+    inputRef?: (el: HTMLInputElement) => void;
+  }
+
   // Data for backend
   export interface ContactFormSubmitData {
     firstName: string;

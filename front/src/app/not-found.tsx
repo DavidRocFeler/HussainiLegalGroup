@@ -1,23 +1,21 @@
 // app/not-found.tsx
-import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Container, Button } from '@mui/material';
 import Link from 'next/link';
-import ButtonCustom from '@/components/ui/ButtomCustom';
 
 const NotFound = () => {
   return (
-    <Container 
-        maxWidth={false}
-        sx={{ 
-            display: 'flex',
-            bgcolor: 'primary.main',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: {
-                xs: '10rem 8rem 4rem 8rem',
-                md: '15rem 5rem 7rem 5rem'
-            }
-        }}
+    <Container
+      maxWidth={false}
+      sx={{
+        display: 'flex',
+        bgcolor: 'primary.main',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: {
+          xs: '10rem 8rem 4rem 8rem',
+          md: '15rem 5rem 7rem 5rem'
+        }
+      }}
     >
       <Box
         sx={{
@@ -26,6 +24,7 @@ const NotFound = () => {
       >
         {/* 404 */}
         <Typography
+          color='brand.red'
           variant="h1"
           sx={{
             fontSize: {
@@ -33,7 +32,6 @@ const NotFound = () => {
               md: '6rem'
             },
             fontWeight: 700,
-            color: '#891C1B',
             mb: 2,
             lineHeight: 1,
           }}
@@ -43,14 +41,14 @@ const NotFound = () => {
 
         {/* Title */}
         <Typography
-          variant="h2"
+          variant="h5"
           sx={{
             fontSize: {
               xs: '1.5rem',
               md: '2rem'
             },
             fontWeight: 600,
-            color: '#131313',
+            color: 'text.primary',
             mb: 2,
           }}
         >
@@ -59,7 +57,7 @@ const NotFound = () => {
 
         {/* Description */}
         <Typography
-          variant="body1"
+          variant="h5"
           sx={{
             fontSize: '1.125rem',
             color: 'text.secondary',
@@ -69,13 +67,13 @@ const NotFound = () => {
             lineHeight: 1.6,
           }}
         >
-          The page you are looking for might have been removed, had its name changed, 
+          The page you are looking for might have been removed, had its name changed,
           or is temporarily unavailable.
         </Typography>
 
         {/* Buttons */}
-        <Box 
-          sx={{ 
+        <Box
+          sx={{
             display: 'flex',
             gap: 2,
             justifyContent: 'center',
@@ -83,39 +81,22 @@ const NotFound = () => {
           }}
         >
           <Link href="/" passHref>
-            <ButtonCustom
-              text="Go Home"
-              sx={{
-                backgroundColor: '#891C1B',
-                color: 'white',
-                '&:hover': {
-                  backgroundColor: '#7A1918',
-                }
-              }}
-            />
+            <Button variant="redCahova">
+              Go Home
+            </Button>
           </Link>
-          
+
           <Link href="/contact" passHref>
-            <ButtonCustom
-              text="Contact Us"
-              variant="outlined"
-              sx={{
-                borderColor: '#891C1B',
-                color: '#891C1B',
-                backgroundColor: 'transparent',
-                '&:hover': {
-                  backgroundColor: '#891C1B',
-                  color: 'white',
-                }
-              }}
-            />
+            <Button variant="goldenOchre">
+              Contact Us
+            </Button>
           </Link>
         </Box>
 
         {/* Additional Info */}
         <Box sx={{ mt: 6, pt: 4, borderTop: '1px solid #E5E5E5' }}>
           <Typography
-            variant="body2"
+            variant="h5"
             sx={{
               color: 'text.secondary',
               mb: 1,
@@ -124,9 +105,9 @@ const NotFound = () => {
             Need immediate assistance?
           </Typography>
           <Typography
-            variant="body2"
+            variant="h5"
             sx={{
-              color: '#891C1B',
+              color: 'brand.red',
               fontWeight: 500,
             }}
           >

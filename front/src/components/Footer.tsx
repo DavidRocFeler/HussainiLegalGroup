@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -6,8 +5,9 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import Link from 'next/link';
 import { footerMock } from '@/mock/footer.mock';
-import React from 'react';
+import Logo from './ui/Logo';
 
 const Footer = () => {
   return (
@@ -15,8 +15,11 @@ const Footer = () => {
       component="footer"
       sx={{
         backgroundColor: 'grey.50',
-        color: 'white',
-        padding: '3rem 0rem 1rem 0rem',
+        pb: {
+          xs: 3,
+          md: 2
+        },
+        pt: { xs: 3, md: 4 }, 
       }}
     >
       <Container
@@ -28,278 +31,343 @@ const Footer = () => {
       >
           <Box
             sx={{
-              display: 'flex',
               position: 'absolute',
-              left: '4.8rem',
+              left: '4.8rem', 
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              '@media (max-width:899px)': {
-                display: 'none'
-              },
-              '@media (max-width:1000px)': {
-                left: '3.5rem'
+              display: {
+                xs: 'none',
+                desktopMid: 'flex',
               },
             }}
           >
-            <Image
-              src='https://gist.githubusercontent.com/DavidRocFeler/094740b9109ecc621859ad9430a2ddc7/raw/56b2abb333cd264e1447f6e390c8eff9c4b2a956/LegalGroupLogo.svg'
-              alt="Logo"
-              width={55}
-              height={50}
-            />
-              <Typography
-                 variant='h1'
-                 sx={{
-                   fontSize: '0.6rem',
-                   marginTop: '0.2rem',
-                   lineHeight: 1.2,
-                   fontWeight: 1000
-                 }}
-              >
-                {footerMock.companyName}
-              </Typography>
+              <Logo/>
           </Box>
-        <Box 
-          sx={{ 
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            justifyContent: { xs: 'center', md: 'space-evenly' },
-            alignItems: { xs: 'center', md: 'flex-start' },
-            gap: { xs: 4, md: 0 },
-          }}
-        >
-          <Box>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                width: 'fit-content',
-                justifyContent: 'center'
-              }}
-            >
+          
+          <Box 
+            sx={{ 
+              display: 'flex',
+              flexDirection: {
+                xs: 'column',
+                desktopMid: 'row',
+              },
+              justifyContent: {
+                xs: 'center',
+                desktopMid: 'space-evenly',
+              },
+              alignItems: {
+                xs: 'center',
+                desktopMid: 'flex-start',
+              },
+              gap: { 
+                xs: 4,  
+                desktopMid: 0,
+              },
+              textAlign: {
+                xs: 'center',
+                desktopMid: 'left',
+              },
+            }}
+          >
+            <Box>
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  opacity: {
-                    xs: 100,
-                    md: 0
+                  width: 'fit-content', 
+                  justifyContent: 'center'
+                }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    opacity: {
+                      xs: 1,
+                      desktopMid: 0,
+                    },
+                  }}
+                >
+                  <Logo/>
+                </Box>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: {
+                  xs: 'center',
+                  desktopMid: 'flex-start',
+                },
+              }}
+            >
+              <Box sx={{
+                  textAlign: {
+                    xs: 'center',
+                    desktopMid: 'left',
+                  },
+                  width: 'fit-content', 
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: {
+                    xs: 'center',
+                    desktopMid: 'flex-start',
+                  },
+              }}>
+                <Typography
+                  variant="h6"
+                  mb={2} 
+                  sx={{
+                    textAlign: {
+                      xs: 'center',
+                      desktopMid: 'left',
+                    },
+                  }}
+                >
+                  {footerMock.sections.locations.title}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 1, 
+                    alignItems: {
+                      xs: 'center',
+                      desktopMid: 'flex-start',
+                    },
+                  }}
+                >
+                  {footerMock.sections.locations.items.map((location, index) => (
+                    <Typography
+                      variant="body2"
+                      key={index}
+                      sx={{
+                        textAlign: {
+                          xs: 'center',
+                          desktopMid: 'left',
+                        },
+                      }}
+                    >
+                      {location}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: {
+                  xs: 'center',
+                  desktopMid: 'flex-start',
+                },
+              }}
+            >
+              <Box sx={{
+                textAlign: {
+                  xs: 'center',
+                  desktopMid: 'left',
+                },
+                width: 'fit-content',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: {
+                  xs: 'center',
+                  desktopMid: 'flex-start',
+                },
+              }}>
+                <Typography
+                  variant="h6"
+                  mb={2} 
+                  sx={{
+                    textAlign: {
+                      xs: 'center',
+                      desktopMid: 'left',
+                    },
+                  }}
+                >
+                  {footerMock.sections.contact.title}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 1, 
+                    alignItems: {
+                      xs: 'center',
+                      desktopMid: 'flex-start',
+                    },
+                  }}
+                >
+                  {footerMock.sections.contact.items.map((contactInfo, index) => (
+                    <Typography
+                      key={index}
+                      variant="body2"
+                      sx={{
+                        textAlign: {
+                          xs: 'center',
+                          desktopMid: 'left',
+                        },
+                      }}
+                    >
+                      {contactInfo}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: {
+                  xs: 'center',
+                  desktopMid: 'flex-start',
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: 'fit-content', 
+                  display: 'flex',
+                  flexDirection: 'column',
+                  textAlign: {
+                    xs: 'center',
+                    desktopMid: 'left',
+                  },
+                  alignItems: {
+                    xs: 'center',
+                    desktopMid: 'flex-start',
                   },
                 }}
               >
-                <Image
-                  src='https://gist.githubusercontent.com/DavidRocFeler/094740b9109ecc621859ad9430a2ddc7/raw/56b2abb333cd264e1447f6e390c8eff9c4b2a956/LegalGroupLogo.svg'
-                  alt="Logo"
-                  width={55}
-                  height={50}
-                />
                 <Typography
-                  variant='h1'
+                  variant="h6"
+                  mb={2} 
                   sx={{
-                    fontSize: '0.6rem',
-                    marginTop: '0.2rem',
-                    lineHeight: 1.2,
-                    fontWeight: 1000
+                    textAlign: {
+                      xs: 'center',
+                      desktopMid: 'left',
+                    },
                   }}
                 >
-                  {footerMock.companyName}
+                  {footerMock.sections.newsletter.title}
                 </Typography>
-              </Box>
-            </Box>
-          </Box>
-
-          <Box>
-            <Box sx={{
-                textAlign: { xs: 'center', md: 'left' },
-                width: 'fit-content',
-            }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  mb: 2
-                }}
-              >
-                {footerMock.sections.locations.title}
-              </Typography>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 1,
-                }}
-              >
-                {footerMock.sections.locations.items.map((location, index) => (
-                  <Typography
-                    variant="h3"
-                    key={index}
+                <Typography
+                  variant='body2'
+                  mb={4} 
+                  sx={{
+                    width: {
+                      xs: 'auto',
+                      desktopMid: '20rem', 
+                    },
+                    textAlign: {
+                      xs: 'center',
+                      desktopMid: 'left',
+                    },
+                  }}
+                >
+                  {footerMock.sections.newsletter.description}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: {
+                      xs: 'center',
+                      desktopMid: 'flex-start',
+                    },
+                    mb: 3, 
+                  }}
+                >
+                  <Link
+                    href='/contact'
                   >
-                    {location}
-                  </Typography>
-                ))}
-              </Box>
-            </Box>
-          </Box>
-
-          <Box>
-            <Box sx={{
-              textAlign: { xs: 'center', md: 'left' },
-              width: 'fit-content',
-            }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  mb: 2
-                }}
-              >
-                {footerMock.sections.contact.title}
-              </Typography>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 1,
-                 }}
-              >
-                {footerMock.sections.contact.items.map((contactInfo, index) => (
-                  <Typography
-                    key={index}
-                    variant="h3"
+                    <Button
+                    variant='buttonSubscribe'
+                    >
+                      {footerMock.sections.newsletter.buttonText}
+                    </Button>
+                  </Link>
+                </Box>
+                
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: 2, 
+                    justifyContent: {
+                      xs: 'center',
+                      desktopMid: 'flex-start',
+                    },
+                  }}
+                >
+                  <IconButton
                     sx={{
-                      textDecoration: 'none'
+                      cursor: 'default',
+                      color: 'primary.main',
+                      border: '1px solid',
+                      borderColor: 'primary.main',
+                      borderRadius: '50%',
+                      width: '40px', 
+                      height: '40px',
+                      zIndex: 0,
+                      '&:hover': {
+                        color: 'whiteText',
+                        borderColor: 'brand.whiteText'
+                      }
                     }}
                   >
-                    {contactInfo}
-                  </Typography>
-                ))}
+                    <LinkedInIcon />
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      cursor: 'default',
+                      color: 'primary.main',
+                      border: '1px solid',
+                      borderColor: 'primary.main',
+                      borderRadius: '50%',
+                      width: '40px', 
+                      height: '40px',
+                      zIndex: 0,
+                      '&:hover': {
+                        color: 'whiteText',
+                        borderColor: 'brand.whiteText'
+                      }
+                    }}
+                  >
+                    <TwitterIcon />
+                  </IconButton>
+                </Box>
               </Box>
             </Box>
           </Box>
-
-          <Box>
-            <Box
-              sx={{
-                width: 'fit-content',
-                display: 'flex',
-                flexDirection: 'column',
-                textAlign: { xs: 'center', md: 'left' },
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{     
-                    fontWeight: 'bold',
-                    mb: 2,
-                }}
-              >
-                {footerMock.sections.newsletter.title}
-              </Typography>
-              <Typography
-                variant='h3'
-                sx={{
-                  width: '17rem',
-                  mb: 3,
-                }}
-              >
-                {footerMock.sections.newsletter.description}
-              </Typography>
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: { xs: 'center', md: 'flex-start' },
-                  mb: 3
-                }}
-              >
-                <Button
-                  sx={{
-                    backgroundColor: '#D6D0B4',
-                    color: '#324344',
-                    padding: '12px 24px',
-                    fontSize: '0.9rem',
-                    fontFamily: '"Merriweather", serif', 
-                    fontWeight: 500,
-                    borderRadius: '0px',
-                    textTransform: 'none',
-                    transition: 'all 0.3s ease-in-out',
-                    zIndex: 0,
-                    '&:hover': {
-                      backgroundColor: '#B38F59',
-                      color: 'white'
-                    },
-                    '@media (max-width:899px)': {
-                      fontSize: '1.2rem', 
-                    },
-                  }} 
-                >
-                  {footerMock.sections.newsletter.buttonText}
-                </Button>
-              </Box>
-              
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: 2,
-                  justifyContent: { xs: 'center', md: 'flex-start' },
-                }}
-              >
-                <IconButton
-                  sx={{
-                    color: 'primary.main',
-                    border: '1px solid #EEE9DD',
-                    borderRadius: '50%',
-                    width: '48px',
-                    height: '48px',
-                    zIndex: 0,
-                    '&:hover': {
-                      color: 'white',
-                      borderColor: 'white'
-                    }
-                  }}
-                >
-                  <LinkedInIcon />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    color: 'primary.main',
-                    border: '1px solid #EEE9DD',
-                    borderRadius: '50%',
-                    width: '48px',
-                    height: '48px',
-                    zIndex: 0,
-                    '&:hover': {
-                      color: 'white',
-                      borderColor: 'white'
-                    }
-                  }}
-                >
-                  <TwitterIcon />
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
 
         <Box
           sx={{
-            mt: 4,
-            pr: {
+            mt: 2, 
+            mr: {
               xs: 0,
-              md: 10
+              desktopMid: 7,
             },
             pt: 2,
             textAlign: {
               xs: 'center',
-              md: 'right'
+              desktopMid: 'right',
             },
           }}
         >
           <Typography
             sx={{
-              fontSize: '1rem',
-              fontFamily: 'var(--font-family-Font-4, Inter)',
-              color: 'white',
+              fontSize: '0.9rem',
+              fontFamily: 'Inter',
+              color: 'brand.whiteText',
             }}
           >
             {footerMock.copyright}

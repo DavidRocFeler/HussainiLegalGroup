@@ -32,58 +32,62 @@ const CoverCaseStudy = () => {
     <Box
       sx={{
         position: 'relative',
-        mt: { xs: 4, md: '4rem' },
-        mb: { xs: 2, md: '6rem' },
+        mt: { xs: 4, md: 8 },
+        mb: { xs: 2, md: 12 },
       }}
     >
-      <Box sx={{ position: 'relative', width: '100%' }}>
-        <Fade in={true} timeout={500} key={currentIndex}>
-          <Box>
-            <Image
-              src={caseStudy.coverImage}
-              alt="CoverPicture"
-              style={{
-                width: '100%',
-                height: 'auto',
-                objectFit: 'cover',
-                borderRadius: '10px',
-              }}
-            />
-          </Box>
-        </Fade>
+     <Box sx={{ 
+      position: 'relative', 
+      width: '100%',
+      height: { xs: '300px', sm: '400px' }, 
+      overflow: 'hidden',
+      borderRadius: '10px'
+    }}>
+      <Fade in={true} timeout={500} key={currentIndex}>
+        <Box sx={{ width: '100%', height: '100%' }}>
+          <Image
+            src={caseStudy.coverImage}
+            alt="CoverPicture"
+            fill
+            style={{
+              objectFit: 'cover',
+            }}
+          />
+        </Box>
+      </Fade>
 
-        <IconButton
-          onClick={handlePrevious}
-          sx={{
-            position: 'absolute',
-            left: '2%',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 1)',
-            },
-          }}
-        >
-          <ChevronLeft />
-        </IconButton>
+      <IconButton
+        onClick={handlePrevious}
+        sx={{
+          position: 'absolute',
+          left: '2%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+          },
+        }}
+      >
+        <ChevronLeft />
+      </IconButton>
 
-        <IconButton
-          onClick={handleNext}
-          sx={{
-            position: 'absolute',
-            right: '2%',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 1)',
-            },
-          }}
-        >
-          <ChevronRight />
-        </IconButton>
-      </Box>
+      <IconButton
+        onClick={handleNext}
+        sx={{
+          position: 'absolute',
+          right: '2%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+          },
+        }}
+      >
+        <ChevronRight />
+      </IconButton>
+    </Box>
 
       <Card
         sx={{
@@ -93,31 +97,30 @@ const CoverCaseStudy = () => {
           mb: { xs: 2, md: 4 },
           position: 'relative',
           zIndex: 1,
-          bgcolor: 'white',
+          bgcolor: 'brand.whiteText',
           borderRadius: '20px',
           boxShadow: '0px 20px 25px -5px rgba(16, 24, 40, 0.10)',
         }}
       >
-        <CardContent sx={{ p: '1rem 1.5rem' }}>
+        <CardContent sx={{ p: 2 }}>
           <Typography
             variant="h5"
+            mb={3}
             sx={{
               color: 'text.secondary',
               fontSize: '0.75rem',
               fontWeight: 600,
-              mb: '1rem',
             }}
           >
             {caseStudy.category}
           </Typography>
 
           <Typography
-            variant="h1"
+            variant="h10"
+            lineHeight={1.2}
             sx={{
               fontSize: '1.75rem',
-              color: 'black',
-              mt: 1,
-              mb: 2,
+              color: 'brand.blackButton',
               fontWeight: 700,
             }}
           >
@@ -128,6 +131,7 @@ const CoverCaseStudy = () => {
             variant="h5"
             sx={{
               mb: 3,
+              mt: 3,
               fontSize: '1.125rem',
               color: '#404040',
               fontWeight: 500,
@@ -141,8 +145,8 @@ const CoverCaseStudy = () => {
             <Image
               src={caseStudy.client.logo}
               alt={caseStudy.client.name}
-              width={48}
-              height={48}
+              width={32}
+              height={32}
               style={{ objectFit: 'cover' }}
             />
             <Box>
@@ -159,7 +163,7 @@ const CoverCaseStudy = () => {
                 sx={{
                   fontSize: '0.875rem',
                   fontWeight: 500,
-                  mt: '2px',
+                  mt: 0.25,
                 }}
               >
                 {caseStudy.client.date} • {caseStudy.client.readTime}

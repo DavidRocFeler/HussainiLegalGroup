@@ -7,16 +7,16 @@ const AboutCover = () => {
   return (
     <Box
       sx={{
-        position: 'relative',
-        width: '100%',
-        mt: '4rem',
-        height: '80rem',
-        '@media (max-width:900px)': {
-          height: '65rem'
+        position: {
+          xs: 'static',        
+          sm: 'relative'      
         },
-        '@media (max-width:600px)': {
-          position: 'static',
-          height: 'auto'
+        width: '100%',
+        mt: 8,
+        height: {
+          xs: 'auto',         
+          sm: '65rem',        
+          md: '80rem'        
         },
       }}
     >
@@ -28,8 +28,9 @@ const AboutCover = () => {
           right: 0,
           bottom: 0,
           zIndex: 1,
-          '@media (max-width:600px)': {
-            display: 'none'
+          display: {
+            xs: 'none',       
+            sm: 'block'       
           },
         }}
       >
@@ -40,31 +41,28 @@ const AboutCover = () => {
           style={{ objectFit: 'cover' }}
         />
       </Box>
-
       <Box
         sx={{
-          position: 'relative',
-          zIndex: 2,
-          backgroundColor: 'grey.50', 
-          padding: { xs: '2rem', md: '4rem' },
+          position: {
+            xs: 'static',     
+            sm: 'relative'    
+          },
+          zIndex: {
+            xs: 'auto',      
+            sm: 2             
+          },
+          backgroundColor: 'grey.50',
+          padding: { xs: 4, md: 8 },
           display: 'flex',
-          width: '60%',
+          width: {
+            xs: '100%',                   
+            customTabletAbout: '85%',     
+            desktopMid: '80%',    
+            customDesktopLargeAbout: '70%', 
+            xl: '60%'                    
+          },
           flexDirection: 'column',
           justifyContent: 'center',
-          '@media (max-width:1300px)': {
-            width: '70%',
-          },
-          '@media (max-width:1100px)': {
-            width: '80%',
-          },
-          '@media (max-width:755px)': {
-            width: '85%',
-          },
-          '@media (max-width:600px)': {
-            width: '100%',
-            position: 'static',
-            zIndex: 'auto'
-          },
         }}
       >
         {aboutCoverData.labels.map((label, index) => (

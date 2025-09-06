@@ -8,13 +8,12 @@ const AboutProfessionalCardContainer = () => {
   return (
     <Box 
         sx={{ 
-            mt: '5rem', 
+            mt: 10, 
             position: 'relative',
         }}
     >
         <Box
             sx={{
-                display: 'block',
                 backgroundColor: 'grey.50',
                 width: {
                 md: '35rem',
@@ -24,33 +23,32 @@ const AboutProfessionalCardContainer = () => {
                 position: 'absolute',
                 zIndex: 1,
                 top: 0,
-                '@media (max-width:650px)': {
-                display: 'none',
+                display: {
+                    xs: 'none',               
+                    md: 'block' 
                 },
             }}
         />
 
         <Typography
-        variant='h1'
+        variant='h9'
         sx={{
             display: {
                 xs: 'block',
                 md: 'none'
             },
             color: {
-                xs: '#131313',
-                md: 'white',
+                xs: 'text.primary',
+                md: 'brand.whiteText',
             },
             fontSize: {
-                xs: '2.4rem',
+                xs: '1.85rem',
+                sm: '2.4rem',
                 md: '2.75rem'
             },
-            mb: '2rem',
-            ml: '1rem',
+            mb: 4,
+            ml: 2,
             fontWeight: 400,
-            '@media (max-width:500px)': {
-                fontSize: '1.85rem',
-            },
         }}
         >
             Our Team
@@ -64,28 +62,28 @@ const AboutProfessionalCardContainer = () => {
                     md: '85%',
                 },
                 pt: {
-                    xs: '0rem',
-                    md: '1.2rem'
+                    xs: 0,
+                    md: 2.4
                 },
                 margin: 'auto',
             }}
         >
             <Typography
-                variant='h1'
+                variant='h9'
                 sx={{
                     display: {
                         xs: 'none',
                         md: 'block'
                     },
-                    color: 'white',
+                    color: 'brand.whiteText',
                     fontSize: '2.75rem',
                     fontWeight: 400,
-                    mb: '5rem'
+                    mb: 10
                 }}
                 >
                     Our Team
             </Typography>
-            <Grid container spacing={2} rowSpacing="3rem">
+            <Grid container spacing={2}>
                 {professionalProfilesData.map((profile, index) => (
                 <Grid 
                     key={index} 

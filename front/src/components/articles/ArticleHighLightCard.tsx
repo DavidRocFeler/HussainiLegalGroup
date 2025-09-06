@@ -2,12 +2,13 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 import { ArticleHighlightCardProps } from '@/types/article';
+import { Button } from '@mui/material';
 
 const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
   return (
     <Box
       sx={{
-        padding: 0,
+        pb: 3,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -20,9 +21,9 @@ const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
     >
       <Box>
         <Typography
-           variant="h1" 
+           variant="h10" 
+           color='text.primary'
            sx={{ 
-             mb: 3,
              fontWeight: {
               xs: 700,
               md: 400
@@ -31,18 +32,21 @@ const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
               md: '13rem',
               lg: '10rem',
              },
-             color: '#131313',
              fontSize: { xs: '1.25rem', md: '2.1875rem', lg: '2.375rem' },
              lineHeight: { xs: '1.50rem', md: '2.1875rem', lg: '2.375rem' },
            }}
         >
           {article.title}
         </Typography>
-        {article.date && (
+      </Box>
+
+      <Box>
+      {article.date && (
           <Typography
-            variant="h1" 
+            mt={4}
+            variant="h10" 
+            color='error.dark'
             sx={{ 
-              color: '#64181C',
               fontSize: '0.875rem',
               display: 'block',
               fontStyle: 'italic',
@@ -52,46 +56,22 @@ const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
           >
             {article.date}
           </Typography>
-        )}
-      </Box>
-      
+      )}
+
       <Link 
         href={article.buttonLink} 
         style={{ 
           textDecoration: 'none',
         }}
       >
-        <Box
-          sx={{
-            mb: {
-              xs: '2rem',
-              md: '0rem'
-            },
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 'fit-content',
-            fontFamily: 'Inter',
-            color: '#64181C',
-            textTransform: 'uppercase',
-            fontSize: '0.875rem',
-            letterSpacing: '0.1em',
-            fontWeight: 500,
-            cursor: 'pointer',
-            borderRadius: '0.3215rem',
-            padding: '0.88rem 1.31rem',
-            border: 'solid 1px #64181C',
-            '&:hover': {
-              transform: 'scale(1.01)',
-              transition: 'transform 0.2s ease-in-out',
-            }
-          }}
+        <Button
+        disableRipple={true}
+        variant='buttonReadCase'
         >
           {article.buttonText}
-
-        </Box>
+        </Button>
       </Link>
+      </Box>
     </Box>
   );
 };

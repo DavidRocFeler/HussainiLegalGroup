@@ -1,4 +1,3 @@
-import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { toApplyMock } from '@/mock/toApply.mock';
@@ -13,9 +12,10 @@ const ToApply = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: { xs: '20px', md: '30px' },
+          p: { xs: 2.5, md: 3.75 },
           width: '100%',
-          borderBottom: '1px solid #EEE9DD',
+          borderBottom: '1px solid',
+          borderColor: 'primary.main',
           flexDirection: {
             xs: 'column',
             lg: 'row'
@@ -25,11 +25,11 @@ const ToApply = () => {
       <Typography
         variant='h1'
         sx={{
-          color: 'white',
+          color: 'brand.whiteText',
           textAlign: 'center',
           fontStyle: 'italic',
           fontWeight: 400,
-          mr: '0.35rem',
+          mr: 0.7,
           letterSpacing: {
             xs: '0.0225rem',
             md: '0.0275rem'
@@ -39,8 +39,8 @@ const ToApply = () => {
             md: '1.375rem'
           },
           lineHeight: {
-            xs: '1.35rem)',
-            md: '1.65rem'
+            xs: '1.35rem',
+            md: '1rem'
           }
         }}
       >
@@ -49,7 +49,7 @@ const ToApply = () => {
       <Typography
           variant='h1'
           sx={{
-            color: 'white',
+            color: 'brand.whiteText',
             fontStyle: 'italic',
             fontWeight: 400,
             textDecoration: 'underline',
@@ -68,7 +68,7 @@ const ToApply = () => {
           }}
         >
           {data.email}
-        </Typography>
+      </Typography>
     </Box>
   );
 };

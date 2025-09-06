@@ -14,12 +14,12 @@ const CardProfessionalProfile = ({ image, name, role }: CardProfessionalProfileP
       }}
     >
       <Box
+        mb={5}
         sx={{
           position: 'relative',
           width: '100%',
           aspectRatio: '1/1',
           overflow: 'hidden',
-          marginBottom: '2rem'
         }}
       >
         <Image
@@ -30,20 +30,21 @@ const CardProfessionalProfile = ({ image, name, role }: CardProfessionalProfileP
         />
       </Box>
       <Typography
-        variant="h1"
+        variant='h10'
+        color='text.primary'
         sx={{
-          color: '#131313',
           fontSize: '1.125rem',
           fontStyle: 'italic',
           fontWeight: 700,
+          letterSpacing: '-0.0225rem'
         }}
       >
         {name}
       </Typography>
       <Typography
-        variant="h1"
+        variant="h10"
         sx={{
-          color: '#B49055',
+          color: 'brand.gold',
           fontSize: '1.125rem',
           fontStyle: 'normal',
           fontWeight: 700,

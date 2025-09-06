@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import React from 'react';
 import StickyScrollDesktop from '../ui/StickyScrollDesktop';
 import StickyScrollMobile from '../ui/StickyScrollMobile';
 
@@ -8,9 +7,13 @@ const StickyScrollSections  = () => {
     <Box
       sx={{
         bgcolor: 'secondary.main',
-        padding: {
-          xs: '4rem 1rem',
-          md: '5rem 4.5rem',
+        py: {
+          xs: 8,
+          md: 8
+        },
+        px: {
+          xs: 2,
+          md: 9
         },
         position: 'relative',
       }}

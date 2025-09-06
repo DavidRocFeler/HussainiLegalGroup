@@ -1,9 +1,20 @@
+import type { Metadata } from 'next'
 import ArticleCover from '@/components/articles/ArticleCover'
 import ArticleHighlightsSection from '@/components/articles/ArticleHighLightSection'
 import ArticlePhilosophyContainer from '@/components/articles/ArticlePhilosophyContainer'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import React from 'react'
+
+export const metadata: Metadata = {
+  title: 'Legal Articles & Insights - Hussaini Legal Group',
+  description: 'Expert legal articles and insights from Hussaini Legal Group. Stay updated on corporate law, arbitration, international transactions, and legal best practices.',
+  keywords: ['legal articles', 'law insights', 'legal updates', 'corporate law', 'arbitration', 'legal expertise'],
+  openGraph: {
+    title: 'Legal Articles & Insights - Hussaini Legal Group',
+    description: 'Expert legal analysis and insights from international law experts',
+    type: 'website',
+  }
+}
 
 const Articles = () => {
   return (
@@ -12,22 +23,34 @@ const Articles = () => {
         backgroundColor: 'background.paper',
         position: 'relative',
         maxHeight: 'fit-content',
-        padding: {
-          xs: '10rem 1.5rem 3rem 1.5rem',
-          md: '11rem 4.5rem 8em 4.8rem',
+        pt: {
+          xs: 20,
+          md: 22
         },
+        pr: {
+          xs: 3,
+          md: 9
+        },
+        pb: {
+          xs: 6,
+          md: 12
+        },
+        pl: {
+          xs: 3,
+          md: 9.6
+        }
       }}
     >
         <Box
         sx={{
           borderBottom: '1px solid rgba(168, 70, 63, 0.20)',
           pb: {
-            xs: '3rem',
-            md: '10rem',
+            xs: 6,
+            md: 20,
           },
           mb: {
-            xs: '3rem',
-            md: '5rem'
+            xs: 6,
+            md: 10
           }
         }}
         >
@@ -36,11 +59,15 @@ const Articles = () => {
         </Box>
 
         <Typography
-        variant='h1'
+        variant='h10'
+        color='error.dark'
         sx={{
-          color: '#64181C',
-          fontSize: '1.6rem',
-          fontWeight: 700
+          fontStyle: 'normal',
+          fontWeight: 700,
+          fontSize: '1.53806rem',
+          lineHeight: '1.3rem',
+          letterSpacing: '-0.01rem',
+          alignSelf: 'stretch'
         }}
         >
           Related Case

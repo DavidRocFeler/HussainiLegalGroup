@@ -1,4 +1,3 @@
-import React from 'react';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
@@ -11,16 +10,18 @@ const ExpertiseAndSectors = () => {
   const renderSection = (section: ExpertiseSection) => (
     <Box>
       <Typography
-        variant="h1"
+        variant="h10"
+        color='brand.red'
+        lineHeight={{ xs: 4, md: 4 }}
         sx={{
-          color: '#891C1B',
+          color: 'brand.red',
           fontStyle: 'normal',
           fontWeight: 400,
           fontSize: {
             xs: '1.375rem',
             md: '1.5rem'
           },
-          mb: { xs: 2, md: 5 }
+        
         }}
       >
         {section.title}
@@ -33,8 +34,8 @@ const ExpertiseAndSectors = () => {
             component={NextLink}
             href={item.href}
             sx={{
-              color: '#23363A',
-              fontFamily: 'Inter)',
+              color: 'grey.50',
+              fontFamily: 'Inter',
               fontSize: '1rem',
               fontStyle: 'normal',
               fontWeight: 400,
@@ -42,7 +43,7 @@ const ExpertiseAndSectors = () => {
               textDecoration: 'none',
               cursor: 'pointer',
               borderBottom: '1px solid #E0E0E0',
-              paddingBottom: { xs: 0.5, md: 0.75 },
+              pb: { xs: 0.5, md: 0.75 },
               display: 'block',
               '&:hover': {
                 color: '#808080'
@@ -60,11 +61,12 @@ const ExpertiseAndSectors = () => {
     <Box
       sx={{
         backgroundColor: 'primary.main',
-        padding: { xs: '24px 16px', md: '40px 24px' },
+        py: { xs: 3, md: 5 },
+        px: { xs: 2, md: 3 },
         width: '100%',
         mt: {
-            xs: '3rem',
-            md: '8rem'
+            xs: 6,
+            md: 16
         }
       }}
     >

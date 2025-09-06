@@ -9,12 +9,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NewsCard } from '@/types/caseStudy';
 import { ArrowRightSvg } from '@/assets/icons/index'
+import Button from '@mui/material/Button';
 
 const NewsCardCaseStudy = ({ newsItem }: { newsItem: NewsCard }) => {
   return (
     <Card 
       sx={{ 
-        py: '2.5rem',
+        py: 5,
         overflow: 'hidden',
         boxShadow: 'none',
         borderTop: '1px solid rgba(168, 70, 63, 0.20)',
@@ -33,9 +34,9 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: NewsCard }) => {
         <Grid size={{ xs: 12, md: 6 }}>
           <CardContent sx={{ p: 0, pr: { md: 2 } }}>
             <Typography 
-              variant="h1" 
+              variant="h10" 
+              color='error.dark'
               sx={{ 
-                color: '#64181C',
                 fontSize: '0.875rem',
                 display: 'block',
                 fontStyle: 'italic',
@@ -51,7 +52,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: NewsCard }) => {
               sx={{ 
                 mb: 3,
                 fontWeight: 400,
-                color: '#131313',
+                color: 'text.primary',
                 fontSize: { xs: '1.35rem', md: '2.1875rem', lg: '2.375rem' },
                 lineHeight: { xs: '1.35rem', md: '2.1875rem', lg: '2.375rem' },
               }}
@@ -65,8 +66,8 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: NewsCard }) => {
                 alignItems: 'center',
                 gap: 2,
                 mb: {
-                  xs: '3rem',
-                  md: '6rem'
+                  xs: 6,
+                  md: 12
                 }
               }}
             >
@@ -96,7 +97,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: NewsCard }) => {
                   sx={{ 
                     fontSize: '0.875rem',
                     fontWeight: 500,
-                    mt: '2px'
+                    mt: 0.25
                   }}
                 >
                   {newsItem.author.publishDate} • {newsItem.author.readTime}
@@ -106,40 +107,17 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: NewsCard }) => {
             
             <Link 
               href='/articles'
-              // slug for future dynamic redirection
-              // href={`/news/${newsItem.id}/${newsItem.slug}`}
               style={{ 
                 textDecoration: 'none',
               }}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: 'fit-content',
-                  fontFamily: 'Inter',
-                  color: '#64181C',
-                  textTransform: 'uppercase',
-                  fontSize: '0.875rem',
-                  letterSpacing: '0.1em',
-                  fontWeight: 500,
-                  cursor: 'pointer',
-                  borderRadius: '0.3215rem',
-                  padding: '0.88rem 1.31rem',
-                  border: 'solid 1px #64181C',
-                  gap: '3rem',
-                  '&:hover': {
-                    textDecoration: 'none',
-                    transform: 'scale(1.01)',
-                    transition: 'transform 0.2s ease-in-out',
-                  },
-                }}
+              <Button
+                disableRipple={true}
+                variant='buttonReadCase'
               >
                 Read Case
                 <ArrowRightSvg />
-              </Box>
+              </Button>
             </Link>
           </CardContent>
         </Grid>

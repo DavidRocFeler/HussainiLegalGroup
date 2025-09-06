@@ -5,20 +5,22 @@ const ContactFormHeader = () => {
   return (
     <Box
       sx={{
-        borderBottom: 'solid 1px #E6E6E6',
-        pb: '3rem',
-        mb: '3rem'
+        borderBottom: 'solid 1px',
+        borderColor: 'brand.borderGrey',
+        pb: 6,
+        mb: 6
       }}
     >
       <Typography
         variant="h5"
         textAlign="center"
         display="block"
+        letterSpacing={1}
         sx={{ 
-          color: '#5E4740',
+          color: 'text.secondary',
           fontSize: '0.75rem',
           fontWeight: 600,
-          mb: '1rem',
+          mb: 0,
         }}
       >
         A WORLDWIDE NETWORK
@@ -27,7 +29,7 @@ const ContactFormHeader = () => {
         variant="h1"
         textAlign="center"
         sx={{ 
-          color: '#131313', 
+          color: 'text.primary', 
           fontSize: {
             xs: '1.75rem',
             md: '2rem',

@@ -9,24 +9,28 @@ import ClientLayout from "./ClientLayout";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   subsets: ["latin"],
-  weight: ['300', '400', '700'], 
+  weight: ['300', '400', '700'],
+  display: 'swap', 
 });
 
 const exo = Exo({
   variable: "--font-exo",
   subsets: ["latin"],
   weight: ['400', '500', '600', '700'],
+  display: 'swap',
 });
 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   weight: ['300', '400', '500', '700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {

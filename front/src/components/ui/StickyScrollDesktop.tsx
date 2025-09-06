@@ -1,4 +1,3 @@
-import React from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
@@ -7,6 +6,7 @@ import Image from 'next/image';
 import { sectionsData } from '@/mock/stickyScrollSection.mock';
 import { arrayImageScrollStiky } from '@/mock/arrayImageScrollStiky';
 import { SectionScrollStiky, SectionScrollStikyImage } from '@/types/home';
+import Button from '@mui/material/Button';
 
 const StickyScrollDesktop = () => {
   const gridItems: Array<{
@@ -23,6 +23,10 @@ const StickyScrollDesktop = () => {
     { type: 'content', data: sectionsData[2] },
   ];
 
+  const formatId = (id: number): string => {
+    return id < 10 ? `0${id}` : `${id}`;
+  };  
+
   return (
     <Grid
         container 
@@ -37,17 +41,16 @@ const StickyScrollDesktop = () => {
             size={6}
             key={index}
             sx={{
-            paddingTop: index >= 2 ? '3.12rem' : 0, 
+            paddingTop: index >= 2 ? 6 : 0,
             }}
         >
             {item.type === 'image' ? (
-            // Image Section
             <Box
                 sx={{
                 position: 'relative',
                 overflow: 'hidden',
                 height: '100%',
-                minHeight: '400px', 
+                minHeight: '400px',
                 }}
             >
                 <Image
@@ -61,67 +64,49 @@ const StickyScrollDesktop = () => {
                 />
             </Box>
             ) : (
-            // Content Section
             <Box
                 sx={{
-                bgcolor: 'white',
+                bgcolor: 'brand.whiteText',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                padding: '4.125rem 0.9375rem',
+                py: 9,
+                px: 2,
                 height: '100%',
-                minHeight: '400px', 
+                minHeight: '400px',
                 }}
             >
                 <Typography
-                variant="h5"
-                sx={{
-                    color: '#891C1B',
-                    fontWeight: 700,
-                    fontSize: '1.25rem',
-                    mb: '1.25rem'
-                }}
+                mb={2}
+                variant="h3"
                 >
-                {(item.data as SectionScrollStiky).id}
+                 {formatId((item.data as SectionScrollStiky).id)}
                 </Typography>
                 <Typography
-                variant="h1"
+                variant="h4"
+                mb={2}
                 sx={{
-                    fontSize: '2.5rem',
                     fontWeight: 400,
-                    color: '#131313',
-                    mb: '1.25rem'
                 }}
                 >
                 {(item.data as SectionScrollStiky).title}
                 </Typography>
                 <Typography
-                variant="body1"
-                sx={{
-                    fontWeight: 500,
-                    color: '#131313',
-                    mb: '0.75rem'
-                }}
+                variant="h5"
                 >
                 {(item.data as SectionScrollStiky).description}
                 </Typography>
                 <Link
-                href={(item.data as SectionScrollStiky).href}
+                href='/'
                 sx={{
                     textDecoration: 'none'
                 }}
                 >
-                <Typography
-                    variant="h5"
-                    sx={{
-                    color: '#891C1B',
-                    mb: '1.25rem',
-                    fontWeight: 700,
-                    fontSize: '1.25rem',
-                    }}
-                >
-                    See more
-                </Typography>
+                    <Button 
+                    disableRipple={true}
+                    variant="seeMoreButton">
+                        See more
+                    </Button>
                 </Link>
             </Box>
             )}

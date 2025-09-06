@@ -1,5 +1,3 @@
-'use client'
-import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -10,22 +8,21 @@ import { CoverBackgroundProps } from '@/types/home';
 import { coverBackgroundData } from '@/mock/coverBackgroundData.mock';
 
 const CoverBackground = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const data: CoverBackgroundProps = coverBackgroundData;
 
   return (
     <Box
       sx={{
-        minHeight: '100vh',
+        minHeight: {
+          xs: '0vh',
+          sm: '70vh'
+        },
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        backgroundColor: '#1a1a1a', 
-        '@media (max-width:450px)': {
-          minHeight: '0vh',
-        },
+        backgroundColor: 'primary.main'
       }}
     >
       <Skeleton
@@ -38,9 +35,9 @@ const CoverBackground = () => {
           bottom: 0,
           width: '100%',
           height: '100%',
-          bgcolor: 'grey.900',
+          bgcolor: 'brand.red',
           zIndex: 1,
-          display: imageLoaded ? 'none' : 'block',
+          transform: 'scale(1)',
         }}
         animation="wave"
       />
@@ -55,7 +52,7 @@ const CoverBackground = () => {
           width: '100%',
           height: '100%',
           overflow: 'hidden',
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <Image
@@ -67,53 +64,35 @@ const CoverBackground = () => {
             objectPosition: 'center',
           }}
           priority
-          onLoadingComplete={() => setImageLoaded(true)}
         />
       </Box>
 
       <Box
         sx={{
           position: 'relative',
-          zIndex: 2,
+          zIndex: 3,
           px: {
-            xs: '1.5rem',
-            md: '5rem'
+            xs: 3,    
+            sm: 3,    
+            md: 10   
           },
-          pt: {
-            xs: '10rem',
-            md: '25rem'
+          py: {
+            xs: 20,  
+            sm: 25,  
+            md: 50    
           },
           pb: {
-            xs: '5rem',
-            md: '20rem'
-          },
-          '@media (max-width:450px)': {
-            pb: '5rem',
-            pt: '10rem'
-          },
+            xs: 10,  
+            sm: 10, 
+            md: 40    
+          }
         }}
       >
         <Typography
           variant="h1"
           sx={{
-            fontSize: '5rem', 
-            fontWeight: 400,
-            lineHeight: '5.5rem',
-            letterSpacing: '0px',
-            width: { xs: '100%', md: '70%' },
-            color: '#FAF5EF',
-            mb: 4,
-            '@media (max-width:899px)': {
-              fontSize: '4.5rem',
-            },
-            '@media (max-width:650px)': {
-              fontSize: '3.8rem',
-              lineHeight: '4.5rem',
-            },
-            '@media (max-width:450px)': {
-              fontSize: '2.5rem',
-              lineHeight: '3rem',
-            },
+            width: { xs: '100%', md: '75%' },
+            mb: 2
           }}
         >
           {data.title}
@@ -123,31 +102,14 @@ const CoverBackground = () => {
           variant="h2"
           sx={{
             width: { xs: '100%', md: '70%' },
-            color: 'white',
             mb: 4,
           }}
         >
           {data.description}
         </Typography>
 
-        <Link
-          href={data.ctaButton.link}
-        >
-          <Button
-            variant="contained"
-            sx={{
-              alignSelf: 'flex-start',
-              padding: '1.1825rem 2.92244rem 1.1825rem 2.92156rem',
-              color: '#2c3e50',
-              borderRadius: '0.25338rem',
-              backgroundColor: '#EEE9DD',
-              textTransform: 'none',
-              '&:hover': {
-                backgroundColor: '#CEC4A6',
-              },
-              transition: 'all 0.3s ease-in-out'
-            }}
-          >
+        <Link href={data.ctaButton.link}>
+          <Button variant="contactUs">
             {data.ctaButton.text}
           </Button>
         </Link>

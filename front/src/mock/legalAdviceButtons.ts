@@ -4,21 +4,12 @@ import { ButtonCustomProps } from '@/types/button';
 export const legalAdviceButtons: ButtonCustomProps[] = [
   {
     text: "More Details",
-    variant: "contained",
-    sx: { 
-      backgroundColor: '#B49055',
-    },
-    disabledHover: true,   
+    variant: "goldenOchre",
     href: '/'              
   },
   {
     text: "Contact Us", 
-    variant: "contained",
-    sx: { 
-      backgroundColor: '#891C1B',
-    },
-    disabledHover: false,   
-    customHoverColor: '#B49055', 
+    variant: "redCahova",
     href: '/contact'      
   }
 ];

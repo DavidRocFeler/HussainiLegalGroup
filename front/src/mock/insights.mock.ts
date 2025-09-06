@@ -5,6 +5,6 @@ export const insightTitleData: TitleReusableProps = {
   title: "Insights",
   description: "Articles, Events & Recent Matters",
   textStyles: {
-    color: "white"
+    color: "primary.main"
   }
 };

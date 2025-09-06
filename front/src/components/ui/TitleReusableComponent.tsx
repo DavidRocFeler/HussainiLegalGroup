@@ -1,36 +1,35 @@
-// components/casestudy/CaseStudyTitle.tsx
-import { TitleReusableProps } from '@/types/reusable';
+import { TitleReusableComponentProps } from '@/types/reusable';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const TitleReusable = ({ data }: { data: TitleReusableProps | TitleReusableProps[] }) => {
+const TitleReusable = ({ 
+  data, 
+  titleVariant,
+  descriptionVariant
+}: TitleReusableComponentProps) => {
   const item = Array.isArray(data) ? data[0] : data; 
   
   return (
     <Box sx={{ my: 2 }}>
-      <Typography variant="h1"
-      sx={{
-        color: item.textStyles?.color || 'text.primary',
-        fontWeight: 380,
-        fontSize:  {
-          xs: '4rem',
-          md: '5rem'
-        }
-      }}
+      <Typography 
+        variant={titleVariant as any}
+        mb={3}
+        sx={{
+          color: item.textStyles?.color || 'text.primary',
+        }}
       >
         {item.title}
       </Typography>
-      <Typography variant="h5"
-      sx={{
-        fontSize: '1.125rem',
-        color: item.textStyles?.color || 'text.primary',
-        fontWeight: 400,
-        mt: '1rem',
-        width: {
-          xs: '100%',
-          md: '65%'
-        }
-      }}
+      <Typography 
+        variant={descriptionVariant as any}
+        sx={{
+          color: item.textStyles?.color || 'text.primary',
+          mt: 2,
+          width: {
+            xs: '100%',
+            md: '55%'
+          }
+        }}
       >
         {item.description}
       </Typography>
@@ -38,4 +37,4 @@ const TitleReusable = ({ data }: { data: TitleReusableProps | TitleReusableProps
   );
 }
 
-export default TitleReusable
+export default TitleReusable;

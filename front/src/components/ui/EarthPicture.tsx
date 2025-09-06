@@ -1,5 +1,4 @@
 // src/components/ui/EarthSvg.tsx
-import React from 'react';
 import { Box } from '@mui/material';
 import Image from 'next/image';
 import EarthMobile from '../../assets/EarthMobile.png';
@@ -10,15 +9,16 @@ import Earth from '../../assets/Earth.png';
 const EarthMapPicture = () => {
   return (
     <>
+      {/* Mobile: display hasta 450px (xs hasta customEarthMobile) */}
       <Box
         sx={{
-          display: 'block',
-          '@media (min-width: 450px)': {
-            display: 'none'
+          display: {
+            xs: 'block',
+            mobileMid: 'none'
           }
         }}
       >
-        <Image 
+        <Image
           src={EarthMobile}
           alt="Earth Mobile View"
           width={300}
@@ -26,15 +26,17 @@ const EarthMapPicture = () => {
         />
       </Box>
 
+      {/* Mobile Custom: display desde 450px hasta 650px */}
       <Box
         sx={{
-          display: 'none',
-          '@media (min-width: 450px) and (max-width: 650px)': {
-            display: 'block'
+          display: {
+            xs: 'none',
+            mobileMid: 'block',
+            customEarthTablet: 'none'
           }
         }}
       >
-        <Image 
+        <Image
           src={EarthMobileCustom}
           alt="Earth Mobile Custom View"
           width={638}
@@ -42,15 +44,17 @@ const EarthMapPicture = () => {
         />
       </Box>
 
+      {/* Tablet: display desde 650px hasta 900px */}
       <Box
         sx={{
-          display: 'none',
-          '@media (min-width: 650px) and (max-width: 900px)': {
-            display: 'block'
+          display: {
+            xs: 'none',
+            customEarthTablet: 'block',
+            md: 'none'
           }
         }}
       >
-        <Image 
+        <Image
           src={EarthTablet}
           alt="Earth Tablet View"
           width={725}
@@ -58,15 +62,16 @@ const EarthMapPicture = () => {
         />
       </Box>
 
+      {/* Desktop: display desde 900px en adelante */}
       <Box
         sx={{
-          display: 'none',
-          '@media (min-width: 900px)': {
-            display: 'block'
+          display: {
+            xs: 'none',
+            customEarthDesktop: 'block'
           }
         }}
       >
-        <Image 
+        <Image
           src={Earth}
           alt="Earth Desktop View"
           width={1140}

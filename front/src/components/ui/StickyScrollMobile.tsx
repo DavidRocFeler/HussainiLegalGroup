@@ -2,10 +2,16 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';import Image from 'next/image';
+import Grid from '@mui/material/Grid';
+import Image from 'next/image';
 import { sectionsDataStikyResponsive } from '@/mock/sectionScrollStikyResponsive'
+import Button from '@mui/material/Button';
 
 const StickyScrollMobile = () => {
+  const formatId = (id: number): string => {
+    return id < 10 ? `0${id}` : `${id}`;
+  };  
+
   return (
       <Grid
         container 
@@ -20,7 +26,7 @@ const StickyScrollMobile = () => {
             <Grid 
               size={12} 
               sx={{
-                paddingTop: index > 0 ? '2.5rem' : 0, 
+                paddingTop: index > 0 ? 5 : 0,
               }}
             >
               <Box
@@ -44,17 +50,17 @@ const StickyScrollMobile = () => {
               </Box>
             </Grid>
 
-            {/* Content Section */}
             <Grid 
               size={12} 
             >
               <Box
                 sx={{
-                    bgcolor: 'white',
+                    bgcolor: 'brand.whiteText',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    padding: '1.88rem 0.9375rem',
+                    py: 7.5,
+                    px: 4,
                     height: '100%',
                     minHeight: '300px',
                     borderBottomLeftRadius: '0.625rem',
@@ -62,34 +68,22 @@ const StickyScrollMobile = () => {
                 }}
               >
                 <Typography
-                  variant="h5"
-                  sx={{
-                    color: '#891C1B',
-                    fontWeight: 700,
-                    fontSize: '1.25rem',
-                    mb: '1.25rem'
-                  }}
+                  mb={2}
+                  variant="h3"
                 >
-                  {section.id}
+                  {formatId(section.id)}
                 </Typography>
                 <Typography
-                  variant="h1"
+                  mb={2}
+                  variant="h4"
                   sx={{
-                    fontSize: '2.5rem',
                     fontWeight: 400,
-                    color: '#131313',
-                    mb: '1.25rem'
                   }}
                 >
                   {section.title}
                 </Typography>
                 <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: 500,
-                    color: '#131313',
-                    mb: '0.75rem'
-                  }}
+                  variant="h5"
                 >
                   {section.description}
                 </Typography>
@@ -99,17 +93,9 @@ const StickyScrollMobile = () => {
                     textDecoration: 'none'
                   }}
                 >
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: '#891C1B',
-                      mb: '1.25rem',
-                      fontWeight: 700,
-                      fontSize: '1.25rem',
-                    }}
-                  >
+                  <Button variant="seeMoreButton">
                     See more
-                  </Typography>
+                  </Button>
                 </Link>
               </Box>
             </Grid>

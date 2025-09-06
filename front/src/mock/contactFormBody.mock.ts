@@ -6,26 +6,31 @@ export const contactFormData: ContactFormData = {
       id: 'firstName',
       label: 'First Name',
       placeholder: 'e.g. John',
-      gridSize: { xs: 12, sm: 6 }
+      gridSize: { xs: 12, sm: 6 },
+      required: true
     },
     {
       id: 'lastName',
       label: 'Last Name',
-      placeholder: 'e.g. Doe',
-      gridSize: { xs: 12, sm: 6 }
+      placeholder: 'e.g. Dowry',
+      gridSize: { xs: 12, sm: 6 },
+      required: true
     },
     {
       id: 'email',
       label: 'Email address',
       placeholder: 'e.g. john.doe@example.com',
       type: 'email',
-      gridSize: { xs: 12, sm: 12 }
+      gridSize: { xs: 12, sm: 12 },
+      required: true
     },
     {
       id: 'company',
       label: 'Company',
       placeholder: 'e.g. Company XYZ',
-      gridSize: { xs: 12, sm: 12 }
+      gridSize: { xs: 12, sm: 12 },
+      ifAny: '(if any)',
+      required: false
     },
     {
       id: 'message',
@@ -34,7 +39,8 @@ export const contactFormData: ContactFormData = {
       multiline: true,
       rows: 5,
       maxLength: 300,
-      gridSize: { xs: 12, sm: 12 }
+      gridSize: { xs: 12, sm: 12 },
+      required: true
     }
   ],
   submitButton: {

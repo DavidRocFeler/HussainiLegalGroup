@@ -9,7 +9,7 @@ const InsightCardCover = ({ insight }: { insight: InsightItem }) => {
         borderRadius: 0,
         overflow: 'hidden',
         boxShadow: 'none',
-        mb: '4rem',
+        mb: 8,
         bgcolor: 'primary.main'
       }}
     >
@@ -31,43 +31,53 @@ const InsightCardCover = ({ insight }: { insight: InsightItem }) => {
 
       <Box
       sx={{
-        padding: {
-          xs: '1rem',
-          md: '2rem'
+        p: {
+          xs: 2,
+          md: 4
         }
       }}
       >
         <Chip
           label={insight.date}
           sx={{
-            color: 'grey.900',
+            color: 'brand.red',
             fontSize: '1rem',
-            marginBottom: '1rem',
+            mb: 2,
             fontWeight: 400,
             bgcolor: 'transparent',
             alignItems: 'flex-start',
-            padding: 0,
+            p: 0,
             height: 'auto',
             '& .MuiChip-label': {
-              padding: 0,
-              paddingLeft: 0,
-              paddingRight: 0,
+              p: 0,
+              pl: 0,
+              pr: 0,
             },
             border: 'none',
             borderRadius: 0,
           }}
         />
-        <Typography
-          variant="h1"
+        <Typography 
+          color='text.primary'
           sx={{
-            lineHeight: 1.4,
-            color: '#131313',
+            fontFamily: 'Merriweather, serif',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            letterSpacing: '-0.01rem',
             fontSize: {
-              xs: '1.4rem',
-              md: '2.25rem',
+              xs: '1.375rem',
+              sm: '1.625rem',  
+              lg: '2.25rem'
             },
-            fontWeight: 400
-          }} 
+            lineHeight: {
+              xs: '1.54rem',
+              sm: '1.82rem',
+              lg: '2.52rem'
+            },
+            '&:hover': {
+              color: 'text.primary'
+            }
+          }}
         >
           {insight.description}
         </Typography>

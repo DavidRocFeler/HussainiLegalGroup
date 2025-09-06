@@ -1,55 +1,59 @@
+'use client'
 import Input from '@mui/material/Input';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { FormInputProps } from '@/types/contact';
+import { ExtendedFormInputProps } from '@/types/contact';
 
-const FormInput = ({ label, placeholder, type }: FormInputProps) => {
+const FormInput = ({ label, placeholder, type, required, inputRef }: ExtendedFormInputProps) => {
   return (
     <Box>
       <Typography
-        variant='h1'
+        color='text.secondary'
+        variant='h10'
         component="label"
         sx={{
           fontSize: "0.80rem",
-          color: "#5E4740",
           display: 'block',
           marginBottom: 1,
           fontWeight: 400
         }}
       >
-        {label}
+        {label} {required && '*'}
       </Typography>
       <Input
+        inputRef={inputRef}
         fullWidth
         placeholder={placeholder}
         type={type}
         disableUnderline={false}
         sx={{
           "& .MuiInputBase-input": {
-            color: "#5E4740",
-            padding: '6px 0',
+            color: "text.secondary",
+            py: 0.75,
+            fontFamily: 'Inter',
+            fontSize: '0.85rem',
             "&::placeholder": {
-              color: "#A3A3A3",
+              color: "brand.placeholderGrey",
               fontFamily: "Inter",
-              fontSize: "0.8rem",
+              fontSize: '0.85rem',
               opacity: 1,
             }
           },
           "&:before": {
-            borderBottomColor: "#E6E6E6 !important",
+            borderBottomColor: "brand.borderGrey",
           },
           "&:hover:not(.Mui-disabled):before": {
-            borderBottomColor: "#E6E6E6 !important",
+            borderBottomColor: "brand.borderGrey",
           },
           "&:after": {
-            borderBottomColor: "#E6E6E6 !important",
+            borderBottomColor: "brand.borderGrey",
           },
           "&.Mui-focused:after": {
-            borderBottomColor: "#E6E6E6 !important",
+            borderBottomColor: "brand.borderGrey",
           },
           "&:hover": {
             "&:before": {
-              borderBottomColor: "#E6E6E6 !important",
+              borderBottomColor: "brand.borderGrey",
             }
           }
         }}

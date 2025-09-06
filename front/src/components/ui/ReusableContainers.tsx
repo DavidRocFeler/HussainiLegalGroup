@@ -1,11 +1,9 @@
-'use client'
-import React from 'react';
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image';
-import ButtonCustom from './ButtomCustom';
 import { ReusableContainersProps } from '@/types/reusable';
+import Link from 'next/link';
 
 const ReusableContainers = ({ 
   imageUrl, 
@@ -15,18 +13,6 @@ const ReusableContainers = ({
   backgroundColor = 'transparent',
   href 
 }: ReusableContainersProps ) => {
-
-  const handleButtonClick = (buttonHref?: string) => {
-    if (buttonHref) {
-      window.location.href = buttonHref;
-    }
-  };
-
-  const handleSeeMoreClick = () => {
-    if (href) {
-      window.location.href = href;
-    }
-  };
 
   return (
     <Box
@@ -47,8 +33,11 @@ const ReusableContainers = ({
         {/* Red background box */}
         <Box
           sx={{
-            display: 'block',
-            backgroundColor: '#891C1B',
+            display: {
+              xs: 'none',
+              customTabletInsight: 'block'
+            },
+            backgroundColor: 'brand.red',
             borderRadius: '0.62rem',
             width: {
               xs: '20.75rem',
@@ -61,9 +50,6 @@ const ReusableContainers = ({
             position: 'absolute',
             zIndex: 1,
             mt: 0,
-            '@media (max-width:650px)': {
-              display: 'none',
-            },
           }}
         />
 
@@ -73,28 +59,26 @@ const ReusableContainers = ({
             position: 'absolute',
             zIndex: 2,
             mt: {
-              xs: '3rem',
-              md: '2rem'
+              xs: 0,
+              customTabletInsight: 2.5,
+              md: 2.5
             },
             ml: {
-              xs: '3rem',
-              md: '1.9rem'
+              xs: 0,
+              customTabletInsight: 2.375,
+              md: 2.375
             },
             borderRadius: '0.62rem',
             overflow: 'hidden',
             width: {
-              xs: '93.5%',
+              xs: '100%',
+              customTabletInsight: '93.5%',
               md: '41rem'
             },
             height: {
-              xs: '41rem',
+              xs: '23rem',
+              customTabletInsight: '41rem',
               md: "32rem"
-            },
-            '@media (max-width:650px)': {
-              mt: '0',
-              ml: '0',
-              width: '100%',
-              height: '23rem'
             },
           }}
         >
@@ -112,59 +96,43 @@ const ReusableContainers = ({
         {/* Text content card */}
         <Box
           sx={{
-            backgroundColor: 'white',
+            backgroundColor: 'brand.whiteText',
             borderRadius: '0.62rem',
-            padding: 4,
+            p: 4,
             maxWidth: {
               xs: '54rem',
               md: '39.5rem'
             },
             mt: {
-              xs: '46rem',
-              md: '17rem'
+              xs: 50,
+              customTabletInsight: 92,
+              md: 34
             },
             ml: 'auto',
             zIndex: 3,
             boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
-            '@media (max-width:650px)': {
-              mt: '25rem'
-            },
           }}
         >
-          {content.map((item) => (
+          {content.map((item) => ( 
             <Box key={item.id} mb={2}>
               {item.title && (
                 <Typography
-                  variant="h5"
-                  sx={{ 
-                    color: '#891C1B',
-                    mb: '1.2rem',
-                    fontWeight: 700,
-                    fontSize: '1.25rem',
-                  }}
+                  variant="h3"
+                  mb={3}
                 >
                   {item.title}
                 </Typography>
               )}
               {item.subtitle && (
                 <Typography
-                  variant="h6"
-                  sx={{ 
-                    color: '#131313',
-                    mb: '1.2rem'
-                  }}
+                  mb={3}
+                  variant="h4"
                 >
                   {item.subtitle}
                 </Typography>
               )}
               <Typography
                 variant="h5"
-                sx={{ 
-                  color: 'text.secondary', 
-                  lineHeight: '1.4rem',
-                  fontWeight: 400,
-                  fontSize: '1rem',
-                }}
               >
                 {item.description}
               </Typography>
@@ -172,29 +140,13 @@ const ReusableContainers = ({
           ))}
 
           {href && (
-            <Button
-              onClick={handleSeeMoreClick}
-              sx={{
-                color: '#891C1B',
-                fontFamily: 'Inter',
-                fontSize: '1rem',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: '1.3rem',
-                letterSpacing: '-0.01rem',
-                textTransform: 'none',
-                padding: 0,
-                minWidth: 'auto',
-                mt: 2,
-                backgroundColor: 'transparent',
-                '&:hover': {
-                  backgroundColor: 'transparent',
-                  textDecoration: 'underline',
-                }
-              }}
-            >
-              See more
-            </Button>
+            <Link href={href} style={{ textDecoration: 'none' }}>
+              <Button 
+              disableRipple={true}
+              variant="seeMoreButton">
+                See more
+              </Button>
+            </Link>
           )}
 
           {/* Action buttons */}
@@ -204,20 +156,19 @@ const ReusableContainers = ({
                 mt: 4, 
                 display: 'flex',
                 gap: {
-                  xs: '1rem',
-                  md: '1.875rem' 
+                  xs: 2,
+                  md: 2.344
                 }
               }}>
               {buttons.map((button, index) => (
-                <ButtonCustom
-                  key={index}
-                  variant={button.variant || "contained"}
-                  text={button.text}
-                  sx={button.sx}
-                  disabledHover={button.disabledHover}
-                  customHoverColor={button.customHoverColor} 
-                  onClick={() => handleButtonClick(button.href)} 
-                />
+                <Link key={index} href={button.href || '#'} style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant={button.variant || "redCahova"} 
+                    sx={button.sx} 
+                  >
+                    {button.text}
+                  </Button>
+                </Link>
               ))}
             </Box>
           )}

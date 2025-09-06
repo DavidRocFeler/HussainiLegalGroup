@@ -5,43 +5,31 @@ import Typography from '@mui/material/Typography'
 const LabelAboutInfo = ({ score, description, hasBorderBottom }: LabelAboutInfoProps) => {
   return (
     <Box
+      mb={3}
+      pb={3}
       sx={{
-        padding: '1.5rem 0',
         borderBottom: hasBorderBottom ? '1px solid white' : 'none'
       }}
     >
       <Typography 
-        variant="h1" 
-        sx={{
-            color: 'white',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            fontSize: {
-              xs: '1.375rem',
-              md: '1.5625rem'
-            },
-            lineHeight: {
-              xs: '1.65rem',
-              md: '1.875rem'
-            },
-            mb: '1rem'
-          }}
+        variant="h8" 
       >
         {score}
       </Typography>
       <Typography 
         variant="h5"
+        mt={2}
         sx={{
-          color: 'white',
+          color: 'brand.whiteText',
           fontStyle: 'normal',
           fontWeight: 400,
           fontSize: {
             xs: '1rem',
-            md: '1.125rem'
+            sm: '1.125rem'
           },
           lineHeight: {
             xs: '1.5rem',
-            md: '1.6875rem'
+            sm: '1.6875rem'
           },
         }}
       >

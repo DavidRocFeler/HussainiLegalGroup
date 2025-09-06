@@ -10,15 +10,14 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
 import Collapse from '@mui/material/Collapse'
-import Image from 'next/image';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { navigationMock } from '@/mock/navigation.mock';
 import Link from 'next/link';
+import Logo from './ui/Logo';
 
-const Header  = () => {
+const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navItems = navigationMock;
 
@@ -26,20 +25,28 @@ const Header  = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleCloseDrawer = () => {
+    if (mobileOpen) {
+      setMobileOpen(false);
+    }
+  };
+
   return (
     <AppBar 
       component="nav" 
-      position="static"
-      suppressHydrationWarning 
+      position="fixed"
       sx={{ 
-        color: 'white',
-        position: 'fixed',
-        backgroundColor: 'grey.900', 
-        borderBottom: 'white 1px solid',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        padding: {
-          xs: '0.8rem 1rem',   
-          md: '2.3rem 4.5rem 2.3rem 5rem' 
+        backgroundColor: 'brand.red', 
+        borderBottom: 1,
+        borderColor: 'primary.main',
+        boxShadow: 0,
+        px: {
+          xs: 3,      
+          md: 10    
+        },
+        py: {
+          xs: 2,      
+          md: 4.5    
         },
         transition: 'height 0.3s ease-in-out',
         height: mobileOpen ? 'auto' : 'auto',
@@ -48,20 +55,22 @@ const Header  = () => {
       }}
     >
       <Container
+        disableGutters
+        maxWidth={false}
         sx={{
           width: '100%',
-          padding: '0 !important',
-          margin: '0 !important',
-          maxWidth: '100% !important',
+          padding: 0,
+          margin: 0,
         }}
       >
         <Toolbar
+          disableGutters
           sx={{
             justifyContent: 'space-between',
             width: '100%',
-            padding: '0 !important',
-            margin: '0 !important',
-            minHeight: 'auto !important',
+            padding: 0,
+            margin: 0,
+            minHeight: 'auto',
             alignItems: 'center',
           }}
         >
@@ -76,34 +85,17 @@ const Header  = () => {
             }}
           >
             <Link
-            href='/'
-            >
-              <Image 
-                src='https://gist.githubusercontent.com/DavidRocFeler/094740b9109ecc621859ad9430a2ddc7/raw/56b2abb333cd264e1447f6e390c8eff9c4b2a956/LegalGroupLogo.svg'
-                alt="Company Logo" 
-                width={55}
-                height={50}
-                priority
-              />
+            onClick={handleCloseDrawer}
+            href='/' style={{ display: 'inline-block', textDecoration: 'none' }}>
+              <Logo/>
             </Link>
-            <Typography
-              variant='h1'
-              sx={{
-                fontSize: '0.6rem',
-                marginTop: '0.2rem',
-                lineHeight: 1.2,
-                fontWeight: 1000
-              }}
-            >      
-              HUSSAINI LEGAL GROUP
-            </Typography>
           </Box>
 
-          {/* Desktop Navigation - Aligned with logo */}
+          {/* Desktop Navigation */}
           <Box 
             sx={{ 
               width: 'fit-content',
-              gap: '0rem',
+              gap: 2,
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center', 
               justifyContent: 'center',
@@ -112,39 +104,26 @@ const Header  = () => {
             {navItems
               .filter(item => item.name !== "Contact Us")
               .map((item) => (
-                <Button 
-                  disableRipple={true}
+                <Link 
+                  href={item.href} 
                   key={item.name} 
-                  href={item.href}
-                  sx={{ 
-                    color: 'primary.main', 
-                    minWidth: 'auto',
-                    padding: '8px 10px',
-                    borderRadius: '0px',
-                    fontSize: '1.125rem',
-                    mx: 1,
-                    textTransform: 'none',
-                    '&:hover': { 
-                      color: 'white',
-                      backgroundColor: 'transparent', 
-                      boxShadow: 'none', 
-                    },
-                  }}
                 >
-                   <Typography 
-                   variant="h1" 
-                   sx={{
-                    fontSize: '1rem',    
-                    fontWeight: 300,
-                    '@media (max-width:899px)': {
-                      fontSize: '1.5rem',
-                      lineHeight: '1.5rem',  
-                    },
-                   }}
-                   >
-                    {item.name}
-                  </Typography>
-                </Button>
+                  <Button 
+                    disableRipple={true}
+                    sx={{
+                      '&:hover': { 
+                        backgroundColor: 'transparent', 
+                        boxShadow: 'none', 
+                      },
+                    }}
+                  >
+                    <Typography 
+                      variant="body1" 
+                    >
+                      {item.name}
+                    </Typography>
+                  </Button>
+                </Link>
               ))}
           </Box>
 
@@ -154,57 +133,49 @@ const Header  = () => {
               display: 'flex',
               alignItems: 'center',
               gap: 2,
-              margin: '0 !important',
-              padding: '0 !important',
             }}
           >
             {/* Contact button - Only on desktop */}
-            <Button 
-              href="/contact"
-              sx={{ 
-                display: { xs: 'none', md: 'block' },
-                fontSize: '1.125rem',    
-                fontWeight: 300,
-                fontFamily: '"Merriweather", serif',
-                color: 'primary.main',
-                border: '1px solid white',
-                padding: '0.6rem 2rem',
-                backgroundColor: 'transparent',
-                minWidth: 'auto',
-                transition: 'all 0.3s ease-in-out',
-                borderRadius: '0px',
-                textTransform: 'none',
-                '&:hover': { 
-                  backgroundColor: '#AB854B',
-                  borderColor: '#AB854B',
-                  color: 'white',
-                }
+            <Link
+              href='/contact'
+              style={{
+                textDecoration: 'none'
               }}
             >
-              Contact Us
-            </Button>
-
+              <Button 
+                variant='transparentBorder'
+                sx={{
+                  display: {
+                    xs: 'none',
+                    md: 'block'
+                  }
+                }}
+              >
+                Contact Us
+              </Button>
+            </Link>
+            
             {/* Hamburger/Close Button - Only on mobile */}
             <IconButton
-              color="inherit"
               aria-label="toggle menu"
               onClick={handleDrawerToggle}
               sx={{ 
                 display: { xs: 'block', md: 'none' },
-                color: 'white',
+                color: 'primary.main',
               }}
             >
               {mobileOpen ? 
-              <CloseIcon
-              sx={{
-                fontSize: '2.5rem'
-              }}
-              /> : 
-              <MenuIcon 
-              sx={{
-                fontSize: '2.5rem'
-              }}
-              />}
+                <CloseIcon
+                  sx={{
+                    fontSize: '2.5rem'
+                  }}
+                /> : 
+                <MenuIcon 
+                  sx={{
+                    fontSize: '2.5rem'
+                  }}
+                />
+              }
             </IconButton>
           </Box>
         </Toolbar>
@@ -213,7 +184,7 @@ const Header  = () => {
           <Box 
             sx={{ 
               textAlign: 'center', 
-              padding: '20px 0',
+              py: 2.5,       
               backgroundColor: 'header.main',
               color: 'primary.main'
             }}
@@ -222,36 +193,28 @@ const Header  = () => {
               {navItems.map((item) => (
                 <ListItem 
                   key={item.name} 
-                  component="a" 
-                  href={item.href} 
                   disablePadding
                   sx={{ 
                     justifyContent: 'center',
                   }}
-                  onClick={handleDrawerToggle}
                 >
-                  <ListItemText 
-                    primary={item.name}
-                    slotProps={{
-                      primary: {
-                        variant: "h1",
-                        sx: {
-                          fontSize: '1.125rem',
-                          fontWeight: 400,
-                          textAlign: 'center',
-                          color: 'primary.main',
-                          '&:hover': {
-                            color: 'white',
-                            backgroundColor: 'transparent', 
-                            boxShadow: 'none', 
-                          }
+                  <Link href={item.href}>
+                    <Button
+                      disableRipple={true}
+                      onClick={handleDrawerToggle}
+                      sx={{ 
+                        py: 1.5,  
+                        '&:hover': {
+                          backgroundColor: 'transparent', 
+                          boxShadow: 'none', 
                         }
-                      }
-                    }}
-                    sx={{ 
-                      padding: '12px 0'
-                    }} 
-                  />
+                      }}
+                    >
+                      <Typography variant='body1'>
+                        {item.name}
+                      </Typography>
+                    </Button>
+                  </Link>
                 </ListItem>
               ))}
             </List>

@@ -7,7 +7,7 @@ const InsightsCardItem = ({ insight }: { insight: InsightMainItem }) => {
       sx={{
         borderRadius: 0,
         boxShadow: 'none',
-        backgroundColor: '#F8F3E7;',
+        backgroundColor: '#F8F3E7',
         padding: '1rem 2.25rem 1.6rem 2.25rem',
       }}
     >
@@ -15,12 +15,10 @@ const InsightsCardItem = ({ insight }: { insight: InsightMainItem }) => {
         label={insight.date}
         sx={{
           backgroundColor: 'transparent',
-          color: '#131313',
-          fontFamily: 'Inter',
+          color: 'text.primary',
           fontSize: '1rem',
           fontStyle: 'normal',
           fontWeight: 400,
-          lineHeight: '1.3rem',
           letterSpacing: '-0.01rem',
           marginBottom: '16px',
           padding: 0,
@@ -33,33 +31,42 @@ const InsightsCardItem = ({ insight }: { insight: InsightMainItem }) => {
           border: 'none',
           borderRadius: 0,
           ":hover": {
-            color: 'grey.900'
+            color: 'brand.red'
           }
         }}
       />
       <Typography
-        variant="h1"
         sx={{
+          fontFamily: 'Merriweather',
           fontWeight: 500,
           fontSize: {
-            xs: '2rem',
-            md: '2rem',
+            xs: '1.25rem',
+            sm: '1.5rem', 
+            lg: '2.0125rem'
           },
-          marginBottom: 9,
-          lineHeight: '2rem',
-          color: '#333',
+          marginBottom: {
+            xs: 2,    
+            sm: 4,    
+            lg: 9    
+          },
+          lineHeight: {
+            xs: '1.4375rem',
+            sm: '1.725rem',
+            lg: '2.0125rem',
+          },
+          color: 'brand.blackButton',
           ":hover": {
-            color: 'grey.900'
+            color: 'brand.red'
           }
         }}
       >
         {insight.title}
       </Typography>
       <Typography
-        variant="body1"
+        variant="h5"
         sx={{
           lineHeight: 1.6,
-          color: '#666',
+          color: 'brand.greyText',
         }}
       >
         {insight.description}

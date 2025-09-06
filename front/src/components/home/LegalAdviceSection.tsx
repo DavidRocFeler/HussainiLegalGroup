@@ -1,12 +1,11 @@
 // components/LegalAdviceSection.tsx
-import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import EarthMapPicture from '@/components/ui/EarthPicture';
 import { legalAdviceContent } from '@/mock/legalAdvice.mock';
 import { legalAdviceButtons } from '@/mock/legalAdviceButtons';
 import Link from 'next/link';
-import ButtonCustom from '@/components/ui/ButtomCustom';
+import Button from '@mui/material/Button';
+import EarthMapPicture from '../ui/EarthPicture';
 
 const LegalAdviceSection = () => {
 
@@ -20,9 +19,15 @@ const LegalAdviceSection = () => {
           md: 'column'
         },
         alignItems: 'center',
-        padding: {
-          xs: '1.5rem 1.5rem',
-          md: '6rem 5rem'
+        py: {
+          xs: 3,
+          sm: 3,
+          md: 12
+        },
+        px: {
+          xs: 3,
+          sm: 3,
+          md: 10
         },
       }}
     >
@@ -49,12 +54,11 @@ const LegalAdviceSection = () => {
        >
          {/* Title section */}
          <Typography
-          variant="h1"
+          variant="h4"
+          color='brand.red'
+          fontWeight={400}
+          mb={2}
           sx={{
-            fontSize: '2.5rem',
-            fontWeight: 400,
-            color: '#891C1B',
-            mb: 3,
             textAlign: {
               xs: 'start',
               md: 'center'
@@ -67,13 +71,12 @@ const LegalAdviceSection = () => {
         {/* Description text */}
         <Typography
           variant="h5"
+          mb={4}
           sx={{
-            fontSize: '1rem',
-            fontWeight: 400,
-            lineHeight: '1.6rem',
-            color: '#131313',
-            mb: 4,
-            width: '80%',
+            width: {
+              xs: '100%',
+              md: '75%',
+            },
             textAlign: {
               xs: 'start',
               md: 'center'
@@ -88,23 +91,22 @@ const LegalAdviceSection = () => {
           sx={{
             display: 'flex',
             gap: {
-              xs: '1rem',
-              md: '1.875rem' 
+              xs: 2,
+              md: 3
             },
             flexDirection: 'row',
             alignItems: 'center',
           }}
         >
-          {legalAdviceButtons.map((button, index) => (
+         {legalAdviceButtons.map((button, index) => (
             <Link key={index} href={button.href || '#'} style={{ textDecoration: 'none' }}>
-              <ButtonCustom
+              <Button
                 key={index}
-                text={button.text}
-                variant={button.variant || "contained"}
-                sx={button.sx}
-                disabledHover={button.disabledHover}
-                customHoverColor={button.customHoverColor}
-              />
+                variant={button.variant } 
+                sx={button.sx} 
+              >
+                {button.text}
+              </Button>
             </Link>
           ))}
         </Box>
@@ -112,7 +114,6 @@ const LegalAdviceSection = () => {
 
       </Box>
 
-        {/* Decorative SVG */}
         <Box sx={{ mt: 4 }}>
           <EarthMapPicture />
         </Box>

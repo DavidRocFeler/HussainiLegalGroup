@@ -11,10 +11,14 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
         display: 'flex',
         alignItems: 'flex-start',
         minHeight: '100px',
-        mb: '2rem',
-        '@media (max-width: 699px)': {
-          justifyContent: 'flex-start',
-          pl: '1rem' 
+        mb: 4,
+        justifyContent: {
+          xs: 'flex-start',
+          customTimelineMobile: 'initial'
+        },
+        pl: {
+          xs: 2,
+          customTimelineMobile: 0
         }
       }}
     >
@@ -22,12 +26,12 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
       <Box
         sx={{
           flex: 1,
-          display: 'flex',
+          display: {
+            xs: 'none',
+            customTimelineMobile: 'flex'
+          },
           justifyContent: 'flex-end',
-          pr: '2rem',
-          '@media (max-width: 699px)': {
-            display: 'none' 
-          }
+          pr: 4
         }}
       >
         {isEven && (
@@ -35,7 +39,7 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
             <Typography
                variant='h5'
                sx={{
-                 color: '#891C1B',
+                 color: 'brand.red',
                  fontStyle: 'normal',
                  fontWeight: 600,
                  fontSize: {
@@ -53,7 +57,7 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
             <Typography
               variant='h5'
               sx={{
-                color: '#23363A',
+                color: 'grey.50',
                 fontStyle: 'normal',
                 fontWeight: 400,
                 fontSize: {
@@ -78,16 +82,21 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
           width: '0.9375rem',
           height: '0.9375rem',
           borderRadius: '50%',
-          backgroundColor: '#891C1B',
-          position: 'relative',
+          backgroundColor: 'brand.red',
+          position: {
+            xs: 'absolute',
+            customTimelineMobile: 'relative'
+          },
           zIndex: 2,
-          top: '0.25rem',
+          top: 6,
           flexShrink: 0,
-          '@media (max-width: 699px)': {
-            mr: '1rem', 
-            position: 'absolute',
-            left: '-0.35rem',
-            top: '0.25rem'
+          mr: {
+            xs: '1rem',
+            customTimelineMobile: 0
+          },
+          left: {
+            xs: '-0.35rem',
+            customTimelineMobile: 'auto'
           }
         }}
       />
@@ -98,26 +107,28 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
           flex: 1,
           display: 'flex',
           justifyContent: 'flex-start',
-          pl: '2rem',
-          '@media (max-width: 699px)': {
-            pl: 0 
+          pl: {
+            xs: 0,
+            customTimelineMobile: 4
           }
         }}
       >
+        {/* Desktop content (shows on larger screens) */}
         {!isEven && (
           <Box 
             sx={{ 
               textAlign: 'left', 
               width: 'full',
-              '@media (max-width: 699px)': {
-                display: 'none' 
+              display: {
+                xs: 'none',
+                customTimelineMobile: 'block'
               }
             }}
           >
             <Typography
                variant='h5'
                sx={{
-                 color: '#891C1B',
+                 color: 'brand.red',
                  fontStyle: 'normal',
                  fontWeight: 600,
                  fontSize: {
@@ -135,7 +146,7 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
             <Typography
               variant='h5'
               sx={{
-                color: '#23363A',
+                color: 'grey.50',
                 fontStyle: 'normal',
                 fontWeight: 400,
                 fontSize: {
@@ -153,21 +164,22 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
           </Box>
         )}
 
+        {/* Mobile content (shows on smaller screens) */}
         <Box 
           sx={{ 
             textAlign: 'left', 
             width: 'full',
-            display: 'none',
-            ml: '0.5rem',
-            '@media (max-width: 699px)': {
-              display: 'block' 
-            }
+            display: {
+              xs: 'block',
+              customTimelineMobile: 'none'
+            },
+            ml: 1
           }}
         >
           <Typography
              variant='h5'
              sx={{
-               color: '#891C1B',
+               color: 'brand.red',
                fontStyle: 'normal',
                fontWeight: 600,
                fontSize: {
@@ -185,7 +197,7 @@ const TimelineItem = ({ year, description, index }: TimelineItemProps) => {
           <Typography
             variant='h5'
             sx={{
-              color: '#23363A',
+              color: 'grey.50',
               fontStyle: 'normal',
               fontWeight: 400,
               fontSize: {

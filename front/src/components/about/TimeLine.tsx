@@ -7,21 +7,23 @@ const Timeline = () => {
     <Box
       sx={{
         position: 'relative',
-        padding: '4rem 2rem 4rem 2rem',
+        py: 8,
+        px: 4,
         '&::before': {
           content: '""',
           position: 'absolute',
-          top: '5rem',
-          bottom: '9rem',
+          top: 10,
+          bottom: 18,
           width: '0.1875rem',
-          backgroundColor: '#D6D0B3',
+          backgroundColor: 'secondary.main',
           zIndex: 0,
-          '@media (min-width: 700px)': {
-            left: '50%',
-            transform: 'translateX(-50%)'
+          left: {
+            xs: '2rem',
+            customTimelineMobile: '50%'
           },
-          '@media (max-width: 699px)': {
-            left: '2rem' 
+          transform: {
+            xs: 'none',
+            customTimelineMobile: 'translateX(-50%)'
           }
         }
       }}
