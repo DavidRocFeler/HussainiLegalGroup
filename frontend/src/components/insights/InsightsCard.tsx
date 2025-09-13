@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Box, Card, Typography, Chip } from '@mui/material';
 import { ArticleHighlightItem } from '@/types/article';
 import { transformDateText } from '@/utils/dateFormatters';
+import { truncateText } from '@/utils/truncate';
 
 const InsightCard = ({ insight }: { insight: ArticleHighlightItem }) => {
   return (    
@@ -79,7 +80,7 @@ const InsightCard = ({ insight }: { insight: ArticleHighlightItem }) => {
             }
           }}
         >
-          {insight.secondTitle}
+          {truncateText(insight.secondTitle)}
         </Typography>
       </Box>
     </Card>

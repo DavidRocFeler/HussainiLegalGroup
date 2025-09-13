@@ -22,6 +22,18 @@ export interface HeroTextContent {
   image: StaticImageData;
 }
 
+export interface StickyScrollMobileProps {
+  stickyScrollData: SectionScrollStiky[];
+}
+
+export interface StickyScrollDesktopProps {
+  stickyScrollData: SectionScrollStiky[];
+}
+
+export interface StickyScrollSectionsProps {
+  stickyScrollData: SectionScrollStiky[];
+}
+
 export interface SectionScrollStikyImage {
   image: StaticImageData;
   style: React.CSSProperties;

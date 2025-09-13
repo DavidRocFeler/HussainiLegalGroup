@@ -1,13 +1,7 @@
 import type { Metadata } from 'next'
 import { insightTitleData } from '@/mock/insights.mock'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import Link from 'next/link'
-import InsightsArticle from '@/components/insights/InsightsArticle'
-import InsightsPublications from '@/components/insights/InsightsPublications'
 import TitleReusable from '@/components/ui/TitleReusableComponent'
-import InsightCover from '@/components/insights/InsightsCover'
 import { InsightBody } from '@/components/insights/InsightBody'
 
 export const metadata: Metadata = {
@@ -38,9 +32,9 @@ const Insights = () => {
         left: 0,
         right: 0,
         height: {
-          customMobileInsight: '82rem',    
-          mobileMid: '80rem',             
-          customTabletInsight: '74rem',    
+          customMobileInsight: '80rem',    
+          mobileMid: '78rem',             
+          customTabletInsight: '75rem',    
           md: '51rem',                     
         },
         backgroundColor: 'grey.900',

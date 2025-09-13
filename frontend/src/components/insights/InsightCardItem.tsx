@@ -1,5 +1,6 @@
 import { ArticleHighlightItem } from '@/types/article';
 import { transformDateShortText } from '@/utils/dateFormatters';
+import { truncateShortText, truncateTitleText } from '@/utils/truncate';
 import { Card, Typography, Chip } from '@mui/material';
 
 const InsightsCardItem = ({ insight }: { insight: ArticleHighlightItem }) => {
@@ -17,7 +18,14 @@ const InsightsCardItem = ({ insight }: { insight: ArticleHighlightItem }) => {
         pb: 3.2,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        height: {
+          xs: 'auto',
+          md: '24rem',
+          desktopMid: '20rem',
+          lg: '21rem',
+          xl: '20rem'
+        }
       }}
     >
       <Chip
@@ -72,7 +80,7 @@ const InsightsCardItem = ({ insight }: { insight: ArticleHighlightItem }) => {
           }
         }}
       >
-        {insight.title}
+        {truncateTitleText(insight.title)}
       </Typography>
       <Typography
         variant="h5"
@@ -83,7 +91,7 @@ const InsightsCardItem = ({ insight }: { insight: ArticleHighlightItem }) => {
           color: 'text.primary',
         }}
       >
-        {insight.note}
+        {truncateShortText(insight.note)}
       </Typography>
     </Card>
   );

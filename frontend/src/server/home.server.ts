@@ -2,7 +2,6 @@
 import { sanityWriteClient } from '@/lib/sanity'
 import { HeroTextContent, SectionScrollStiky } from '@/types/home';
 
-// 1. Hero Text Content
 export const getHeroTextByPage = async (page: string): Promise<HeroTextContent[]> => {
   const query = `*[_type == "heroText" && page == "${page}"] | order(order asc){
     category,

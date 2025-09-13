@@ -64,7 +64,7 @@ const ContactFormBody = () => {
       return;
     }
 
-    const minMessageLength = 10; // Por ejemplo
+    const minMessageLength = 10; 
     const messageMinLengthValidation = FormValidationMiddleware.validateMinLength(
       formData.message,
       minMessageLength,
@@ -87,9 +87,7 @@ const ContactFormBody = () => {
         company: formData.company || undefined,
         message: formData.message
       };
-  
-      console.log('Sending to API:', apiData);
-  
+    
       await postData(apiData);
       
       Object.keys(inputRefs.current).forEach(key => {

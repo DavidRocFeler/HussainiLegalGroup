@@ -5,13 +5,12 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import { arrayImageScrollStiky } from '@/mock/arrayImageScrollStiky';
-import { SectionScrollStiky, SectionScrollStikyImage } from '@/types/home';
+import { SectionScrollStiky, SectionScrollStikyImage, StickyScrollDesktopProps } from '@/types/home';
 import Button from '@mui/material/Button';
-import { getHomeSectionStickies } from '@/server/home.server';
-import { useSanityData } from '@/hook/useSanityData';
 
-const StickyScrollDesktop = () => {
-  const { data: sectionsData, loading, error } = useSanityData(getHomeSectionStickies);
+const StickyScrollDesktop = ({ stickyScrollData }: StickyScrollDesktopProps) => {
+  const sectionsData = stickyScrollData;
+  
   const [expandedCards, setExpandedCards] = useState<{ [key: string]: boolean }>({});
   const [closingCards, setClosingCards] = useState<{ [key: string]: boolean }>({});
   const [activeSticky, setActiveSticky] = useState<number[]>([]);
@@ -23,16 +22,21 @@ const StickyScrollDesktop = () => {
   const imageHeights = useRef<{ [key: number]: number }>({});
   const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
+  // ✅ VALIDACIÓN de datos
+  if (!sectionsData || sectionsData.length === 0) {
+    return <div>No hay datos disponibles</div>;
+  }
+
   const gridItems: Array<{
     type: 'image' | 'content';
     data: SectionScrollStikyImage | SectionScrollStiky;
   }> = [
     { type: 'image', data: arrayImageScrollStiky[0] },
-    { type: 'content', data: { ...sectionsData[0], id: 1 } }, // ← índice 0 = número 1
-    { type: 'content', data: { ...sectionsData[1], id: 2 } }, // ← índice 1 = número 2
+    { type: 'content', data: { ...sectionsData[0], id: 1 } },
+    { type: 'content', data: { ...sectionsData[1], id: 2 } },
     { type: 'image', data: arrayImageScrollStiky[1] },
     { type: 'image', data: arrayImageScrollStiky[2] },
-    { type: 'content', data: { ...sectionsData[2], id: 3 } }, // ← índice 2 = número 3
+    { type: 'content', data: { ...sectionsData[2], id: 3 } },
   ];
 
   const formatId = (id: number): string => {
@@ -222,7 +226,7 @@ const StickyScrollDesktop = () => {
                     }}
                   >
                     <Typography mb={2} variant="h3">
-                      {formatId((item.data as SectionScrollStiky).id)} {/* ← Siempre mostrará 01, 02, 03 */}
+                      {formatId((item.data as SectionScrollStiky).id)}
                     </Typography>
                     <Typography variant="h4" mb={2} sx={{ fontWeight: 400 }}>
                       {(item.data as SectionScrollStiky).title}

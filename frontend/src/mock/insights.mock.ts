@@ -1,10 +1,12 @@
-import { TitleReusableProps } from '@/types/reusable';
+import { ArticleHighlightItem } from '@/types/article';
 
-export const insightTitleData: TitleReusableProps = {
-  id: 1,
-  title: "Insights",
-  description: "Articles, Events & Recent Matters",
-  textStyles: {
-    color: "primary.main"
+export const insightTitleData: ArticleHighlightItem[] = [
+  {
+    id: 1,
+    title: "Insights",
+    note: "Articles, Events & Recent Matters",
+    textStyles: {
+      color: "primary.main"
+    }
   }
-};
+]

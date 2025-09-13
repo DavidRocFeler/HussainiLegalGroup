@@ -1,16 +1,33 @@
-'use client'
+// components/home/VisionaryHero.tsx
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-// import { strategyContent } from '@/mock/strategyContent.mock';
 import { HeroTextContent, VisionaryHeroProps } from '@/types/home';
 import { discoverUsButtonData } from '@/mock/discoverUsButton.mock'; 
 import ReusableContainers from '@/components/ui/ReusableContainers';
-import { useSanityData } from '@/hook/useSanityData';
-import { getHomeHeroTexts, getStrategyHeroTexts } from '@/server/home.server';
 
-const VisionaryHero = ({ imageUrl, imageAlt }: VisionaryHeroProps) => {
-  const { data: heroHomeContent, loading } = useSanityData<HeroTextContent>(getHomeHeroTexts,)
-  const { data: heroStrategyContent  } = useSanityData<HeroTextContent>(getStrategyHeroTexts)
+// ❌ ELIMINAR esta importación
+// import { useSanityData } from '@/hook/useSanityData';
+// import { getHomeHeroTexts, getStrategyHeroTexts } from '@/server/home.server';
+
+// ✅ EXTENDER la interfaz para recibir datos como props
+interface VisionaryHeroExtendedProps extends VisionaryHeroProps {
+  heroHomeContent: HeroTextContent[];     // ✅ Datos desde el padre
+  heroStrategyContent: HeroTextContent[]; // ✅ Datos desde el padre
+}
+
+const VisionaryHero = ({ 
+  imageUrl, 
+  imageAlt,
+  heroHomeContent,      // ✅ Recibir como prop
+  heroStrategyContent   // ✅ Recibir como prop
+}: VisionaryHeroExtendedProps) => {
+
+  // ❌ ELIMINAR estos hooks (ya no los necesitas)
+  // const { data: heroHomeContent, loading } = useSanityData<HeroTextContent>(getHomeHeroTexts,)
+  // const { data: heroStrategyContent  } = useSanityData<HeroTextContent>(getStrategyHeroTexts)
+
+  // ✅ OPCIONAL: Manejar estado loading si lo necesitas
+  const loading = false; // Los datos ya vienen listos desde el servidor
 
   return (
     <Box
@@ -36,15 +53,15 @@ const VisionaryHero = ({ imageUrl, imageAlt }: VisionaryHeroProps) => {
         }
       }}
     >
-      {/* Top section with three overlapping components */}
+      {/* ✅ Usar datos que vienen como props */}
       <ReusableContainers
-      imageUrl={imageUrl}
-      imageAlt={imageAlt}
-      content={heroHomeContent}
-      buttons={discoverUsButtonData} 
-      alwaysExpanded={true}
-      loading={loading}
-    />
+        imageUrl={imageUrl}
+        imageAlt={imageAlt}
+        content={heroHomeContent}  // ✅ Datos desde props
+        buttons={discoverUsButtonData} 
+        alwaysExpanded={true}
+        loading={loading}
+      />
 
       {/* Bottom strategy section */}
       <Box 
@@ -57,8 +74,9 @@ const VisionaryHero = ({ imageUrl, imageAlt }: VisionaryHeroProps) => {
             xs: 6,
             md: 18
           },
-          }}>
+        }}>
             
+        {/* ✅ Usar datos que vienen como props */}
         {heroStrategyContent.map((item, index) => (
           <Box key={index} mb={3}>
             {item.category && (
@@ -113,8 +131,3 @@ const VisionaryHero = ({ imageUrl, imageAlt }: VisionaryHeroProps) => {
 };
 
 export default VisionaryHero;
-
-
-
-    
- 

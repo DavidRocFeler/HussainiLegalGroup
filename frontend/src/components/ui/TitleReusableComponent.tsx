@@ -1,4 +1,5 @@
 import { TitleReusableComponentProps } from '@/types/reusable';
+import { truncateText } from '@/utils/truncate';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
@@ -31,7 +32,7 @@ const TitleReusable = ({
           }
         }}
       >
-        {item.description}
+       {truncateText(item.note)}
       </Typography>
     </Box>
   );

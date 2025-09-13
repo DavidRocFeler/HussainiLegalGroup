@@ -17,7 +17,7 @@ const ReusableContainers = ({
   backgroundColor = 'transparent',
   href,
   alwaysExpanded = false,
-  loading = false // ← Nueva prop con valor por defecto
+  loading = false 
 }: ReusableContainersProps) => {
 
   const [isExpanded, setIsExpanded] = useState(alwaysExpanded);
@@ -141,11 +141,10 @@ const ReusableContainers = ({
             <CircularProgress 
               size={40} 
               sx={{ 
-                color: 'brand.red', // ← Puedes personalizar el color
+                color: 'brand.red',
               }} 
             />
           ) : (
-            // Contenido normal
             <>
               {content.map((item, index) => ( 
                 <Box key={index} mb={2}> 
@@ -193,7 +192,7 @@ const ReusableContainers = ({
                   onClick={toggleExpansion}
                   sx={{
                     mt: 1,
-                    alignSelf: 'flex-start' // ← Alinear botón a la izquierda
+                    alignSelf: 'flex-start'
                   }}
                 >
                   {isExpanded ? 'Hide' : 'See more'}

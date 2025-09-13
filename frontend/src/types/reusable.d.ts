@@ -2,6 +2,7 @@
 import { BottomContentItem } from "./button";
 import { HeroTextContent } from "./home";
 import { ButtonCustomProps } from './button'; 
+import { ArticleHighlightItem } from "./article";
 
 export interface ReusableContainersProps {
   imageUrl: string | StaticImageData; 
@@ -24,9 +25,9 @@ export interface TitleReusableProps {
 }
 
 export interface TitleReusableComponentProps {
-  data: TitleReusableProps | TitleReusableProps[];
-  titleVariant: string; // Obligatorio desde el padre
-  descriptionVariant: string; // Obligatorio desde el padre
+  data: ArticleHighlightItem[];
+  titleVariant: string;
+  descriptionVariant: string; 
 }
 
 export interface ErrorAlertProps {

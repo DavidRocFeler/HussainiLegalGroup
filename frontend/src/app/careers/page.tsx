@@ -1,6 +1,8 @@
+// app/careers/page.tsx
 import type { Metadata } from 'next'
 import ToApply from '@/components/careers/ToApply'
 import BodyCareers from '@/components/careers/BodyCareers'
+import { getCareersHeroTexts } from '@/server/home.server'
 
 export const metadata: Metadata = {
   title: 'Legal Careers & Opportunities - Hussaini Legal Group',
@@ -13,10 +15,14 @@ export const metadata: Metadata = {
   }
 }
 
-const Careers = () => {
+export const revalidate = 86400;
+
+const Careers = async () => {
+  const heroCareersContent = await getCareersHeroTexts();
+
   return (
     <>
-      <BodyCareers/>
+      <BodyCareers heroCareersContent={heroCareersContent} />
       <ToApply/>
     </>
   )

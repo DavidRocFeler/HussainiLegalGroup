@@ -33,3 +33,11 @@ export interface TimelineItemProps {
   description: string
   index: number 
 }
+
+export interface FirstAboutSectionProps {
+  heroAboutContent: HeroTextContent[];
+}
+
+export interface AboutProfessionalCardContainerProps {
+  professionalProfiles: CardProfessionalProfileProps[];
+}

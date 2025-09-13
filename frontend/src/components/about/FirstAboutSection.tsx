@@ -1,26 +1,22 @@
-'use client'
+// components/about/FirstAboutSection.tsx
 import { Box } from '@mui/material'
-import React from 'react'
 import Grid from '@mui/material/Grid'
 import rectanguleAbout from '@/assets/RectangleAbout.jpg'
-// import { aboutContentContainer } from '@/mock/about.mock'
 import ReusableContainers from '@/components/ui/ReusableContainers'
 import CardAbout from '@/components/about/CardAbout'
 import { cardAboutData } from '@/mock/cardAbout.mock'
 import OurEthos from '@/components/about/OurEthos'
-import { useSanityData } from '@/hook/useSanityData'
-import { HeroTextContent } from '@/types/home'
-import { getAboutHeroTexts } from '@/server/home.server'
+import { FirstAboutSectionProps } from '@/types/about'
 
-export const FirstAboutSection = () => {
-const { data: heroAboutContent, loading } = useSanityData<HeroTextContent>(getAboutHeroTexts);
+export const FirstAboutSection = ({ heroAboutContent }: FirstAboutSectionProps) => {
+  const loading = false;
 
   return (
     <Box>
         <ReusableContainers
             imageUrl={rectanguleAbout}
             imageAlt="About Hussaini Legal Group"
-            content={heroAboutContent}
+            content={heroAboutContent}  
             href="#read-more"
             loading={loading}
          />

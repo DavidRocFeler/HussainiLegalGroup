@@ -2,16 +2,15 @@ import { StaticImageData } from 'next/image';
 
 export interface ArticleHighlightItem {
   category?: 'articles' | 'publications'
-  _id?: string; 
   id?: number;
   picture?: StaticImageData | amy;
   label?: string;
   title?: string | amy;
   secondTitle?: string | any;
-  note?: string;
+  note?: string | amy;
 
   subtitleFirst?: string;
-  descripFirstFirst?: string
+  descripFirstFirst?: string | amy;
   descripSecondFirst?: string
   descripThirdFirst?: string
 
@@ -23,6 +22,14 @@ export interface ArticleHighlightItem {
   date?: string | amy;
   readtime?: string;
   slug?: string | any;
+
+  textStyles?: {
+    color?: string;
+  };
+}
+
+export interface CoverCaseStudyProps {
+  articles: ArticleHighlightItem[];
 }
 
 export interface ArticleHighlightCardProps {

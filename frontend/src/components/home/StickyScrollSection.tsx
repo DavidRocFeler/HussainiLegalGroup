@@ -1,8 +1,11 @@
+// components/home/StickyScrollSections.tsx
+'use client'
 import Box from '@mui/material/Box';
 import StickyScrollDesktop from '../ui/StickyScrollDesktop';
 import StickyScrollMobile from '../ui/StickyScrollMobile';
+import { StickyScrollSectionsProps } from '@/types/home';
 
-const StickyScrollSections  = () => {
+const StickyScrollSections = ({ stickyScrollData }: StickyScrollSectionsProps) => {
   return (
     <Box
       sx={{
@@ -19,24 +22,24 @@ const StickyScrollSections  = () => {
       }}
     >
       <Box
-      sx={{
-        display: {
-          xs: 'none',
-          md: 'flex'
-        }
-      }}
+        sx={{
+          display: {
+            xs: 'none',
+            md: 'flex'
+          }
+        }}
       >
-        <StickyScrollDesktop/>
+        <StickyScrollDesktop stickyScrollData={stickyScrollData} />
       </Box>
       <Box
-      sx={{
-        display: {
-          xs: 'flex',
-          md: 'none'
-        }
-      }}
+        sx={{
+          display: {
+            xs: 'flex',
+            md: 'none'
+          }
+        }}
       >
-        <StickyScrollMobile/>
+        <StickyScrollMobile stickyScrollData={stickyScrollData} />
       </Box>
     </Box>
   );

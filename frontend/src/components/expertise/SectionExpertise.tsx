@@ -1,22 +1,19 @@
-'use client'
+// components/expertise/SectionExpertise.tsx
 import { Box } from '@mui/material'
-import React from 'react'
 import ReusableContainers from '../ui/ReusableContainers'
 import ExpertiseAndSectors from './ExpertiseAndSectors'
 import visionaryHero from '@/assets/VisionaryHero.jpg'
-import { useSanityData } from '@/hook/useSanityData'
-import { HeroTextContent } from '@/types/home'
-import { getExpertiseHeroTexts } from '@/server/home.server'
+import { SectionExpertiseProps } from '@/types/expertise'
 
-export const SectionExpertise = () => {
-const { data: heroExpertiseContent, loading } = useSanityData<HeroTextContent>(getExpertiseHeroTexts);
+export const SectionExpertise = ({ heroExpertiseContent }: SectionExpertiseProps) => {
+  const loading = false;
 
   return (
     <Box>
       <ReusableContainers
         imageUrl={visionaryHero}
         imageAlt="Legal expertise and services"
-        content={heroExpertiseContent}
+        content={heroExpertiseContent} 
         loading={loading}
       />
 

@@ -1,17 +1,16 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
-import { arrayImageScrollStiky } from '@/mock/arrayImageScrollStiky'; // ← Imágenes del mock
-import { SectionScrollStiky, SectionScrollStikyImage } from '@/types/home';
+import { arrayImageScrollStiky } from '@/mock/arrayImageScrollStiky';
+import { StickyScrollMobileProps } from '@/types/home';
 import Button from '@mui/material/Button';
-import { getHomeSectionStickies } from '@/server/home.server';
-import { useSanityData } from '@/hook/useSanityData';
 
-const StickyScrollMobile = () => {
-  const { data: sectionsData, loading, error } = useSanityData(getHomeSectionStickies);
+const StickyScrollMobile = ({ stickyScrollData }: StickyScrollMobileProps) => {
+  const sectionsData = stickyScrollData;
+  
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const [scrollY, setScrollY] = useState(0);
   const [activeSticky, setActiveSticky] = useState<number[]>([]);
@@ -20,22 +19,26 @@ const StickyScrollMobile = () => {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // ALIMENTACIÓN MIXTA: Combinamos imágenes del mock con contenido de Sanity
+  // ✅ VALIDACIÓN de datos
+  if (!sectionsData || sectionsData.length === 0) {
+    return <div>No hay datos disponibles</div>;
+  }
+
   const mobileSections = [
     { 
       ...sectionsData[0], 
       id: 1, 
-      image: arrayImageScrollStiky[0].image // ← Imagen del mock
+      image: arrayImageScrollStiky[0].image
     },
     { 
       ...sectionsData[1], 
       id: 2, 
-      image: arrayImageScrollStiky[1].image // ← Imagen del mock  
+      image: arrayImageScrollStiky[1].image  
     },
     { 
       ...sectionsData[2], 
       id: 3, 
-      image: arrayImageScrollStiky[2].image // ← Imagen del mock
+      image: arrayImageScrollStiky[2].image
     }
   ];
 
@@ -109,9 +112,6 @@ const StickyScrollMobile = () => {
     return {};
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
   return (
     <Grid
       ref={gridRef}
@@ -122,7 +122,6 @@ const StickyScrollMobile = () => {
       }}
       spacing={0}
     >
-      {/* Usamos mobileSections en lugar de sectionsDataStikyResponsive */}
       {mobileSections.map((section, index) => (
         <Grid
           key={section.id}
@@ -157,8 +156,8 @@ const StickyScrollMobile = () => {
               }}
             >
               <Image
-                src={section.image} // ← Imagen del mock
-                alt={section.title} // ← Título de Sanity
+                src={section.image}
+                alt={section.title}
                 fill
                 style={{
                   objectFit: 'cover',
@@ -194,10 +193,10 @@ const StickyScrollMobile = () => {
                 {formatId(section.id)}
               </Typography>
               <Typography mb={2} variant="h4" sx={{ fontWeight: 400 }}>
-                {section.title} {/* ← De Sanity */}
+                {section.title}
               </Typography>
 
-              <Typography mb={2} variant="h5">{section.descriptionFirst}</Typography> {/* ← De Sanity */}
+              <Typography mb={2} variant="h5">{section.descriptionFirst}</Typography>
 
               <Box
                 sx={{
@@ -206,8 +205,8 @@ const StickyScrollMobile = () => {
                   transition: 'max-height 0.3s ease-in-out',
                 }}
               >
-                <Typography mb={2} variant="h5">{section.descriptionSecond}</Typography> {/* ← De Sanity */}
-                <Typography mb={2} variant="h5">{section.descriptionThird}</Typography> {/* ← De Sanity */}
+                <Typography mb={2} variant="h5">{section.descriptionSecond}</Typography>
+                <Typography mb={2} variant="h5">{section.descriptionThird}</Typography>
               </Box>
 
               {(section.descriptionSecond || section.descriptionThird) && (

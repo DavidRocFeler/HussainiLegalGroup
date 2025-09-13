@@ -2,12 +2,16 @@ import Image from 'next/image';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { articleBlogData } from '@/mock/articleBlog.mock';
+import { ArticleHighlightItem } from '@/types/article';
 
-const ArticleCover = () => {
+interface ArticleCoverProps {
+  articles: ArticleHighlightItem[];
+}
+
+const ArticleCover = ({ articles }: ArticleCoverProps) => {
     return (
         <Box sx={{ width: '100%' }}>
-            {articleBlogData.map((article) => (
+            {articles.map((article) => (
             <Card
                 key={article.id}
                 sx={{

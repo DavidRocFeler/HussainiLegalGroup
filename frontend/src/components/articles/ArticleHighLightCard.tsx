@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Link from 'next/link';
 import { ArticleHighlightCardProps } from '@/types/article';
 import { Button } from '@mui/material';
+import { transformDateText } from '@/utils/dateFormatters';
 
 const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
   return (
@@ -54,7 +55,7 @@ const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
               mb: 2
             }}
           >
-            {article.date}
+            {transformDateText(article.date)}
           </Typography>
       )}
 

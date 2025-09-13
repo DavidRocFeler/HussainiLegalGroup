@@ -1,3 +1,4 @@
+// app/page.tsx
 import type { Metadata } from 'next'
 import VisionaryHero from '@/components/home/VisionaryHero'
 import visionaryHeroImg from '@/assets/VisionaryHero.jpg'
@@ -5,6 +6,8 @@ import Box from '@mui/material/Box'
 import StickyScrollSections from '@/components/home/StickyScrollSection'
 import LegalAdviceSection from '@/components/home/LegalAdviceSection'
 import CoverBackground from '@/components/home/CoverBackground'
+
+import { getHomeHeroTexts, getStrategyHeroTexts, getHomeSectionStickies } from '@/server/home.server'
 
 export const metadata: Metadata = {
   title: 'International Law Firm | Corporate Law, Arbitration & Cross-Border Transactions',
@@ -17,19 +20,26 @@ export const metadata: Metadata = {
   }
 }
 
-const Home = () => {
+export const revalidate = 86400; 
+
+const Home = async () => {
+  const heroHomeContent = await getHomeHeroTexts();
+  const heroStrategyContent = await getStrategyHeroTexts();
+  const stickyScrollData = await getHomeSectionStickies(); 
+
   return (
-    <Box 
-    sx={{
-      width: '100%',
-      }}>
-        <CoverBackground/>
-        <VisionaryHero
-          imageUrl={visionaryHeroImg}
-          imageAlt="Modern building architecture"
-        />
-        <StickyScrollSections/>
-        <LegalAdviceSection/>
+    <Box sx={{ width: '100%' }}>
+      <CoverBackground/>
+      
+      <VisionaryHero
+        imageUrl={visionaryHeroImg}
+        imageAlt="Modern building architecture"
+        heroHomeContent={heroHomeContent}       
+        heroStrategyContent={heroStrategyContent} 
+      />
+      
+      <StickyScrollSections stickyScrollData={stickyScrollData} />
+      <LegalAdviceSection/>
     </Box>
   )
 }

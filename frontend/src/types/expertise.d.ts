@@ -8,4 +8,8 @@ export interface ExpertiseItem {
     items: ExpertiseItem[];
   }
   
+export interface SectionExpertiseProps {
+    heroExpertiseContent: HeroTextContent[];
+  }
+  
   export type ExpertiseAndSectorsData = ExpertiseSection[];

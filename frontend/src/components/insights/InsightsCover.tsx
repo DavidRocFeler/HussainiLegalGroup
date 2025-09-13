@@ -1,7 +1,7 @@
 'use client'
 
 import { Grid } from '@mui/material'
-import React, { useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 import InsightCard from './InsightsCard'
 import { getArticles, getPublications } from '@/server/blog.server'
 import { ArticleHighlightItem } from '@/types/article'
@@ -20,19 +20,6 @@ const InsightCover: React.FC = () => {
   const articlesArray = Array.isArray(articles) ? articles : []
   const publicationsArray = Array.isArray(publications) ? publications : []
 
-  useEffect(() => {
-    console.log('📚 Articles completos:', articlesArray)
-    if (articlesArray.length > 0) {
-      console.log('👉 Primer Article (más reciente):', articlesArray[0])
-    }
-  }, [articlesArray])
-
-  useEffect(() => {
-    console.log('📰 Publications completos:', publicationsArray)
-    if (publicationsArray.length > 0) {
-      console.log('👉 Primer Publication (más reciente):', publicationsArray[0])
-    }
-  }, [publicationsArray])
 
   const lastArticle = articlesArray.length > 0 ? articlesArray[0] : null
   const lastPublication = publicationsArray.length > 0 ? publicationsArray[0] : null
@@ -54,7 +41,6 @@ const InsightCover: React.FC = () => {
   }
 
   if (errorArticles || errorPublications) {
-    console.error('❌ Error loading content:', errorArticles || errorPublications)
     return null
   }
 
@@ -63,7 +49,7 @@ const InsightCover: React.FC = () => {
   return (
     <Grid container spacing={{ xs: 3, md: 0 }}>
       {insights.map((insight, index) => (
-        <Grid size={{ xs: 12, md: 6 }} key={insight._id || insight.id || `insight-${index}`}>
+        <Grid size={{ xs: 12, md: 6 }} key={insight.id || insight.id || `insight-${index}`}>
           <InsightCard insight={insight} />
         </Grid>
       ))}

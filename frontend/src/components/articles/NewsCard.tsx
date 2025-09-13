@@ -11,11 +11,18 @@ import { ArrowRightSvg } from '@/assets/icons/index'
 import Button from '@mui/material/Button';
 import { ArticleHighlightItem } from '@/types/article';
 import IconType from '@/assets/Border.png'
-import { transformDate } from '@/utils/dateFormatters';
+import { transformDate, transformDateText } from '@/utils/dateFormatters';
 
 const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => {
   const formattedDate = transformDate(newsItem.date);
   
+  const generateHref = () => {
+    if (!newsItem.category || !newsItem.slug) {
+      return '#';
+    }
+    return `/insights/${newsItem.category}/${newsItem.slug}`;
+  };
+
   return (
     <Card 
       sx={{ 
@@ -48,7 +55,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
                 mb: 2
               }}
             >
-              {newsItem.date}
+              {transformDateText(newsItem.date)}
             </Typography>
             
             <Typography 
@@ -58,7 +65,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
                 fontWeight: 400,
                 color: 'text.primary',
                 fontSize: { xs: '1.35rem', md: '2.1875rem', lg: '2.375rem' },
-                lineHeight: { xs: '1.35rem', md: '2.1875rem', lg: '2.375rem' },
+                lineHeight: { xs: '1.5rem', md: '2.3rem', lg: '2.5rem' },
               }}
             >
               {newsItem.title}
@@ -110,7 +117,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
             </Box>
             
             <Link 
-              href='/articles'
+              href={generateHref()}
               style={{ 
                 textDecoration: 'none',
               }}

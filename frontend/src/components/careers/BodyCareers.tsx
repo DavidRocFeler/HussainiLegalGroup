@@ -1,14 +1,12 @@
+// components/careers/BodyCareers.tsx
 'use client'
 import ReusableContainers from '@/components/ui/ReusableContainers'
 import Box from '@mui/material/Box'
 import rectanguleCareers from '@/assets/RectanguleCareers.jpg'
-// import { careersContentContainer } from '@/mock/careersContentContainer.mock'
-import { useSanityData } from '@/hook/useSanityData'
-import { getCareersHeroTexts } from '@/server/home.server'
-import { HeroTextContent } from '@/types/home'
+import { BodyCareersProps } from '@/types/career'
 
-const BodyCareers = () => {
-  const { data: heroCareersContent, loading } = useSanityData<HeroTextContent>(getCareersHeroTexts);
+const BodyCareers = ({ heroCareersContent }: BodyCareersProps) => {
+  const loading = false;
 
   return (
     <Box
@@ -36,8 +34,8 @@ const BodyCareers = () => {
     >
       <ReusableContainers
         imageUrl={rectanguleCareers}
-        imageAlt="Legal expertise and services"
-        content={heroCareersContent}
+        imageAlt="Legal careers and opportunities"
+        content={heroCareersContent}  
         loading={loading}
       />
     </Box>

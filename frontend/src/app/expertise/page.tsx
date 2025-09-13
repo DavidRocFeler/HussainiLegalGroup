@@ -1,6 +1,8 @@
+// app/expertise/page.tsx
 import type { Metadata } from 'next'
 import Box from '@mui/material/Box'
 import { SectionExpertise } from '@/components/expertise/SectionExpertise'
+import { getExpertiseHeroTexts } from '@/server/home.server'
 
 export const metadata: Metadata = {
   title: 'Legal Expertise & Services - Hussaini Legal Group',
@@ -13,7 +15,11 @@ export const metadata: Metadata = {
   }
 }
 
-const Expertise = () => {
+export const revalidate = 86400; 
+
+const Expertise = async () => {
+  const heroExpertiseContent = await getExpertiseHeroTexts();
+
   return (
     <Box
       sx={{
@@ -38,7 +44,7 @@ const Expertise = () => {
         }
       }}
     >
-    <SectionExpertise />
+      <SectionExpertise heroExpertiseContent={heroExpertiseContent} />
     </Box>
   )
 }

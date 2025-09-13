@@ -1,13 +1,10 @@
-'use client'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import CardProfessionalProfile from './CardProfessionalProfile'
-import { getProfessionalProfiles } from '@/server/about.server'
-import { useSanityData } from '@/hook/useSanityData'
+import { AboutProfessionalCardContainerProps, CardProfessionalProfileProps } from '@/types/about'
 
-const AboutProfessionalCardContainer = () => {
-  const { data: professionalProfiles } = useSanityData(getProfessionalProfiles)
+const AboutProfessionalCardContainer = ({ professionalProfiles }: AboutProfessionalCardContainerProps) => {
 
   return (
     <Box 

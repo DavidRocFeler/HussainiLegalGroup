@@ -35,7 +35,7 @@ const InsightsArticle: React.FC = () => {
     <Box>
       <Grid container spacing={{ xs: 3, md: 1 }}>
         {lastThreeInsights.map((insight) => (
-          <Grid size={{ xs: 12, md: 4 }} key={insight._id || insight.id}>
+          <Grid size={{ xs: 12, md: 4 }} key={insight.id || insight.id}>
             <InsightsCardItem insight={insight} />
           </Grid>
         ))}

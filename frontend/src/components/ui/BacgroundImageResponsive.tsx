@@ -1,6 +1,5 @@
 import { Box } from '@mui/material'
 import Image from 'next/image'
-import React from 'react'
 import BackgroundCover from '@/assets/BackgroundCover.jpg'
 import BackgroundCoverTablet from '@/assets/BackgroundCoverTablet.jpg'
 import BackgroundCoverMobile from '@/assets/BackgroundCoverMobile.png'
