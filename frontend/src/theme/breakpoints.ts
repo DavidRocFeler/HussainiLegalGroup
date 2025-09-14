@@ -14,6 +14,7 @@ const breakpoints: BreakpointsOptions = {
     mobileMid: 455,            // Mid-mobile breakpoint for EarthMap and mobile transitions 
     
     // Tablet optimizations  
+    tabletInsight: 500,
     customTabletInsight: 591,   // Tablet layout for InsightContainer responsive design 
     customEarthTablet: 650,     // EarthMap tablet view transition point
     customTimelineMobile: 699,  // TimelineItem mobile-to-desktop layout switch  

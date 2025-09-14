@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -8,85 +9,105 @@ import { transformDateText } from '@/utils/dateFormatters';
 import { truncateText } from '@/utils/truncate';
 
 const InsightCard = ({ insight }: { insight: ArticleHighlightItem }) => {
-  return (    
-    <Card
-      sx={{
-        borderRadius: 0,
-        overflow: 'hidden',
-        boxShadow: 'none',
-        bgcolor: 'primary.main'
+  const generateHref = () => {
+    if (!insight.category || !insight.slug) {
+      return '#';
+    }
+    return `/insights/${insight.category}/${insight.slug}`;
+  };
+
+  return (
+    <Link 
+      href={generateHref()}
+      style={{ 
+        textDecoration: 'none',
+        cursor: 'pointer'
       }}
     >
-      <Box
+      <Card
         sx={{
-          position: 'relative',
-          height: '350px',
-          width: '100%',
+          borderRadius: 0,
           overflow: 'hidden',
+          boxShadow: 'none',
+          bgcolor: 'primary.main',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease-in-out', 
+          '&:hover': {
+            transform: 'translateY(-2px)' 
+          }
         }}
       >
-        <Image
-          src={insight.picture}
-          alt='InsightCover'
-          fill
-          style={{ objectFit: 'cover' }}
-        />
-      </Box>
-
-      <Box
-      sx={{
-        p: {
-          xs: 2,
-          md: 4
-        }
-      }}
-      >
-        <Chip
-          label={transformDateText(insight.date)}
+        <Box
           sx={{
-            color: 'brand.red',
-            fontSize: '1rem',
-            mb: 2,
-            fontWeight: 400,
-            bgcolor: 'transparent',
-            alignItems: 'flex-start',
-            p: 0,
-            height: 'auto',
-            '& .MuiChip-label': {
-              p: 0,
-              pl: 0,
-              pr: 0,
-            },
-            border: 'none',
-            borderRadius: 0,
+            position: 'relative',
+            height: '350px',
+            width: '100%',
+            overflow: 'hidden',
           }}
-        />
-        <Typography 
-          color='text.primary'
+        >
+          <Image
+            src={insight.picture}
+            alt='InsightCover'
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        </Box>
+
+        <Box
           sx={{
-            fontFamily: 'Merriweather, serif',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            letterSpacing: '-0.01rem',
-            fontSize: {
-              xs: '1.375rem',
-              sm: '1.625rem',  
-              lg: '2.25rem'
-            },
-            lineHeight: {
-              xs: '1.54rem',
-              sm: '1.82rem',
-              lg: '2.52rem'
-            },
-            '&:hover': {
-              color: 'text.primary'
+            p: {
+              xs: 2,
+              md: 4
             }
           }}
         >
-          {truncateText(insight.secondTitle)}
-        </Typography>
-      </Box>
-    </Card>
+          <Chip
+            label={transformDateText(insight.date)}
+            sx={{
+              color: 'brand.red',
+              fontSize: '1rem',
+              mb: 2,
+              fontWeight: 400,
+              bgcolor: 'transparent',
+              alignItems: 'flex-start',
+              p: 0,
+              height: 'auto',
+              '& .MuiChip-label': {
+                p: 0,
+                pl: 0,
+                pr: 0,
+              },
+              border: 'none',
+              borderRadius: 0,
+            }}
+          />
+          <Typography 
+            color='text.primary'
+            sx={{
+              fontFamily: 'Merriweather, serif',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              letterSpacing: '-0.01rem',
+              fontSize: {
+                xs: '1.375rem',
+                sm: '1.625rem',  
+                lg: '2.25rem'
+              },
+              lineHeight: {
+                xs: '1.54rem',
+                sm: '1.82rem',
+                lg: '2.52rem'
+              },
+              '&:hover': {
+                color: 'text.primary'
+              }
+            }}
+          >
+            {truncateText(insight.secondTitle)}
+          </Typography>
+        </Box>
+      </Card>
+    </Link>
   );
 };
 

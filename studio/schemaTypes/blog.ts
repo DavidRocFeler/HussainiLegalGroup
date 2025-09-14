@@ -46,7 +46,7 @@ export default defineType({
       name: 'secondTitle',
       title: 'Secondary Title',
       type: 'string',
-      description: '📝 Optional subtitle or secondary headline'
+      description: '📝subtitle or secondary headline to insigths view cover'
     }),
     defineField({
       name: 'note',
