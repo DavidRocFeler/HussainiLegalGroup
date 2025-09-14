@@ -58,3 +58,4 @@ export interface CoverBackgroundImageProps {
   id: number;
   backgroundImage: StaticImageData;
 }
+

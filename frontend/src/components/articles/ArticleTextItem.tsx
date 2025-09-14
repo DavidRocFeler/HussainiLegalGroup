@@ -16,7 +16,7 @@ const ArticleTextItem = ({
   return (
     <Box sx={{ width: '100%' }}>
       <Grid container spacing={5}>
-        {/* Columna Izquierda */}
+
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ backgroundColor: 'transparent' }}>
             <Typography
@@ -105,7 +105,6 @@ const ArticleTextItem = ({
           </Box>
         </Grid>
 
-        {/* Columna Derecha */}
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ backgroundColor: 'transparent' }}>
             <Typography

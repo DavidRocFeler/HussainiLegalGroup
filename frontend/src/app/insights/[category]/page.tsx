@@ -1,33 +1,74 @@
-'use client'
-
-import { useParams } from 'next/navigation'
+// app/insights/[category]/page.tsx
+import { notFound } from 'next/navigation'
 import { Box, Typography } from '@mui/material'
 import NewsCardCaseStudy from '@/components/articles/NewsCard'
-import { useSanityData } from '@/hook/useSanityData'
-import { getArticles, getPublications } from '@/server/blog.server'
-import { ArticleHighlightItem } from '@/types/article'
+import { ArticleHighlightItem, InsightsCategoryPageProps } from '@/types/article'
 import BlogCover from '@/components/articles/BlogCover'
+import type { Metadata } from 'next'
+import { getArticles, getPublications } from '@/server/blog.server'
 
-const InsightsSlugPage = () => {
-  const params = useParams()
+export const revalidate = 86400;
+
+export async function generateMetadata({ params }: InsightsCategoryPageProps): Promise<Metadata> {
+  const { category } = params
+  
+  const categoryName = category.charAt(0).toUpperCase() + category.slice(1)
+  
+  if (category === 'articles') {
+    return {
+      title: `Legal Articles & Analysis - Hussaini Legal Group`,
+      description: 'Expert legal articles and in-depth analysis from Hussaini Legal Group. Stay informed about corporate law, international arbitration, and legal industry developments.',
+      keywords: ['legal articles', 'law analysis', 'legal insights', 'corporate law articles', 'international law', 'legal commentary'],
+      openGraph: {
+        title: 'Legal Articles - Hussaini Legal Group',
+        description: 'Expert legal articles and analysis from international law experts',
+        type: 'website',
+      }
+    }
+  } else if (category === 'publications') {
+    return {
+      title: `Legal Publications & Research - Hussaini Legal Group`,
+      description: 'Comprehensive legal publications and research papers from Hussaini Legal Group. Access our latest studies on international law, arbitration, and cross-border transactions.',
+      keywords: ['legal publications', 'law research', 'legal papers', 'international law publications', 'arbitration research', 'legal studies'],
+      openGraph: {
+        title: 'Legal Publications - Hussaini Legal Group',
+        description: 'Comprehensive legal publications and research from leading law experts',
+        type: 'website',
+      }
+    }
+  }
+  
+  return {
+    title: `${categoryName} - Hussaini Legal Group`,
+    description: `Browse our ${category} for expert legal insights and analysis.`,
+  }
+}
+
+export async function generateStaticParams() {
+  return [
+    { category: 'articles' },
+    { category: 'publications' }
+  ]
+}
+
+const InsightsCategoryPage = async ({ params }: InsightsCategoryPageProps) => {
   const { category } = params
 
-  const fetchData = category === 'articles' ? getArticles : getPublications
-  
-  const { data: items, loading, error } = useSanityData<ArticleHighlightItem>(fetchData)
-  
-  const itemsArray = Array.isArray(items) ? items : []
-
-  if (loading) {
-    return (
-      <Box sx={{ pt: 10, textAlign: 'center' }}>
-        <Typography>Loading...</Typography>
-      </Box>
-    )
+  if (category !== 'articles' && category !== 'publications') {
+    notFound()
   }
 
-  if (error) {
-    return null
+  let itemsArray: ArticleHighlightItem[] = []
+  
+  try {
+    if (category === 'articles') {
+      itemsArray = await getArticles()
+    } else {
+      itemsArray = await getPublications()
+    }
+  } catch (error) {
+    console.error(`Error fetching ${category}:`, error)
+    itemsArray = []
   }
 
   return (
@@ -58,7 +99,7 @@ const InsightsSlugPage = () => {
         Our Blog - {category} 
       </Typography>
 
-      <BlogCover/>
+      <BlogCover articlesData={itemsArray} publicationsData={itemsArray} category={category} />
 
       <Box sx={{ mt: 4 }}>
           {itemsArray.map((newsItem) => (
@@ -69,4 +110,4 @@ const InsightsSlugPage = () => {
   )
 }
 
-export default InsightsSlugPage
+export default InsightsCategoryPage

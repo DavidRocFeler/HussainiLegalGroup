@@ -2,11 +2,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import ArticleHighlightCard from './ArticleHighLightCard';
-import { ArticleHighlightItem } from '@/types/article';
-
-interface ArticleHighlightsSectionProps {
-  articles: ArticleHighlightItem[];
-}
+import { ArticleHighlightsSectionProps } from '@/types/article';
 
 const ArticleHighlightsSection = ({ articles }: ArticleHighlightsSectionProps) => {
   // Handle empty state

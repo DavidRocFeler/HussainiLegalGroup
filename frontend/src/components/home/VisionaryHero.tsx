@@ -5,29 +5,20 @@ import { HeroTextContent, VisionaryHeroProps } from '@/types/home';
 import { discoverUsButtonData } from '@/mock/discoverUsButton.mock'; 
 import ReusableContainers from '@/components/ui/ReusableContainers';
 
-// ❌ ELIMINAR esta importación
-// import { useSanityData } from '@/hook/useSanityData';
-// import { getHomeHeroTexts, getStrategyHeroTexts } from '@/server/home.server';
 
-// ✅ EXTENDER la interfaz para recibir datos como props
 interface VisionaryHeroExtendedProps extends VisionaryHeroProps {
-  heroHomeContent: HeroTextContent[];     // ✅ Datos desde el padre
-  heroStrategyContent: HeroTextContent[]; // ✅ Datos desde el padre
+  heroHomeContent: HeroTextContent[];    
+  heroStrategyContent: HeroTextContent[]; 
 }
 
 const VisionaryHero = ({ 
   imageUrl, 
   imageAlt,
-  heroHomeContent,      // ✅ Recibir como prop
-  heroStrategyContent   // ✅ Recibir como prop
+  heroHomeContent,   
+  heroStrategyContent  
 }: VisionaryHeroExtendedProps) => {
 
-  // ❌ ELIMINAR estos hooks (ya no los necesitas)
-  // const { data: heroHomeContent, loading } = useSanityData<HeroTextContent>(getHomeHeroTexts,)
-  // const { data: heroStrategyContent  } = useSanityData<HeroTextContent>(getStrategyHeroTexts)
-
-  // ✅ OPCIONAL: Manejar estado loading si lo necesitas
-  const loading = false; // Los datos ya vienen listos desde el servidor
+  const loading = false;
 
   return (
     <Box
@@ -53,17 +44,15 @@ const VisionaryHero = ({
         }
       }}
     >
-      {/* ✅ Usar datos que vienen como props */}
       <ReusableContainers
         imageUrl={imageUrl}
         imageAlt={imageAlt}
-        content={heroHomeContent}  // ✅ Datos desde props
+        content={heroHomeContent}  
         buttons={discoverUsButtonData} 
         alwaysExpanded={true}
         loading={loading}
       />
 
-      {/* Bottom strategy section */}
       <Box 
         sx={{ 
           width: {
@@ -76,7 +65,6 @@ const VisionaryHero = ({
           },
         }}>
             
-        {/* ✅ Usar datos que vienen como props */}
         {heroStrategyContent.map((item, index) => (
           <Box key={index} mb={3}>
             {item.category && (

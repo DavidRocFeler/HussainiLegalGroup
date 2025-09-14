@@ -1,35 +1,12 @@
-'use client'
-
-import { Box, Grid } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import Box from "@mui/material/Box"
 import InsightsCardItem from "./InsightCardItem"
-import { ArticleHighlightItem } from "@/types/article"
-import { useSanityData } from "@/hook/useSanityData"
-import Skeleton from "@mui/material/Skeleton"
-import { getPublications } from "@/server/blog.server"
+import { InsightsPublicationsProps } from "@/types/article"
 
-const InsightsPublications: React.FC = () => {
-  const { data: publications, loading, error } = useSanityData<ArticleHighlightItem>(getPublications)
+const InsightsPublications = ({ publicationsData }:InsightsPublicationsProps) => {
+  const articlesArray = Array.isArray(publicationsData) ? publicationsData : []
 
-  const publicationsArray = Array.isArray(publications) ? publications : []
-
-  const lastThreeInsights = publicationsArray.slice(0, 3)
-
-  if (loading) {
-    return (
-      <Grid container spacing={{ xs: 3, md: 1 }}>
-        {[1,2,3].map((item) => (
-          <Grid size={{ xs: 12, md: 4 }} key={item}>
-            <Skeleton variant="rectangular" height={300} sx={{ borderRadius: 2 }} />
-          </Grid>
-        ))}
-      </Grid>
-    )
-  }
-
-  if (error) {
-    console.error("Error loading publications:", error)
-    return null
-  }
+  const lastThreeInsights = articlesArray.slice(0, 3)
 
   return (
     <Box>

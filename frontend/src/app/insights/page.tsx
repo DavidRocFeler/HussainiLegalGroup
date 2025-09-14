@@ -3,6 +3,7 @@ import { insightTitleData } from '@/mock/insights.mock'
 import Box from '@mui/material/Box'
 import TitleReusable from '@/components/ui/TitleReusableComponent'
 import { InsightBody } from '@/components/insights/InsightBody'
+import { getArticles, getPublications } from '@/server/blog.server'
 
 export const metadata: Metadata = {
   title: 'Legal Insights & Publications - Hussaini Legal Group',
@@ -15,7 +16,14 @@ export const metadata: Metadata = {
   }
 }
 
-const Insights = () => {
+export const revalidate = 86400;
+
+const Insights = async () => {
+  const articlesData = await getArticles();
+  const publicationsData = await getPublications();
+  const limitedArticles = articlesData.slice(0, 6);
+  const limitedPublications = publicationsData.slice(0, 6);
+
   return (
     <Box
       sx={{
@@ -82,7 +90,10 @@ const Insights = () => {
 
         </Box>
         
-        <InsightBody/>
+        <InsightBody
+          articlesData={limitedArticles}
+          publicationsData={limitedPublications}
+        />
       </Box>
     </Box>
   )

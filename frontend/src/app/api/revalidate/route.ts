@@ -8,6 +8,8 @@ export async function GET() {
     revalidatePath('/expertise');
     revalidatePath('/careers'); 
     revalidatePath('/insights');
+    revalidatePath('/subscribe');
+    revalidatePath('/contact');
     
     return Response.json({ revalidated: true, timestamp: new Date().toISOString() });
     
@@ -29,6 +31,8 @@ export async function POST(request: Request) {
     revalidatePath('/expertise');
     revalidatePath('/careers');
     revalidatePath('/insights');
+    revalidatePath('/subscribe');
+    revalidatePath('/contact');
     
     return Response.json({ 
       revalidated: true, 

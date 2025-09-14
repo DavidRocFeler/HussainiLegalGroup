@@ -28,10 +28,48 @@ export interface ArticleHighlightItem {
   };
 }
 
+export interface ArticleHighlightsSectionProps {
+  articles: ArticleHighlightItem[];
+}
+
 export interface CoverCaseStudyProps {
   articles: ArticleHighlightItem[];
 }
 
 export interface ArticleHighlightCardProps {
   article: ArticleHighlightItem;
+}
+
+export interface InsightBodyProps {
+  articlesData: ArticleHighlightItem[];
+  publicationsData: ArticleHighlightItem[];
+}
+
+export interface InsightsArticleProps {
+  articlesData: ArticleHighlightItem[];
+}
+
+export interface InsightsPublicationsProps {
+  publicationsData: ArticleHighlightItem[];
+}
+
+export interface InsightsCategoryPageProps {
+  params: {
+    category: string
+  }
+}
+
+export interface BlogPageProps {
+  params: {
+    category: string
+    slug: string
+  }
+}
+
+export interface ArticleBlogProps {
+  currentArticle: ArticleHighlightItem
+}
+
+export interface ArticleCoverProps {
+  articles: ArticleHighlightItem[];
 }

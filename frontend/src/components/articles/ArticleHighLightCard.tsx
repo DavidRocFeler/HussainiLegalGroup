@@ -34,7 +34,7 @@ const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {
               lg: '10rem',
              },
              fontSize: { xs: '1.25rem', md: '2.1875rem', lg: '2.375rem' },
-             lineHeight: { xs: '1.50rem', md: '2.1875rem', lg: '2.375rem' },
+             lineHeight: { xs: '1.50rem', md: '2.6rem', lg: '2.8rem' },
            }}
         >
           {article.title}

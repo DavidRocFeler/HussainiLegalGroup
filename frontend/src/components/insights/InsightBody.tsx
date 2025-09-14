@@ -1,13 +1,17 @@
-import { Box, Button, Typography } from '@mui/material'
+// components/insights/InsightBody.tsx
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import InsightCover from './InsightsCover'
 import InsightsArticle from './InsightsArticle'
 import InsightsPublications from './InsightsPublications'
 import Link from 'next/link'
+import { InsightBodyProps } from '@/types/article'
 
-export const InsightBody = () => {
+export const InsightBody = ({ articlesData, publicationsData }: InsightBodyProps) => {
   return (
     <Box>
-        <InsightCover/>
+        <InsightCover articlesData={articlesData} publicationsData={publicationsData} />
 
         <Typography
           lineHeight={2}
@@ -22,7 +26,7 @@ export const InsightBody = () => {
         >
           Articles
         </Typography>
-        <InsightsArticle/>
+        <InsightsArticle articlesData={articlesData} />
 
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 4, mb: { xs: 5, sm: 15 } }}>
           <Link href="/insights/articles" style={{ textDecoration: 'none' }}>
@@ -44,7 +48,7 @@ export const InsightBody = () => {
         >
           Publications
         </Typography>
-        <InsightsPublications/>
+        <InsightsPublications publicationsData={publicationsData} />
 
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 4 }}>
           <Link href="/insights/publications" style={{ textDecoration: 'none' }}>

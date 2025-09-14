@@ -1,69 +1,71 @@
-'use client'
-
-import { useParams } from 'next/navigation'
-import { useMemo } from 'react'
+// app/insights/[category]/[slug]/page.tsx
+import { notFound } from 'next/navigation'
 import ArticleBlog from '@/components/articles/ArticleBlog'
 import ArticleHighlightsSection from '@/components/articles/ArticleHighLightSection'
 import { Box, Typography } from '@mui/material'
-import { useSanityData } from '@/hook/useSanityData'
-import { getArticles, getPublications } from '@/server/blog.server'
-import { ArticleHighlightItem } from '@/types/article'
+import { ArticleHighlightItem, BlogPageProps } from '@/types/article'
+import type { Metadata } from 'next'
+import { getArticleBySlug, getRelatedBlogs } from '@/server/blog.server'
 
-const Blog = () => {
-  const params = useParams()
-  const category = params?.category as string
-  const currentSlug = params?.slug as string 
+export const revalidate = 86400;
+
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { category, slug } = params
   
-  const fetchFunction = useMemo(() => {
-    switch (category) {
-      case 'articles':
-        return getArticles
-      case 'publications':
-        return getPublications
-      default:
-        return getArticles
+  try {
+    const article = await getArticleBySlug(slug, category)
+    
+    if (!article) {
+      return {
+        title: 'Article Not Found - Hussaini Legal Group',
+        description: 'The requested article could not be found.'
+      }
     }
-  }, [category])
 
-  const { data: articles, loading, error } = useSanityData<ArticleHighlightItem>(fetchFunction)
+    const keywords = [article.label, category, 'legal insights', 'law firm', 'legal analysis']
+      .filter((keyword): keyword is string => Boolean(keyword))
 
-  const relatedArticles = useMemo(() => {
-    if (!articles) return []
-    
-    const filtered = articles.filter(article => article.slug !== currentSlug)
-    
-    return filtered.slice(0, 2)
-  }, [articles, currentSlug])
+    return {
+      title: `${article.title} - Hussaini Legal Group`,
+      description: article.note || article.descripFirstFirst || 'Expert legal insights and analysis from Hussaini Legal Group.',
+      keywords, 
+      openGraph: {
+        title: article.title,
+        description: article.note || article.descripFirstFirst || 'Expert legal insights and analysis',
+        type: 'article',
+        images: article.picture ? [{ url: article.picture }] : undefined,
+        publishedTime: article.date,
+      },
+    }
+  } catch (error) {
+    return {
+      title: 'Article - Hussaini Legal Group',
+      description: 'Legal insights and analysis from Hussaini Legal Group.'
+    }
+  }
+}
 
-
-  if (loading) {
-    return (
-      <Box sx={{ 
-        backgroundColor: 'background.paper',
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        minHeight: '50vh',
-        p: 4 
-      }}>
-        <Typography>Loading...</Typography>
-      </Box>
-    )
+const Blog = async ({ params }: BlogPageProps) => {
+  const { category, slug } = params
+  
+  if (category !== 'articles' && category !== 'publications') {
+    notFound()
   }
 
-  if (error) {
-    return (
-      <Box sx={{ 
-        backgroundColor: 'background.paper',
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        minHeight: '50vh',
-        p: 4 
-      }}>
-        <Typography color="error">Error loading content: {error.message}</Typography>
-      </Box>
-    )
+  let currentArticle: ArticleHighlightItem | null = null
+  let relatedArticles: ArticleHighlightItem[] = []
+
+  try {
+    currentArticle = await getArticleBySlug(slug, category)
+    
+    if (!currentArticle) {
+      notFound()
+    }
+
+    relatedArticles = await getRelatedBlogs(category, slug, 2)
+  } catch (error) {
+    console.error('Error fetching blog data:', error)
+    notFound()
   }
 
   return (
@@ -103,7 +105,7 @@ const Blog = () => {
           }
         }}
       >
-        <ArticleBlog/>
+        <ArticleBlog currentArticle={currentArticle} />
       </Box>
 
       <Typography

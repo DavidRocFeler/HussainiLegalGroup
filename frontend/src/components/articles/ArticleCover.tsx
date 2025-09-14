@@ -2,11 +2,7 @@ import Image from 'next/image';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { ArticleHighlightItem } from '@/types/article';
-
-interface ArticleCoverProps {
-  articles: ArticleHighlightItem[];
-}
+import { ArticleCoverProps } from '@/types/article';
 
 const ArticleCover = ({ articles }: ArticleCoverProps) => {
     return (
