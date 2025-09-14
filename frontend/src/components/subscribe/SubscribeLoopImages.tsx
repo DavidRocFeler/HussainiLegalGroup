@@ -1,29 +1,24 @@
+// components/subscribe/SubscribeLoopImages.tsx
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Fade from '@mui/material/Fade';
 import Skeleton from '@mui/material/Skeleton';
-import { SubscribeImage } from '@/types/subscribe.d';
-import { getSubscribeImages } from '@/server/subscribeImageLoop.server';
-import { useSanityData } from '@/hook/useSanityData';
+import { SubscribeLoopImagesProps } from '@/types/subscribe.d';
 
-const SubscribeLoopImages = () => {
+const SubscribeLoopImages = ({ initialImages }: SubscribeLoopImagesProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [showSkeleton, setShowSkeleton] = useState(true);
 
-  const fetchImages = useMemo(() => getSubscribeImages, []);
-  
-  const { data: sanityImages, loading, error } = useSanityData<SubscribeImage>(fetchImages);
-  
-  const images = sanityImages.length > 0 ? sanityImages : sanityImages;
+  const images = initialImages.length > 0 ? initialImages : [];
   const currentImage = images[currentImageIndex];
 
   useEffect(() => {
-    if (images.length === 0 || loading) return;
+    if (images.length === 0) return;
 
     const interval = setInterval(() => {
       setFadeIn(false);
@@ -36,7 +31,7 @@ const SubscribeLoopImages = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [images.length, loading]);
+  }, [images.length]);
 
   const handleImageLoad = () => {
     setIsImageLoaded(true);
@@ -48,7 +43,7 @@ const SubscribeLoopImages = () => {
     setShowSkeleton(true);
   }, [currentImage?.id]);
 
-  if (loading || !currentImage) {
+  if (images.length === 0 || !currentImage) {
     return (
       <Skeleton
         variant="rectangular"
@@ -63,10 +58,6 @@ const SubscribeLoopImages = () => {
         animation="wave"
       />
     );
-  }
-
-  if (error && sanityImages.length === 0) {
-    console.error('Error loading images, using defaults:', error);
   }
 
   return (

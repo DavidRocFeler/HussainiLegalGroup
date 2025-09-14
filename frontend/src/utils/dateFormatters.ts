@@ -9,7 +9,6 @@ export const transformDate = (dateString: string): string => {
       
       return `${monthShort}, ${day} - ${year}`;
     } catch (error) {
-      console.error('Error transforming date:', error);
       return dateString; 
     }
   };
@@ -24,7 +23,6 @@ export const transformDate = (dateString: string): string => {
       
       return `${monthLong} ${day}, ${year}`;
     } catch (error) {
-      console.error('Error transforming date:', error);
       return dateString; 
     }
   };
@@ -42,7 +40,6 @@ export const transformDate = (dateString: string): string => {
       
       return `${monthFormatted} ${day}, ${year}`;
     } catch (error) {
-      console.error('Error transforming date:', error);
       return dateString; 
     }
   };

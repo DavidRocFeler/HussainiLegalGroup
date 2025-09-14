@@ -37,7 +37,7 @@ export const aboutCoverData: AboutCoverData = {
     {
       score: '3',
       description: 'Bar admissions in key international jurisdictions.',
-      hasBorderBottom: false // último elemento sin borde
+      hasBorderBottom: false 
     }
   ]
 }

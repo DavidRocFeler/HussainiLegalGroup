@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 import ToApply from '@/components/careers/ToApply'
 import BodyCareers from '@/components/careers/BodyCareers'
-import { getCareersHeroTexts } from '@/server/home.server'
+import { getCareersHeroTexts } from '@/queries/homeQuery'
 
 export const metadata: Metadata = {
   title: 'Legal Careers & Opportunities - Hussaini Legal Group',

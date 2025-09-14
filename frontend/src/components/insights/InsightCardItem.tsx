@@ -1,7 +1,9 @@
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 import { ArticleHighlightItem } from '@/types/article';
 import { transformDateShortText } from '@/utils/dateFormatters';
 import { truncateShortText, truncateTitleText } from '@/utils/truncate';
-import { Card, Typography, Chip } from '@mui/material';
 
 const InsightsCardItem = ({ insight }: { insight: ArticleHighlightItem }) => {
   return (

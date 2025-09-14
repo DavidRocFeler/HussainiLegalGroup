@@ -59,3 +59,7 @@ export interface CoverBackgroundImageProps {
   backgroundImage: StaticImageData;
 }
 
+export interface VisionaryHeroExtendedProps extends VisionaryHeroProps {
+  heroHomeContent: HeroTextContent[];    
+  heroStrategyContent: HeroTextContent[]; 
+}

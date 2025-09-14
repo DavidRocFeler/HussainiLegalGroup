@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
+import Button from '@mui/material/Button';
 import { ArticleHighlightCardProps } from '@/types/article';
-import { Button } from '@mui/material';
 import { transformDateText } from '@/utils/dateFormatters';
 
 const ArticleHighlightCard = ({ article }: ArticleHighlightCardProps) => {

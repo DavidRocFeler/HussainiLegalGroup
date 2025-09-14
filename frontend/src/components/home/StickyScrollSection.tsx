@@ -1,5 +1,4 @@
 // components/home/StickyScrollSections.tsx
-'use client'
 import Box from '@mui/material/Box';
 import StickyScrollDesktop from '../ui/StickyScrollDesktop';
 import StickyScrollMobile from '../ui/StickyScrollMobile';

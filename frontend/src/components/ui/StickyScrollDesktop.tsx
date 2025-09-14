@@ -22,7 +22,6 @@ const StickyScrollDesktop = ({ stickyScrollData }: StickyScrollDesktopProps) => 
   const imageHeights = useRef<{ [key: number]: number }>({});
   const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  // ✅ VALIDACIÓN de datos
   if (!sectionsData || sectionsData.length === 0) {
     return <div>No hay datos disponibles</div>;
   }

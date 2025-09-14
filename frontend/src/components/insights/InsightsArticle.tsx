@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid"
 import InsightsCardItem from "./InsightCardItem"
 import { InsightsArticleProps } from "@/types/article"
 
-
 const InsightsArticle = ({ articlesData }: InsightsArticleProps) => {
   const articlesArray = Array.isArray(articlesData) ? articlesData : []
 

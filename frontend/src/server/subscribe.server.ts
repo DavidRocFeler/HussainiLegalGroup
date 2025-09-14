@@ -1,5 +1,8 @@
-// src/api/subscribe.api.ts
+// src/api/subscribe.server.ts
+'use server'
+
 import { sanityWriteClient } from '@/lib/sanity';
+import { revalidatePath } from 'next/cache';
 
 export async function createSubscription(data: {
   email: string;
@@ -49,5 +52,33 @@ export async function createSubscription(data: {
 
   } catch (error: any) {
     throw error;
+  }
+}
+
+export async function subscribeAction(formData: FormData) {
+  try {
+    const email = formData.get('email') as string;
+    const source = formData.get('source') as string || 'website';
+
+    const result = await createSubscription({
+      email: email.trim(),
+      source
+    });
+
+    revalidatePath('/subscribe');
+
+    return {
+      success: true,
+      message: result.message || 'Successfully subscribed to our newsletter!'
+    };
+
+  } catch (error: any) {
+    console.error('Subscribe action error:', error);
+    
+    return {
+      success: false,
+      message: error.message || 'Something went wrong. Please try again.',
+      error: error.message
+    };
   }
 }

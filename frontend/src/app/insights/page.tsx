@@ -3,7 +3,7 @@ import { insightTitleData } from '@/mock/insights.mock'
 import Box from '@mui/material/Box'
 import TitleReusable from '@/components/ui/TitleReusableComponent'
 import { InsightBody } from '@/components/insights/InsightBody'
-import { getArticles, getPublications } from '@/server/blog.server'
+import { getArticles, getPublications } from '@/queries/blogQuery'
 
 export const metadata: Metadata = {
   title: 'Legal Insights & Publications - Hussaini Legal Group',

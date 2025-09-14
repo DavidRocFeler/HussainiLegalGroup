@@ -73,3 +73,14 @@ export interface ArticleBlogProps {
 export interface ArticleCoverProps {
   articles: ArticleHighlightItem[];
 }
+
+export interface InsightCoverProps {
+  articlesData: ArticleHighlightItem[];
+  publicationsData: ArticleHighlightItem[];
+}
+
+export interface BlogCoverProps {
+  articlesData: ArticleHighlightItem[];
+  publicationsData: ArticleHighlightItem[];
+  category: string;
+}

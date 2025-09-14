@@ -1,5 +1,5 @@
 // components/about/FirstAboutSection.tsx
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import rectanguleAbout from '@/assets/RectangleAbout.jpg'
 import ReusableContainers from '@/components/ui/ReusableContainers'

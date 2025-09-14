@@ -1,5 +1,5 @@
 // components/expertise/SectionExpertise.tsx
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import ReusableContainers from '../ui/ReusableContainers'
 import ExpertiseAndSectors from './ExpertiseAndSectors'
 import visionaryHero from '@/assets/VisionaryHero.jpg'

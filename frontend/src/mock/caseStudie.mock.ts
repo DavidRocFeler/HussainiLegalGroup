@@ -1,5 +1,4 @@
 import { ArticleHighlightItem } from '@/types/article';
-import { TitleReusableProps } from '@/types/reusable';
 
 export const caseStudiesTitle: ArticleHighlightItem[] = [
   {

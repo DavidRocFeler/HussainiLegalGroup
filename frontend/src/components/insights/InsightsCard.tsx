@@ -1,5 +1,8 @@
 import Image from 'next/image';
-import { Box, Card, Typography, Chip } from '@mui/material';
+import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 import { ArticleHighlightItem } from '@/types/article';
 import { transformDateText } from '@/utils/dateFormatters';
 import { truncateText } from '@/utils/truncate';

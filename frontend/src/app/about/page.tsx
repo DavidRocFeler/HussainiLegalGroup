@@ -6,8 +6,8 @@ import AboutCover from '@/components/about/AboutCover'
 import AboutProfessionalCardContainer from '@/components/about/AboutProfessionalCardContainer'
 import Timeline from '@/components/about/TimeLine'
 import { FirstAboutSection } from '@/components/about/FirstAboutSection'
-import { getAboutHeroTexts } from '@/server/home.server'
-import { getProfessionalProfiles } from '@/server/about.server'
+import { getAboutHeroTexts } from '@/queries/homeQuery'
+import { getProfessionalProfiles } from '@/queries/aboutQuery'
 
 export const metadata: Metadata = {
   title: 'About Us - International Law Experts',

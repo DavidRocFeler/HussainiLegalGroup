@@ -1,15 +1,9 @@
 // components/home/VisionaryHero.tsx
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { HeroTextContent, VisionaryHeroProps } from '@/types/home';
+import { VisionaryHeroExtendedProps } from '@/types/home';
 import { discoverUsButtonData } from '@/mock/discoverUsButton.mock'; 
 import ReusableContainers from '@/components/ui/ReusableContainers';
-
-
-interface VisionaryHeroExtendedProps extends VisionaryHeroProps {
-  heroHomeContent: HeroTextContent[];    
-  heroStrategyContent: HeroTextContent[]; 
-}
 
 const VisionaryHero = ({ 
   imageUrl, 

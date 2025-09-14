@@ -1,8 +1,6 @@
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import NextLink from 'next/link';
 import { ExpertiseSection } from '@/types/expertise';
 import { expertiseAndSectorsMock } from '@/mock/expertise.mock';
 

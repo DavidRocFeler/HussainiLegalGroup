@@ -1,8 +1,11 @@
+// app/subscribe/page.tsx
 import { Metadata } from 'next';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import SubscribeForm from '@/components/subscribe/SubscribeForm';
 import SubscribeLoopImages from '@/components/subscribe/SubscribeLoopImages';
+import { SubscribeImage } from '@/types/subscribe.d';
+import { getSubscribeImages } from '@/queries/subscribeImageLoopQuery';
 
 export const metadata: Metadata = {
   title: 'Subscribe - Hussaini Legal Group Newsletter',
@@ -15,7 +18,17 @@ export const metadata: Metadata = {
   }
 };
 
-const SubscribePage = () => {
+export const revalidate = 86400; 
+
+const SubscribePage = async () => {
+  let subscribeImages: SubscribeImage[] = [];
+  
+  try {
+    subscribeImages = await getSubscribeImages();
+  } catch (error) {
+    subscribeImages = [];
+  }
+
   return (
     <Box
       sx={{
@@ -81,7 +94,7 @@ const SubscribePage = () => {
             overflow: 'hidden',
           }}
         >
-          <SubscribeLoopImages />
+          <SubscribeLoopImages initialImages={subscribeImages} />
         </Grid>
       </Grid>
     </Box>

@@ -1,4 +1,3 @@
-'use client'
 import Input from '@mui/material/Input';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
@@ -7,51 +7,56 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { subscribeContent } from '@/mock/subscribe.mock';
 import { SubscribeContent } from '@/types/subscribe.d';
-import { createSubscription } from '@/server/subscribe.server';
-import { FormValidationMiddleware } from '@/middlewares/validatiors.middleware';
-import { useSanityPost } from '@/hook/useSanityPost';
+import { subscribeAction } from '@/server/subscribe.server';
+import { validateRequired, validateEmail } from '@/middlewares/validations.middleware';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const { postData, error: apiError, success, isLoading } = useSanityPost(createSubscription);
+  const [success, setSuccess] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const content: SubscribeContent = subscribeContent;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setSuccess(false);
 
-    // Validar campo requerido
-    const requiredValidation = FormValidationMiddleware.validateRequired(email, 'Email');
+    const requiredValidation = validateRequired(email, 'Email');
     if (!requiredValidation.isValid) {
       setError(requiredValidation.errors[0]);
       return;
     }
 
-    // Validar formato de email
-    if (!FormValidationMiddleware.validateEmail(email)) {
+    if (!validateEmail(email)) {
       setError('Please enter a valid email address');
       return;
     }
 
-    try {
-      await postData({ 
-        email: email.trim(),
-        source: 'website' // Puedes cambiar esto según de dónde venga
-      });
-      
-      setEmail('');
-      // El estado de éxito se maneja a través del hook
-      
-    } catch (err: any) {
-      // Manejar errores específicos
-      if (err.message === 'Email already subscribed') {
-        setError('This email is already subscribed to our newsletter');
-      } else {
-        setError(apiError || 'Something went wrong. Please try again.');
+    startTransition(async () => {
+      try {
+        const formData = new FormData();
+        formData.append('email', email.trim());
+        formData.append('source', 'website');
+
+        const result = await subscribeAction(formData);
+
+        if (result.success) {
+          setSuccess(true);
+          setEmail('');
+          setError('');
+        } else {
+          if (result.error === 'Email already subscribed') {
+            setError('This email is already subscribed to our newsletter');
+          } else {
+            setError(result.error || result.message || 'Something went wrong. Please try again.');
+          }
+        }
+      } catch (err: any) {
+        setError('Something went wrong. Please try again.');
       }
-    }
+    });
   };
 
   return (
@@ -129,7 +134,7 @@ const SubscribeForm = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              disabled={isLoading}
+              disabled={isPending}
               disableUnderline={false}
               sx={{
                 "& .MuiInputBase-input": {
@@ -178,7 +183,7 @@ const SubscribeForm = () => {
           <Button
             type="submit"
             variant="redCahova"
-            disabled={isLoading}
+            disabled={isPending}
             fullWidth
             sx={{ 
               py: 1.5,
@@ -189,7 +194,7 @@ const SubscribeForm = () => {
               }
             }}
           >
-            {isLoading ? (
+            {isPending ? (
               <CircularProgress 
                 size={20} 
                 sx={{ 

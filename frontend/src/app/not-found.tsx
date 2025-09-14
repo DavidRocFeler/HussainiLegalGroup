@@ -1,5 +1,8 @@
 // app/not-found.tsx
-import { Box, Typography, Container, Button } from '@mui/material';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import Link from 'next/link';
 
 const NotFound = () => {

@@ -1,13 +1,8 @@
-import { Grid } from '@mui/material'
+import Grid from '@mui/material/Grid'
 import InsightCard from './InsightsCard'
-import { ArticleHighlightItem } from '@/types/article'
+import { ArticleHighlightItem, InsightCoverProps } from '@/types/article'
 
-interface InsightCoverProps {
-  articlesData: ArticleHighlightItem[];
-  publicationsData: ArticleHighlightItem[];
-}
-
-const InsightCover: React.FC<InsightCoverProps> = ({ articlesData, publicationsData }) => {
+const InsightCover = ({ articlesData, publicationsData }: InsightCoverProps) => {
   const articlesArray = Array.isArray(articlesData) ? articlesData : []
   const publicationsArray = Array.isArray(publicationsData) ? publicationsData : []
 

@@ -3,7 +3,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
 import Link from 'next/link';
-import Image from 'next/image';
 import { CoverBackgroundProps } from '@/types/home';
 import { coverBackgroundData } from '@/mock/coverBackgroundData.mock';
 import BackgroundImageResponsive from '../ui/BacgroundImageResponsive';

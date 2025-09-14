@@ -1,5 +1,4 @@
 // components/careers/BodyCareers.tsx
-'use client'
 import ReusableContainers from '@/components/ui/ReusableContainers'
 import Box from '@mui/material/Box'
 import rectanguleCareers from '@/assets/RectanguleCareers.jpg'

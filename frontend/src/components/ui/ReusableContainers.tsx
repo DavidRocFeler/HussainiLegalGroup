@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress'; // ← Importar spinner
+import CircularProgress from '@mui/material/CircularProgress';
 import Image from 'next/image';
 import { ReusableContainersProps } from '@/types/reusable';
 import Link from 'next/link';
@@ -122,7 +122,7 @@ const ReusableContainers = ({
               xs: '54rem',
               md: '50%'
             },
-            minHeight: '200px', // ← Altura mínima para mantener el layout
+            minHeight: '200px', 
             mt: {
               xs: 50,
               customTabletInsight: 92,
@@ -132,12 +132,12 @@ const ReusableContainers = ({
             zIndex: 3,
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: loading ? 'center' : 'normal', // ← Centrar spinner
-            alignItems: loading ? 'center' : 'normal', // ← Centrar spinner
+            justifyContent: loading ? 'center' : 'normal',
+            alignItems: loading ? 'center' : 'normal',
           }}
         >
           {loading ? (
-            // Spinner de carga
+            
             <CircularProgress 
               size={40} 
               sx={{ 

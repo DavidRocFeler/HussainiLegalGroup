@@ -7,7 +7,7 @@ import StickyScrollSections from '@/components/home/StickyScrollSection'
 import LegalAdviceSection from '@/components/home/LegalAdviceSection'
 import CoverBackground from '@/components/home/CoverBackground'
 
-import { getHomeHeroTexts, getStrategyHeroTexts, getHomeSectionStickies } from '@/server/home.server'
+import { getHomeHeroTexts, getStrategyHeroTexts, getHomeSectionStickies } from '@/queries/homeQuery'
 
 export const metadata: Metadata = {
   title: 'International Law Firm | Corporate Law, Arbitration & Cross-Border Transactions',

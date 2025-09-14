@@ -1,5 +1,4 @@
 // mock/heroSectionData.ts
-import BackgroundCover from '@/assets/BackgroundCover.jpg';
 import { CoverBackgroundProps } from '@/types/home';
 
 export const coverBackgroundData: CoverBackgroundProps = {

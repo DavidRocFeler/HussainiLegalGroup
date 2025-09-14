@@ -2,10 +2,11 @@
 import { notFound } from 'next/navigation'
 import ArticleBlog from '@/components/articles/ArticleBlog'
 import ArticleHighlightsSection from '@/components/articles/ArticleHighLightSection'
-import { Box, Typography } from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 import { ArticleHighlightItem, BlogPageProps } from '@/types/article'
 import type { Metadata } from 'next'
-import { getArticleBySlug, getRelatedBlogs } from '@/server/blog.server'
+import { getArticleBySlug, getRelatedBlogs } from '@/queries/blogQuery'
 
 export const revalidate = 86400;
 
@@ -64,7 +65,6 @@ const Blog = async ({ params }: BlogPageProps) => {
 
     relatedArticles = await getRelatedBlogs(category, slug, 2)
   } catch (error) {
-    console.error('Error fetching blog data:', error)
     notFound()
   }
 

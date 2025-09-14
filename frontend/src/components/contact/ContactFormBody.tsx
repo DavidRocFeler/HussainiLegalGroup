@@ -4,32 +4,30 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import Typography from '@mui/material/Typography';
-import { useState, useRef } from 'react';
+import { useState, useRef, useTransition } from 'react';
 import { contactFormData } from '@/mock/contactFormBody.mock';
 import FormInput from './FormInput';
 import SuccessAlert from '../ui/SuccessAlert';
 import ErrorAlert from '../ui/ErrorAlert';
-import { createContactMessage } from '@/server/contact.server';
-import { useSanityPost } from '@/hook/useSanityPost';
-import { FormValidationMiddleware } from '@/middlewares/validatiors.middleware';
+import { validateContactForm, validateMaxLength, validateMinLength, validateRequired, validateEmail } from '@/middlewares/validations.middleware';
 import { CircularProgress } from '@mui/material';
+import { contactAction } from '@/server/contact.server';
 
 const ContactFormBody = () => {
   const [message, setMessage] = useState('');
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [openSuccessDialog, setOpenSuccessDialog] = useState(false);
   const [missingFields, setMissingFields] = useState<string[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPending, startTransition] = useTransition();
   
   const inputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
-  const { postData, error, success } = useSanityPost(createContactMessage);
   
   const messageField = contactFormData.fields.find(field => field.id === 'message');
   const maxLength = messageField?.maxLength || 300;
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
-    const maxLengthValidation = FormValidationMiddleware.validateMaxLength(
+    const maxLengthValidation = validateMaxLength(
       newValue, 
       maxLength, 
       'Message'
@@ -42,7 +40,6 @@ const ContactFormBody = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setIsSubmitting(true);
     
     const formData = {
       firstName: inputRefs.current['firstName']?.value?.trim() || '',
@@ -52,7 +49,7 @@ const ContactFormBody = () => {
       message: message.trim()
     };
 
-    const validationResult = FormValidationMiddleware.validateContactForm(
+    const validationResult = validateContactForm(
       formData,
       contactFormData.fields
     );
@@ -60,12 +57,11 @@ const ContactFormBody = () => {
     if (!validationResult.isValid) {
       setMissingFields(validationResult.errors);
       setOpenErrorDialog(true);
-      setIsSubmitting(false);
       return;
     }
 
     const minMessageLength = 10; 
-    const messageMinLengthValidation = FormValidationMiddleware.validateMinLength(
+    const messageMinLengthValidation = validateMinLength(
       formData.message,
       minMessageLength,
       'Message'
@@ -74,37 +70,38 @@ const ContactFormBody = () => {
     if (!messageMinLengthValidation.isValid) {
       setMissingFields(messageMinLengthValidation.errors);
       setOpenErrorDialog(true);
-      setIsSubmitting(false);
       return;
     }
-  
-    try {
-      const fullName = `${formData.firstName} ${formData.lastName}`.trim();
-      
-      const apiData = {
-        name: fullName, 
-        email: formData.email,
-        company: formData.company || undefined,
-        message: formData.message
-      };
-    
-      await postData(apiData);
-      
-      Object.keys(inputRefs.current).forEach(key => {
-        if (inputRefs.current[key]) {
-          inputRefs.current[key]!.value = '';
+
+    startTransition(async () => {
+      try {
+        const serverFormData = new FormData();
+        serverFormData.append('firstName', formData.firstName);
+        serverFormData.append('lastName', formData.lastName);
+        serverFormData.append('email', formData.email);
+        serverFormData.append('company', formData.company);
+        serverFormData.append('message', formData.message);
+
+        const result = await contactAction(serverFormData);
+
+        if (result.success) {
+          Object.keys(inputRefs.current).forEach(key => {
+            if (inputRefs.current[key]) {
+              inputRefs.current[key]!.value = '';
+            }
+          });
+          setMessage('');
+          setOpenSuccessDialog(true);
+        } else {
+          setMissingFields([result.error || result.message]);
+          setOpenErrorDialog(true);
         }
-      });
-      setMessage('');
-      setOpenSuccessDialog(true);
-      
-    } catch (err) {
-      console.error('Submit error:', err);
-      setMissingFields([error || 'Failed to send message. Please try again.']);
-      setOpenErrorDialog(true);
-    } finally {
-      setIsSubmitting(false);
-    }
+      } catch (err: any) {
+        console.error('Submit error:', err);
+        setMissingFields(['Failed to send message. Please try again.']);
+        setOpenErrorDialog(true);
+      }
+    });
   };
 
   const validateField = (fieldId: string, value: string) => {
@@ -112,14 +109,14 @@ const ContactFormBody = () => {
     if (!field) return;
 
     if (field.required) {
-      const requiredValidation = FormValidationMiddleware.validateRequired(value, field.label);
+      const requiredValidation = validateRequired(value, field.label);
       if (!requiredValidation.isValid) {
         return requiredValidation.errors;
       }
     }
 
     if (field.type === 'email' && value) {
-      const isValidEmail = FormValidationMiddleware.validateEmail(value);
+      const isValidEmail = validateEmail(value);
       if (!isValidEmail) {
         return [`${field.label} has invalid format`];
       }
@@ -157,7 +154,6 @@ const ContactFormBody = () => {
           ))}
         </Grid>
 
-        {/* Email */}
         {contactFormData.fields.filter(field => field.id === 'email').map((field) => (
         <Box
           mt={{xs: 2, sm: 4}}
@@ -219,7 +215,6 @@ const ContactFormBody = () => {
         </Box>
         ))}
 
-        {/* Company field with custom rendering */}
         {contactFormData.fields.find(field => field.id === 'company') && (
           <Box sx={{ mt: 4 }}>
             <Box 
@@ -301,7 +296,6 @@ const ContactFormBody = () => {
           </Box>
         )}
 
-        {/* message */}
         {contactFormData.fields
           .filter(field => field.id === 'message')
           .map((field) => (
@@ -374,7 +368,7 @@ const ContactFormBody = () => {
             mt: 4,
             mb: {
               xs: 7,
-              nd: 9
+              md: 9
             },
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
@@ -385,12 +379,12 @@ const ContactFormBody = () => {
           <Button
             type='submit'
             variant='primary'
-            disabled={isSubmitting}
+            disabled={isPending}
             sx={{
               minWidth: '10rem'
             }}
           >
-            {isSubmitting ? (
+            {isPending ? (
               <CircularProgress 
                 size={20} 
                 sx={{ 

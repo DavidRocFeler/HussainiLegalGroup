@@ -1,11 +1,12 @@
 // app/insights/[category]/page.tsx
 import { notFound } from 'next/navigation'
-import { Box, Typography } from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 import NewsCardCaseStudy from '@/components/articles/NewsCard'
 import { ArticleHighlightItem, InsightsCategoryPageProps } from '@/types/article'
 import BlogCover from '@/components/articles/BlogCover'
 import type { Metadata } from 'next'
-import { getArticles, getPublications } from '@/server/blog.server'
+import { getArticles, getPublications } from '@/queries/blogQuery'
 
 export const revalidate = 86400;
 
@@ -67,7 +68,6 @@ const InsightsCategoryPage = async ({ params }: InsightsCategoryPageProps) => {
       itemsArray = await getPublications()
     }
   } catch (error) {
-    console.error(`Error fetching ${category}:`, error)
     itemsArray = []
   }
 

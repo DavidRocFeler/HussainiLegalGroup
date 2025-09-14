@@ -19,13 +19,8 @@ export interface SubscribeImage {
   isInitial?: boolean
 }
 
-export interface SubscribeInitialImageProps {
-  image: SubscribeImage;
-}
-
 export interface SubscribeLoopImagesProps {
-  currentImage: SubscribeImage;
-  fadeIn: boolean;
+  initialImages: SubscribeImage[];
 }
 
 export interface SubscribeFormProps {
@@ -37,10 +32,4 @@ export interface SubscribeFormProps {
   isSuccess: boolean;
   handleSubmit: (e: React.FormEvent) => void;
   validateEmail: (email: string) => boolean;
-}
-
-export interface SubscribeLoopImagesProps {
-  currentImage: SubscribeImage;
-  fadeIn: boolean;
-  isInitialImage: boolean;
 }

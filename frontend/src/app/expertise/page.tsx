@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 import Box from '@mui/material/Box'
 import { SectionExpertise } from '@/components/expertise/SectionExpertise'
-import { getExpertiseHeroTexts } from '@/server/home.server'
+import { getExpertiseHeroTexts } from '@/queries/homeQuery'
 
 export const metadata: Metadata = {
   title: 'Legal Expertise & Services - Hussaini Legal Group',
