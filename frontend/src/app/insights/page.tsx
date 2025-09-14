@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   }
 }
 
-export const revalidate = 86400;
+export const revalidate = false;
 
 const Insights = async () => {
   const articlesData = await getArticles();
