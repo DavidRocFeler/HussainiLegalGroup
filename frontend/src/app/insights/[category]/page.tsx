@@ -8,7 +8,7 @@ import BlogCover from '@/components/articles/BlogCover'
 import type { Metadata } from 'next'
 import { getArticles, getPublications } from '@/queries/blogQuery'
 
-export const revalidate = 86400;
+export const revalidate = false;
 
 export async function generateMetadata({ params }: InsightsCategoryPageProps): Promise<Metadata> {
   const { category } = params

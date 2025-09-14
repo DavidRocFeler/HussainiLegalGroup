@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   }
 }
 
-export const revalidate = 86400; 
+export const revalidate = false; 
 
 const About = async () => {
   const heroAboutContent = await getAboutHeroTexts();

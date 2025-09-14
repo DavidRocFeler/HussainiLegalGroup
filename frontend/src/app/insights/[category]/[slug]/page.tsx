@@ -8,7 +8,7 @@ import { ArticleHighlightItem, BlogPageProps } from '@/types/article'
 import type { Metadata } from 'next'
 import { getArticleBySlug, getRelatedBlogs } from '@/queries/blogQuery'
 
-export const revalidate = 86400;
+export const revalidate = false;
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { category, slug } = params
