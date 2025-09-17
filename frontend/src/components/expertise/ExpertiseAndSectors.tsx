@@ -41,6 +41,7 @@ const ExpertiseAndSectors = () => {
               pb: { xs: 0.5, md: 0.75 },
               display: 'block',
               '&:hover': {
+                cursor: 'default',
                 color: '#808080'
               }
             }}
