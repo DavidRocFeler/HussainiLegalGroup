@@ -39,8 +39,6 @@ const InsightsCardItem = ({ insight }: { insight: ArticleHighlightItem }) => {
           height: {
             xs: 'auto',
             md: '24rem',
-            desktopMid: '20rem',
-            lg: '21rem',
             xl: '20rem'
           },
           cursor: 'pointer',

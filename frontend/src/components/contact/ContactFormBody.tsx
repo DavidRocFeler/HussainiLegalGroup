@@ -97,7 +97,6 @@ const ContactFormBody = () => {
           setOpenErrorDialog(true);
         }
       } catch (err: any) {
-        console.error('Submit error:', err);
         setMissingFields(['Failed to send message. Please try again.']);
         setOpenErrorDialog(true);
       }

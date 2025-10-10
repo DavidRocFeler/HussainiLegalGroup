@@ -13,9 +13,7 @@ const breakpoints: BreakpointsOptions = {
     customMobileInsight: 370,   // Breakpoint for responsive precision of brand.red color component in insights
     mobileMid: 455,            // Mid-mobile breakpoint for EarthMap and mobile transitions 
     
-    // Tablet optimizations  
-    tabletInsight: 500,
-    customTabletInsight: 591,   // Tablet layout for InsightContainer responsive design 
+    // Tablet optimizations      
     customEarthTablet: 650,     // EarthMap tablet view transition point
     customTimelineMobile: 699,  // TimelineItem mobile-to-desktop layout switch  
     customTabletAbout: 755,     // CardAbout height for good UX 

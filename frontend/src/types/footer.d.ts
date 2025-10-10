@@ -1,7 +1,4 @@
-export interface FooterSection {
-  title: string;
-  items: string[];
-}
+import { ComponentType } from "react";
 
 export interface NewsletterSection {
   title: string;
@@ -27,4 +24,32 @@ export interface FooterInfo {
   };
   copyright: string;
   companyName: string;
+}
+
+export interface SocialMediaProps {
+  href: string;
+  icon: ComponentType;
+  color?: string;
+  borderColor?: string;
+}
+
+export interface SocialMediaLink {
+  platform: string;
+  url: string;
+  order: number;
+  isActive: boolean;
+}
+
+export interface SocialMediaConfig {
+id: string;
+title: string;
+socialLinks: SocialMediaLink[];
+isActive: boolean;
+}
+
+export interface FooterSection {
+  type: 'locations' | 'contact';
+  title: string;
+  items: string[];
+  isActive: boolean;
 }

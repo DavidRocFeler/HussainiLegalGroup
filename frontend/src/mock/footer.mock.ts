@@ -23,6 +23,6 @@ export const footerMock: FooterInfo = {
       buttonText: "Subscribe To Our Updates"
     }
   },
-  copyright: "© 2025 All Rights Reserved.",
+  copyright: "All Rights Reserved.",
   companyName: "HUSSAINI LEGAL GROUP"
 };

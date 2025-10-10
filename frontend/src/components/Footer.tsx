@@ -2,14 +2,47 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import Link from 'next/link';
 import { footerMock } from '@/mock/footer.mock';
 import Logo from './ui/Logo';
+import SocialMedias from './ui/SocialMedias'
+import { getFooterSections, getSocialMediaConfig } from '@/queries/footerQuery'
+import { FooterSection, SocialMediaLink } from '@/types/footer';
 
-const Footer = () => {
+export const revalidate = false; 
+
+const Footer =  async () => {
+
+  const currentYear = new Date().getFullYear();
+  
+  let footerSections: FooterSection[] = [];
+  let socialMedias: SocialMediaLink[] = [];
+  
+  try {
+    [socialMedias, footerSections] = await Promise.all([
+      getSocialMediaConfig(),
+      getFooterSections()
+    ]);    
+  } catch (error) {
+  }
+
+  const defaultLocations = {
+    type: 'locations' as const,
+    title: footerMock.sections.locations.title,
+    items: footerMock.sections.locations.items,
+    isActive: true
+  };
+  
+  const defaultContact = {
+    type: 'contact' as const,
+    title: footerMock.sections.contact.title,
+    items: footerMock.sections.contact.items,
+    isActive: true
+  };
+  
+  const locationsSection = footerSections.find(section => section.type === 'locations') || defaultLocations;
+  const contactSection = footerSections.find(section => section.type === 'contact') || defaultContact;
+
   return (
     <Box
       component="footer"
@@ -142,7 +175,7 @@ const Footer = () => {
                     },
                   }}
                 >
-                  {footerMock.sections.locations.items.map((location, index) => (
+                  {locationsSection.items.map((location, index) => (
                     <Typography
                       variant="body2"
                       key={index}
@@ -206,7 +239,7 @@ const Footer = () => {
                     },
                   }}
                 >
-                  {footerMock.sections.contact.items.map((contactInfo, index) => (
+                  {contactSection.items.map((contactInfo, index) => (
                     <Typography
                       key={index}
                       variant="body2"
@@ -301,61 +334,8 @@ const Footer = () => {
                   </Link>
                 </Box>
                 
-                <Box
-                  sx={{
-                    display: 'flex',
-                    gap: 2, 
-                    justifyContent: {
-                      xs: 'center',
-                      desktopMid: 'flex-start',
-                    },
-                  }}
-                >
-                  <Link
-                  href='https://www.linkedin.com'
-                  >
-                  <IconButton
-                    sx={{
-                      cursor: 'pointer',
-                      color: 'primary.main',
-                      border: '1px solid',
-                      borderColor: 'primary.main',
-                      borderRadius: '50%',
-                      width: '40px', 
-                      height: '40px',
-                      zIndex: 0,
-                      '&:hover': {
-                        color: 'whiteText',
-                        borderColor: 'brand.whiteText'
-                      }
-                    }}
-                  >
-                    <LinkedInIcon />
-                  </IconButton>
-                  </Link>
-                  <Link
-                  href='https://x.com/?logout=1757446963087'
-                  >
-                  <IconButton
-                    sx={{
-                      cursor: 'pointer',
-                      color: 'primary.main',
-                      border: '1px solid',
-                      borderColor: 'primary.main',
-                      borderRadius: '50%',
-                      width: '40px', 
-                      height: '40px',
-                      zIndex: 0,
-                      '&:hover': {
-                        color: 'whiteText',
-                        borderColor: 'brand.whiteText'
-                      }
-                    }}
-                  >
-                    <TwitterIcon />
-                  </IconButton>
-                  </Link>
-                </Box>
+                <SocialMedias socialMedias={socialMedias} />
+                
               </Box>
             </Box>
           </Box>
@@ -374,15 +354,15 @@ const Footer = () => {
             },
           }}
         >
-          <Typography
-            sx={{
-              fontSize: '0.9rem',
-              fontFamily: 'Inter',
-              color: 'brand.whiteText',
-            }}
-          >
-            {footerMock.copyright}
-          </Typography>
+         <Typography
+          sx={{
+            fontSize: '0.9rem',
+            fontFamily: 'Inter',
+            color: 'brand.whiteText',
+          }}
+        >
+          © {currentYear} All Rights Reserved.
+        </Typography>
         </Box>
       </Container>
     </Box>

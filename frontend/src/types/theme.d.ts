@@ -20,9 +20,8 @@ declare module '@mui/material/styles' {
     xl: true;
     
     customMobileInsight: true;          
-    mobileMid: true;    
-    tabletInsight: true;              
-    customTabletInsight: true;        
+    mobileMid: true;     
+
     customEarthTablet: true;         
     customTimelineMobile: true;       
     customTabletAbout: true;         

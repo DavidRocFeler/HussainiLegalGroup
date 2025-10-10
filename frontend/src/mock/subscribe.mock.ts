@@ -10,7 +10,7 @@ export const subscribeContent: SubscribeContent = {
   description: "Subscribe to our newsletter and never miss our latest updates, news, and exclusive offers.",
   placeholder: "your.email@example.com",
   buttonText: "Subscribe Now",
-  privacyText: "We respect your privacy. Unsubscribe at any time.",
+  privacyText: "We respect your privacy. Contact us to unsubscribe at any time.",
   successMessage: "Thank you for subscribing! Check your email for confirmation.",
 };
 

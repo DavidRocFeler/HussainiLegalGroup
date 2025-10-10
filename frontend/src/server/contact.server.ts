@@ -86,7 +86,6 @@ export async function contactAction(formData: FormData) {
     };
 
   } catch (error: any) {
-    console.error('Contact action error:', error);
     
     return {
       success: false,

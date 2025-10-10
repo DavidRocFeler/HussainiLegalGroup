@@ -73,7 +73,6 @@ export async function subscribeAction(formData: FormData) {
     };
 
   } catch (error: any) {
-    console.error('Subscribe action error:', error);
     
     return {
       success: false,

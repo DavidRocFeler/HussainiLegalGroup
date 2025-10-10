@@ -2,7 +2,7 @@
 import { sanityWriteClient } from '@/lib/sanity';
 import { SubscribeImage } from '@/types/subscribe.d';
 
-export async function getSubscribeImages(): Promise<SubscribeImage[]> {
+export const getSubscribeImages = async (): Promise<SubscribeImage[]> => {
   try {
     const query = `
       *[_type == "subscribeImageLoop" && isActive == true] | order(order asc) {
@@ -23,7 +23,6 @@ export async function getSubscribeImages(): Promise<SubscribeImage[]> {
 
     return images;
   } catch (error) {
-    console.error('Error fetching subscribe images:', error);
     throw error;
   }
-}
+};
