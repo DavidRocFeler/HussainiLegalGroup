@@ -43,7 +43,6 @@ const LegalAdviceSection = () => {
       >
        <Box
        sx={{
-        width: { xs: '100%', md: '70%' },
         display: 'flex',
         flexDirection: 'column',
         alignItems: {
@@ -54,7 +53,7 @@ const LegalAdviceSection = () => {
        }}
        >
          {/* Title section */}
-         <Typography
+         {/* <Typography
           variant="h4"
           color='brand.red'
           fontWeight={400}
@@ -67,10 +66,10 @@ const LegalAdviceSection = () => {
           }}
         >
           {legalAdviceContent.title}
-        </Typography>
+        </Typography> */}
 
         {/* Description text */}
-        <Typography
+        {/* <Typography
           variant="h5"
           mb={4}
           sx={{
@@ -85,7 +84,7 @@ const LegalAdviceSection = () => {
           }}
         >
           {legalAdviceContent.description}
-        </Typography>
+        </Typography> */}
 
         {/* Action buttons */}
         <Box
@@ -115,7 +114,7 @@ const LegalAdviceSection = () => {
 
       </Box>
 
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 8 }}>
           <EarthMapPicture />
         </Box>
     </Box>

@@ -6,7 +6,8 @@ export const footerMock: FooterInfo = {
       title: "Locations",
       items: [
         "Damascus",
-        "Amsterdam"
+        "Amsterdam",
+        "Miami"
       ]
     },
     contact: {
