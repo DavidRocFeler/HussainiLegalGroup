@@ -8,6 +8,7 @@ import LegalAdviceSection from '@/components/home/LegalAdviceSection'
 import CoverBackground from '@/components/home/CoverBackground'
 
 import { getHomeHeroTexts, getStrategyHeroTexts, getHomeSectionStickies } from '@/queries/homeQuery'
+import { aboutContentContainer } from '@/mock/about.mock'
 
 export const metadata: Metadata = {
   title: 'International Law Firm | Corporate Law, Arbitration & Cross-Border Transactions',
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 export const revalidate = 86400; 
 
 const Home = async () => {
-  const heroHomeContent = await getHomeHeroTexts();
+  const heroHomeContent = aboutContentContainer;
   const heroStrategyContent = await getStrategyHeroTexts();
   const stickyScrollData = await getHomeSectionStickies(); 
 
