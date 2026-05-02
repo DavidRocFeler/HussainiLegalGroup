@@ -1,5 +1,4 @@
 // components/home/VisionaryHero.tsx
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { VisionaryHeroExtendedProps } from '@/types/home';
 import { discoverUsButtonData } from '@/mock/discoverUsButton.mock'; 
@@ -9,7 +8,7 @@ const VisionaryHero = ({
   imageUrl, 
   imageAlt,
   heroHomeContent,   
-  heroStrategyContent  
+  // heroStrategyContent  
 }: VisionaryHeroExtendedProps) => {
 
   const loading = false;
@@ -17,7 +16,7 @@ const VisionaryHero = ({
   return (
     <Box
       sx={{
-        backgroundColor: 'primary.main',
+        bgcolor: 'primary.main',
         position: 'relative',
         maxHeight: 'fit-content',
         pt: {
@@ -53,13 +52,14 @@ const VisionaryHero = ({
             xs: '100%',
             md: '78%'
           },
-          mt: {
-            xs: 6,
-            md: 18
-          },
+          // mt: {
+          //   xs: 6,
+          //   md: 18
+          // },
+          mt: -13
         }}>
             
-        {heroStrategyContent.map((item, index) => (
+        {/* {heroStrategyContent.map((item, index) => (
           <Box key={index} mb={3}>
             {item.category && (
               <Typography variant="h3" mb={3}>
@@ -106,7 +106,7 @@ const VisionaryHero = ({
               </Typography>
             )}
           </Box>
-        ))}
+        ))} */}
       </Box>
     </Box>
   );

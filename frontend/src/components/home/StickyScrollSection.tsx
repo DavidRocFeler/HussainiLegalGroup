@@ -8,7 +8,7 @@ const StickyScrollSections = ({ stickyScrollData }: StickyScrollSectionsProps) =
   return (
     <Box
       sx={{
-        bgcolor: 'secondary.main',
+        bgcolor: 'primary.main',
         py: {
           xs: 8,
           md: 8
