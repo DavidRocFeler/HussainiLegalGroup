@@ -18,7 +18,11 @@ const OurEthos = () => {
       }}
     >
       <Typography
+        id="our-team"
         variant='h9'
+        sx={{
+          scrollMarginTop: '160px',
+        }}
       >
         {ourEthosData.title}
       </Typography>

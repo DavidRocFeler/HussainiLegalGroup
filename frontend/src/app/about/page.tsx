@@ -8,6 +8,8 @@ import Timeline from '@/components/about/TimeLine'
 import { FirstAboutSection } from '@/components/about/FirstAboutSection'
 import { getAboutHeroTexts } from '@/queries/homeQuery'
 import { getProfessionalProfiles } from '@/queries/aboutQuery'
+import { aboutPageContent } from '@/mock/about.mock'
+import { professionalProfilesData } from '@/mock/professionalProfile.mock'
 
 export const metadata: Metadata = {
   title: 'About Us - International Law Experts',
@@ -23,8 +25,8 @@ export const metadata: Metadata = {
 export const revalidate = false; 
 
 const About = async () => {
-  const heroAboutContent = await getAboutHeroTexts();
-  const professionalProfiles = await getProfessionalProfiles(); 
+  const heroAboutContent = aboutPageContent;
+  const professionalProfiles = professionalProfilesData; 
 
   return (
     <Box

@@ -98,6 +98,7 @@ const AboutProfessionalCardContainer = ({ professionalProfiles }: AboutProfessio
                     image={profile.image}
                     name={profile.name}
                     role={profile.role}
+                    slug={profile.slug}  // ✅ solo agregar esta línea
                     />
                 </Grid>
                 ))}

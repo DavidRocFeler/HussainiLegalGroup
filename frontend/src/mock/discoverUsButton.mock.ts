@@ -4,7 +4,7 @@ export const discoverUsButtonData: ButtonCustomProps[] = [
   {
     text: "Our Team",
     variant: "goldenOchre",
-    href: '/about'              
+    href:"/about#our-team"         
   },
   {
     text: "Contact Us", 

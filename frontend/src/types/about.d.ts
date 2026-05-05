@@ -22,10 +22,25 @@ export interface AboutCoverData {
     labels: LabelAboutInfoProps[]
 }
 
+// ✅ NUEVO — agregar esto
+export interface PreviousPosition {
+  period: string
+  description: string
+}
+
+// ✅ ACTUALIZADO — reemplazar solo este
 export interface CardProfessionalProfileProps {
   image: StaticImageData
   name: string
   role: string
+  slug: string
+  email?: string
+  phone?: string
+  linkedin?: string
+  qualifications?: string
+  languages?: string[]
+  previousPositions?: PreviousPosition[]
+  summary?: string[]
 }
 
 export interface TimelineItemProps {
