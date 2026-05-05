@@ -11,7 +11,7 @@ import { getArticles, getPublications } from '@/queries/blogQuery'
 export const revalidate = false;
 
 export async function generateMetadata({ params }: InsightsCategoryPageProps): Promise<Metadata> {
-  const { category } = params
+  const { category } = await params
   
   const categoryName = category.charAt(0).toUpperCase() + category.slice(1)
   
@@ -53,7 +53,7 @@ export async function generateStaticParams() {
 }
 
 const InsightsCategoryPage = async ({ params }: InsightsCategoryPageProps) => {
-  const { category } = params
+  const { category } = await params
 
   if (category !== 'articles' && category !== 'publications') {
     notFound()

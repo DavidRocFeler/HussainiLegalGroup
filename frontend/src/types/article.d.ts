@@ -54,9 +54,7 @@ export interface InsightsPublicationsProps {
 }
 
 export interface InsightsCategoryPageProps {
-  params: {
-    category: string
-  }
+  params: Promise<{ category: string }>
 }
 
 export interface BlogPageProps {
