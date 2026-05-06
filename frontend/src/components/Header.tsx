@@ -123,6 +123,7 @@ const Header = () => {
                   >
                     <Typography 
                       variant="body1" 
+                      color='brand.whiteText'
                     >
                       {item.name}
                     </Typography>
@@ -149,6 +150,7 @@ const Header = () => {
               <Button 
                 variant='transparentBorder'
                 sx={{
+                  borderColor: 'brand.whiteText',
                   display: {
                     xs: 'none',
                     md: 'block'
