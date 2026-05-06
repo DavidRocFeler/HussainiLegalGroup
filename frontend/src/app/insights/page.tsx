@@ -49,7 +49,7 @@ const Insights = async () => {
         }}
       >
         
-        <Box
+        {/* <Box
         sx={{
           position: 'absolute',
           top: 0,
@@ -62,7 +62,7 @@ const Insights = async () => {
           backgroundColor: 'grey.900',
           zIndex: 0,
         }}
-        />
+        /> */}
       
         <Box
           sx={{
@@ -99,6 +99,7 @@ const Insights = async () => {
             >
               <TitleReusable data={insightTitleData} 
               titleVariant='h13'
+              color='text.primary'
               descriptionVariant="h5"/>
             </Box>
 

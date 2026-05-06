@@ -19,37 +19,43 @@ const ExpertiseAndSectors = () => {
             xs: '1.375rem',
             md: '1.5rem'
           },
-        
         }}
       >
         {section.title}
       </Typography>
-      
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1, md: 1.5 } }}>
+
+      <Grid container spacing={2}>
         {section.items.map((item, index) => (
-          <Typography
-            key={index}
-            sx={{
-              color: 'grey.50',
-              fontFamily: 'Inter',
-              fontSize: '1rem',
-              fontStyle: 'normal',
-              fontWeight: 400,
-              lineHeight: '1.5rem',
-              textDecoration: 'none',
-              borderBottom: '1px solid #E0E0E0',
-              pb: { xs: 0.5, md: 0.75 },
-              display: 'block',
-              '&:hover': {
-                cursor: 'default',
-                color: '#808080'
-              }
-            }}
-          >
-            {item.title}
-          </Typography>
+          <Grid size={{ xs: 12, sm: 6 }} key={index}>
+            <Box
+              sx={{
+                backgroundColor: 'brand.whiteText',
+                px: 3,
+                py: 2.5,
+              }}
+            >
+              <Typography
+                sx={{
+                  color: 'grey.50',
+                  fontFamily: 'Inter',
+                  fontSize: '1rem',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  lineHeight: '1.5rem',
+                  textDecoration: 'none',
+                  display: 'block',
+                  '&:hover': {
+                    cursor: 'default',
+                    color: '#808080'
+                  }
+                }}
+              >
+                {item.title}
+              </Typography>
+            </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </Box>
   );
 
@@ -61,14 +67,14 @@ const ExpertiseAndSectors = () => {
         px: { xs: 2, md: 3 },
         width: '100%',
         mt: {
-            xs: 6,
-            md: 16
+          xs: 6,
+          md: 16
         }
       }}
     >
       <Grid container spacing={{ xs: 4, md: 6 }}>
         {expertiseAndSectorsMock.map((section) => (
-          <Grid 
+          <Grid
             size={{ xs: 12, md: 6 }}
             key={section.title}
           >

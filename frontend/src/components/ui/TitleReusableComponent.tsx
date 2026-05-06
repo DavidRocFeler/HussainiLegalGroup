@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 const TitleReusable = ({ 
   data, 
   titleVariant,
-  descriptionVariant
+  descriptionVariant,
+  color  
 }: TitleReusableComponentProps) => {
   const item = Array.isArray(data) ? data[0] : data; 
   
@@ -16,7 +17,7 @@ const TitleReusable = ({
         variant={titleVariant as any}
         mb={3}
         sx={{
-          color: item.textStyles?.color || 'text.primary',
+          color: color || item.textStyles?.color || 'text.primary', // ← agrega color
         }}
       >
         {item.title}
@@ -24,7 +25,7 @@ const TitleReusable = ({
       <Typography 
         variant={descriptionVariant as any}
         sx={{
-          color: item.textStyles?.color || 'text.primary',
+          color: color || item.textStyles?.color || 'text.primary', // ← agrega color
           mt: 2,
           width: {
             xs: '100%',
@@ -37,5 +38,4 @@ const TitleReusable = ({
     </Box>
   );
 }
-
 export default TitleReusable;

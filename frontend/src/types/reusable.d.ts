@@ -28,6 +28,7 @@ export interface TitleReusableComponentProps {
   data: ArticleHighlightItem[];
   titleVariant: string;
   descriptionVariant: string; 
+  color: string;
 }
 
 export interface ErrorAlertProps {

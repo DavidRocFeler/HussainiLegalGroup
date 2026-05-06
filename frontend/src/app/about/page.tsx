@@ -31,7 +31,7 @@ const About = async () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.paper',
+        backgroundColor: 'primary.main',
         position: 'relative',
         maxHeight: 'fit-content',
         pt: {

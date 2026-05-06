@@ -16,11 +16,11 @@ export const expertiseAndSectorsMock: ExpertiseAndSectorsData = [
       { title: "Islamic Finance", href: "#" },
       { title: "Litigation", href: "#" },
       { title: "Mediation", href: "#" },
-      { title: "Private Equity", href: "#" },
-      { title: "Project Finance & BOT Contracts", href: "#" },
-      { title: "Public Procurement & Government Contracting", href: "#" },
-      { title: "Regulatory Compliance", href: "#" },
-      { title: "Trade Law", href: "#" }
+      // { title: "Private Equity", href: "#" },
+      // { title: "Project Finance & BOT Contracts", href: "#" },
+      // { title: "Public Procurement & Government Contracting", href: "#" },
+      // { title: "Regulatory Compliance", href: "#" },
+      // { title: "Trade Law", href: "#" }
     ]
   },
   {
