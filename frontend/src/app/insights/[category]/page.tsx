@@ -1,4 +1,3 @@
-// app/insights/[category]/page.tsx
 import { notFound } from 'next/navigation'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -7,6 +6,7 @@ import { ArticleHighlightItem, InsightsCategoryPageProps } from '@/types/article
 import BlogCover from '@/components/articles/BlogCover'
 import type { Metadata } from 'next'
 import { getArticles, getPublications } from '@/queries/blogQuery'
+import { booksMock } from '@/mock/books.mock'
 
 export const revalidate = false;
 
@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: InsightsCategoryPageProps): P
   if (category === 'articles') {
     return {
       title: `Legal Articles & Analysis - Hussaini Legal Group`,
-      description: 'Expert legal articles and in-depth analysis from Hussaini Legal Group. Stay informed about corporate law, international arbitration, and legal industry developments.',
-      keywords: ['legal articles', 'law analysis', 'legal insights', 'corporate law articles', 'international law', 'legal commentary'],
+      description: 'Expert legal articles and in-depth analysis from Hussaini Legal Group.',
+      keywords: ['legal articles', 'law analysis', 'legal insights', 'corporate law articles'],
       openGraph: {
         title: 'Legal Articles - Hussaini Legal Group',
         description: 'Expert legal articles and analysis from international law experts',
@@ -29,11 +29,22 @@ export async function generateMetadata({ params }: InsightsCategoryPageProps): P
   } else if (category === 'publications') {
     return {
       title: `Legal Publications & Research - Hussaini Legal Group`,
-      description: 'Comprehensive legal publications and research papers from Hussaini Legal Group. Access our latest studies on international law, arbitration, and cross-border transactions.',
-      keywords: ['legal publications', 'law research', 'legal papers', 'international law publications', 'arbitration research', 'legal studies'],
+      description: 'Comprehensive legal publications and research papers from Hussaini Legal Group.',
+      keywords: ['legal publications', 'law research', 'legal papers', 'international law publications'],
       openGraph: {
         title: 'Legal Publications - Hussaini Legal Group',
         description: 'Comprehensive legal publications and research from leading law experts',
+        type: 'website',
+      }
+    }
+  } else if (category === 'books') {
+    return {
+      title: `Legal Books - Hussaini Legal Group`,
+      description: 'Books and legal works published by Hussaini Legal Group.',
+      keywords: ['legal books', 'law publications', 'Syrian civil law', 'arbitration handbook'],
+      openGraph: {
+        title: 'Legal Books - Hussaini Legal Group',
+        description: 'Books and legal works published by Hussaini Legal Group',
         type: 'website',
       }
     }
@@ -48,14 +59,15 @@ export async function generateMetadata({ params }: InsightsCategoryPageProps): P
 export async function generateStaticParams() {
   return [
     { category: 'articles' },
-    { category: 'publications' }
+    { category: 'publications' },
+    { category: 'books' },
   ]
 }
 
 const InsightsCategoryPage = async ({ params }: InsightsCategoryPageProps) => {
   const { category } = await params
 
-  if (category !== 'articles' && category !== 'publications') {
+  if (category !== 'articles' && category !== 'publications' && category !== 'books') {
     notFound()
   }
 
@@ -64,8 +76,18 @@ const InsightsCategoryPage = async ({ params }: InsightsCategoryPageProps) => {
   try {
     if (category === 'articles') {
       itemsArray = await getArticles()
-    } else {
+    } else if (category === 'publications') {
       itemsArray = await getPublications()
+    } else if (category === 'books') {
+      itemsArray = booksMock.map(book => ({
+        id: book.id,
+        title: book.title,
+        note: book.note,
+        date: book.date,
+        slug: book.slug,
+        picture: book.picture, // ← picture incluida
+        category: 'books' as any,
+      }))
     }
   } catch (error) {
     itemsArray = []
@@ -102,9 +124,9 @@ const InsightsCategoryPage = async ({ params }: InsightsCategoryPageProps) => {
       <BlogCover articlesData={itemsArray} publicationsData={itemsArray} category={category} />
 
       <Box sx={{ mt: 4 }}>
-          {itemsArray.map((newsItem) => (
-            <NewsCardCaseStudy key={newsItem.id} newsItem={newsItem} />
-          ))}
+        {itemsArray.map((newsItem) => (
+          <NewsCardCaseStudy key={newsItem.id} newsItem={newsItem} />
+        ))}
       </Box>
     </Box>
   )

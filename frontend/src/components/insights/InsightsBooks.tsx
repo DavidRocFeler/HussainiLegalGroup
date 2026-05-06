@@ -1,0 +1,117 @@
+import Grid from "@mui/material/Grid"
+import Box from "@mui/material/Box"
+import Card from "@mui/material/Card"
+import Typography from "@mui/material/Typography"
+import Chip from "@mui/material/Chip"
+import Link from "next/link"
+import { ArticleHighlightItem, InsightBooksProps } from "@/types/article"
+import { transformDateShortText } from "@/utils/dateFormatters"
+import { truncateShortText, truncateTitleText } from "@/utils/truncate"
+
+const InsightBookCard = ({ book }: { book: ArticleHighlightItem }) => {
+  const generateHref = () => {
+    if (!book.category || !book.slug) return '#'
+    return `/insights/${book.category}/${book.slug}`
+  }
+
+  return (
+    <Link
+      href={generateHref()}
+      style={{
+        textDecoration: 'none',
+        cursor: 'pointer'
+      }}
+    >
+      <Card
+        sx={{
+          borderRadius: 0,
+          boxShadow: 'none',
+          backgroundColor: '#F8F3E7',
+          pt: 2,
+          px: { xs: 2, md: 4.5 },
+          pb: 3.2,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          height: { xs: 'auto', md: '24rem', xl: '20rem' },
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease-in-out',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            '& .date-chip': {
+              color: 'brand.red'
+            },
+            '& .title-text': {
+              color: 'brand.red'
+            }
+          }
+        }}
+      >
+        <Chip
+          className="date-chip"
+          label={transformDateShortText(book.date)}
+          sx={{
+            backgroundColor: 'transparent',
+            color: 'text.primary',
+            fontSize: '1rem',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            letterSpacing: '-0.01rem',
+            padding: 0,
+            mb: { xs: 0.5, md: 2 },
+            height: 'auto',
+            '& .MuiChip-label': {
+              padding: 0,
+              paddingLeft: 0,
+              paddingRight: 0,
+            },
+            border: 'none',
+            borderRadius: 0,
+            transition: 'color 0.2s ease-in-out'
+          }}
+        />
+        <Typography
+          className="title-text"
+          variant='h10'
+          sx={{
+            fontWeight: 500,
+            fontSize: { xs: '1.25rem', sm: '1.5rem', lg: '2.0125rem' },
+            marginBottom: { xs: 2, sm: 4, lg: 9 },
+            lineHeight: { xs: '1.4375rem', sm: '1.725rem', lg: '2.0125rem' },
+            color: 'brand.blackButton',
+            transition: 'color 0.2s ease-in-out'
+          }}
+        >
+          {truncateTitleText(book.title)}
+        </Typography>
+        <Typography
+          variant="h5"
+          fontWeight={350}
+          lineHeight={{ xs: 1.3, md: 1.6 }}
+          sx={{
+            fontSize: '1.15rem',
+            color: 'text.primary',
+          }}
+        >
+          {truncateShortText(book.note)}
+        </Typography>
+      </Card>
+    </Link>
+  )
+}
+
+const InsightsBooks = ({ booksData }: InsightBooksProps) => {
+  return (
+    <Box>
+      <Grid container spacing={{ xs: 3, md: 1 }}>
+        {booksData.map((book) => (
+          <Grid size={{ xs: 12, md: 4 }} key={book.id}>
+            <InsightBookCard book={book} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  )
+}
+
+export default InsightsBooks

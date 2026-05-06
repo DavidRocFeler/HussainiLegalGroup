@@ -43,6 +43,7 @@ export interface ArticleHighlightCardProps {
 export interface InsightBodyProps {
   articlesData: ArticleHighlightItem[];
   publicationsData: ArticleHighlightItem[];
+  booksData: ArticleHighlightItem[]; 
 }
 
 export interface InsightsArticleProps {
@@ -54,7 +55,9 @@ export interface InsightsPublicationsProps {
 }
 
 export interface InsightsCategoryPageProps {
-  params: Promise<{ category: string }>
+  params: {
+    category: string
+  }
 }
 
 export interface BlogPageProps {
@@ -81,4 +84,26 @@ export interface BlogCoverProps {
   articlesData: ArticleHighlightItem[];
   publicationsData: ArticleHighlightItem[];
   category: string;
+}
+
+export interface BookItem {
+  id: number;
+  title: string;
+  note: string;
+  date: string;
+  author?: string;
+  volumes?: string;
+  picture?: StaticImageData;
+  slug?: string;
+}
+
+export interface InsightBooksProps {
+  booksData: ArticleHighlightItem[]; // ← mismo tipo
+}
+
+// Actualizar InsightBodyProps:
+export interface InsightBodyProps {
+  articlesData: ArticleHighlightItem[];
+  publicationsData: ArticleHighlightItem[];
+  booksData: BookItem[];  // ← agregar esto
 }

@@ -5,6 +5,7 @@ import TitleReusable from '@/components/ui/TitleReusableComponent'
 import { InsightBody } from '@/components/insights/InsightBody'
 import { getArticles, getPublications } from '@/queries/blogQuery'
 import InsightCoverResponsive from '@/components/insights/InsightCoverResponsive'
+import { booksMock } from '@/mock/books.mock'
 
 export const metadata: Metadata = {
   title: 'Legal Insights & Publications - Hussaini Legal Group',
@@ -106,6 +107,7 @@ const Insights = async () => {
           </Box>
           
           <InsightBody
+            booksData={booksMock} 
             articlesData={limitedArticles}
             publicationsData={limitedPublications}
           />

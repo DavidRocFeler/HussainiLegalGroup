@@ -42,7 +42,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
           flexDirection: { xs: 'column-reverse', md: 'row' }
         }}
       >
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12, md: newsItem.picture ? 6 : 12 }}>
           <CardContent sx={{ p: 0, pr: { md: 2 } }}>
             <Typography 
               variant="h10" 
@@ -76,10 +76,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
                 display: 'flex', 
                 alignItems: 'center',
                 gap: 2,
-                mb: {
-                  xs: 6,
-                  md: 12
-                }
+                mb: { xs: 6, md: 12 }
               }}
             >
               <Image 
@@ -96,9 +93,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
                 <Typography 
                   variant="h5" 
                   fontWeight={700}
-                  sx={{ 
-                    fontSize: '0.875rem'
-                  }}
+                  sx={{ fontSize: '0.875rem' }}
                 >
                   Hussaini Legal Group
                 </Typography>
@@ -118,9 +113,7 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
             
             <Link 
               href={generateHref()}
-              style={{ 
-                textDecoration: 'none',
-              }}
+              style={{ textDecoration: 'none' }}
             >
               <Button
                 disableRipple={true}
@@ -133,30 +126,33 @@ const NewsCardCaseStudy = ({ newsItem }: { newsItem: ArticleHighlightItem }) => 
           </CardContent>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Box
-            sx={{
-              position: 'relative',
-              width: '100%',
-              height: {
-                xs: '18.75rem',   
-                md: '27.1875rem',  
-                lg: '31.75rem'     
-              },
-              overflow: 'hidden',
-              borderRadius: 2
-            }}
-          >
-            <Image
-              src={newsItem.picture}
-              alt={newsItem.title}
-              fill
-              style={{
-                objectFit: 'cover'
+        {/* ← GUARD: solo renderiza la imagen si existe */}
+        {newsItem.picture && (
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                position: 'relative',
+                width: '100%',
+                height: {
+                  xs: '18.75rem',   
+                  md: '27.1875rem',  
+                  lg: '31.75rem'     
+                },
+                overflow: 'hidden',
+                borderRadius: 2
               }}
-            />
-          </Box>
-        </Grid>
+            >
+              <Image
+                src={newsItem.picture}
+                alt={newsItem.title}
+                fill
+                style={{
+                  objectFit: 'cover'
+                }}
+              />
+            </Box>
+          </Grid>
+        )}
       </Grid>
     </Card>
   );

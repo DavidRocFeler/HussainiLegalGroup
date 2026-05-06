@@ -55,64 +55,67 @@ const CoverCaseStudy = ({ articles }: CoverCaseStudyProps) => {
           mb: { xs: 2, md: 12 },
         }}
       >
-        <Box sx={{ 
-          position: 'relative', 
-          width: '100%',
-          height: { xs: '300px', sm: '400px' }, 
-          overflow: 'hidden',
-          borderRadius: '10px'
-        }}>
-          <Fade in={true} timeout={500} key={currentIndex}>
-            <Box sx={{ width: '100%', height: '100%' }}>
-              <Image
-                src={caseStudy.picture}
-                alt="CoverPicture"
-                fill
-                style={{
-                  objectFit: 'cover',
-                }}
-              />
-            </Box>
-          </Fade>
+        {/* ← GUARD: solo renderiza el slider si hay imagen */}
+        {caseStudy.picture && (
+          <Box sx={{ 
+            position: 'relative', 
+            width: '100%',
+            height: { xs: '300px', sm: '400px' }, 
+            overflow: 'hidden',
+            borderRadius: '10px'
+          }}>
+            <Fade in={true} timeout={500} key={currentIndex}>
+              <Box sx={{ width: '100%', height: '100%' }}>
+                <Image
+                  src={caseStudy.picture}
+                  alt="CoverPicture"
+                  fill
+                  style={{
+                    objectFit: 'cover',
+                  }}
+                />
+              </Box>
+            </Fade>
 
-          <IconButton
-            onClick={handlePrevious}
-            sx={{
-              position: 'absolute',
-              left: '2%',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 1)',
-              },
-            }}
-          >
-            <ChevronLeft />
-          </IconButton>
+            <IconButton
+              onClick={handlePrevious}
+              sx={{
+                position: 'absolute',
+                left: '2%',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 1)',
+                },
+              }}
+            >
+              <ChevronLeft />
+            </IconButton>
 
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              position: 'absolute',
-              right: '2%',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 1)',
-              },
-            }}
-          >
-            <ChevronRight />
-          </IconButton>
-        </Box>
+            <IconButton
+              onClick={handleNext}
+              sx={{
+                position: 'absolute',
+                right: '2%',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 1)',
+                },
+              }}
+            >
+              <ChevronRight />
+            </IconButton>
+          </Box>
+        )}
 
         <Card
           sx={{
             maxWidth: 700,
             mx: 'auto',
-            mt: { xs: 2, md: -8 },
+            mt: { xs: 2, md: caseStudy.picture ? -8 : 0 }, // ← sin imagen no necesita margin negativo
             mb: { xs: 2, md: 4 },
             position: 'relative',
             zIndex: 1,
