@@ -9,14 +9,6 @@ const StickyScrollSections = ({ stickyScrollData }: StickyScrollSectionsProps) =
     <Box
       sx={{
         bgcolor: 'primary.main',
-        pt: {
-          xs: 8,
-          md: 8
-        },
-        px: {
-          xs: 2,
-          md: 9
-        },
         position: 'relative',
       }}
     >

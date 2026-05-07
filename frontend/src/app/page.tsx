@@ -38,8 +38,21 @@ const Home = async () => {
         heroHomeContent={heroHomeContent}       
         heroStrategyContent={heroStrategyContent} 
       />
-      
-      <StickyScrollSections stickyScrollData={stickyScrollData} />
+      <Box
+      sx={{
+        px: {
+          xs: 0,
+          md: 9
+        },
+        pt: {
+          xs: 8,
+          md: 8
+        },
+        bgcolor: 'primary.main'
+      }}
+      >
+        <StickyScrollSections stickyScrollData={stickyScrollData} />
+      </Box>
       <LegalAdviceSection/>
     </Box>
   )

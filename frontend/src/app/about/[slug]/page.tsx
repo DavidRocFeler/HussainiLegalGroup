@@ -7,15 +7,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>  // ← Promise
 }
 
 export async function generateStaticParams() {
   return professionalProfilesData.map((p) => ({ slug: p.slug }))
 }
 
-export default function ProfessionalProfilePage({ params }: Props) {
-  const profile = professionalProfilesData.find((p) => p.slug === params.slug)
+export default async function ProfessionalProfilePage({ params }: Props) {
+  const { slug } = await params
+  const profile = professionalProfilesData.find((p) => p.slug === slug)
 
   if (!profile) return notFound()
 

@@ -177,7 +177,7 @@ const StickyScrollDesktop = ({ stickyScrollData }: StickyScrollDesktopProps) => 
                 size={{ xs: 12, md: 6 }} 
                 key={index} 
                 sx={{
-                  bgcolor: Object.values(expandedCards).some(Boolean) ? 'secondary.main' : 'transparent',
+                  bgcolor: Object.values(expandedCards).some(Boolean) ? 'transparent' : 'transparent',
                   paddingTop: rowIndex >= 1 ? 6 : 0,
                   minHeight: isExpanded ? `${contentHeight}px` : 'auto'
                 }}
