@@ -2,13 +2,13 @@
 import { ButtonCustomProps } from '@/types/button';
 
 export const legalAdviceButtons: ButtonCustomProps[] = [
+  // {
+  //   text: "More Details",
+  //   variant: "goldenOchre",
+  //   href: '/'              
+  // },
   {
-    text: "More Details",
-    variant: "goldenOchre",
-    href: '/'              
-  },
-  {
-    text: "Contact Us", 
+    text: "Talk to Us", 
     variant: "redCahova",
     href: '/contact'      
   }
