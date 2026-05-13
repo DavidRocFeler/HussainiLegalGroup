@@ -10,7 +10,24 @@ export default defineType({
       name: 'email',
       title: 'Email Address',
       type: 'string',
-      validation: (rule) => rule.required().email()
+      validation: (rule: any) => rule.required().email()
+    }),
+    defineField({
+      name: 'interests',
+      title: 'Areas of Interest',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        list: [
+          {title: 'Tech and Big Data', value: 'tech_and_big_data'},
+          {title: 'AI', value: 'ai'},
+          {title: 'Digital Assets', value: 'digital_assets'},
+          {title: 'Music and Entertainment', value: 'music_and_entertainment'},
+          {title: 'Capital Markets', value: 'capital_markets'}
+        ],
+        layout: 'tags'
+      },
+      description: 'Areas of interest selected by the subscriber'
     }),
     defineField({
       name: 'subscribedAt',
@@ -35,6 +52,7 @@ export default defineType({
       options: {
         list: [
           {title: 'Website', value: 'website'},
+          {title: 'Footer', value: 'footer'},
           {title: 'Landing Page', value: 'landing'},
           {title: 'Blog', value: 'blog'},
           {title: 'Other', value: 'other'}
@@ -58,14 +76,23 @@ export default defineType({
     select: {
       email: 'email',
       subscribedAt: 'subscribedAt',
-      isActive: 'isActive'
+      isActive: 'isActive',
+      interests: 'interests'
     },
-    prepare(selection) {
-      const {email, subscribedAt, isActive} = selection
+    prepare(selection: { 
+      email: string;
+      subscribedAt: string;
+      isActive: boolean;
+      interests: string[];
+    }) {
+      const {email, subscribedAt, isActive, interests} = selection
       const date = new Date(subscribedAt).toLocaleDateString()
+      const interestsList = interests?.length 
+        ? interests.join(', ') 
+        : 'No interests selected'
       return {
         title: email,
-        subtitle: `${isActive ? '✓ Active' : '✗ Inactive'} - Subscribed: ${date}`,
+        subtitle: `${isActive ? '✓ Active' : '✗ Inactive'} · ${date} · ${interestsList}`,
       }
     }
   }
