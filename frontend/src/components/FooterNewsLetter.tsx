@@ -47,7 +47,7 @@ const FooterNewsletter = ({ socialMedias }: { socialMedias: SocialMediaLink[] })
         const formData = new FormData();
         formData.append('email', email.trim());
         formData.append('source', 'footer');
-        formData.append('topics', selectedTopics.join(','));
+        formData.append('interests', JSON.stringify(selectedTopics));
 
         const result = await subscribeAction(formData);
 
