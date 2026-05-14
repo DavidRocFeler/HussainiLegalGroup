@@ -8,8 +8,6 @@ import Timeline from '@/components/about/TimeLine'
 import { FirstAboutSection } from '@/components/about/FirstAboutSection'
 import { getAboutHeroTexts } from '@/queries/homeQuery'
 import { getProfessionalProfiles } from '@/queries/aboutQuery'
-import { aboutPageContent } from '@/mock/about.mock'
-import { professionalProfilesData } from '@/mock/professionalProfile.mock'
 
 export const metadata: Metadata = {
   title: 'About Us - International Law Experts',

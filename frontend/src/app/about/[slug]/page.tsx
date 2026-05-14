@@ -1,4 +1,4 @@
-import { professionalProfilesData } from '@/mock/professionalProfile.mock'
+import { getProfessionalProfiles, getProfessionalProfileBySlug } from '@/queries/aboutQuery'
 import { notFound } from 'next/navigation'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -7,16 +7,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 interface Props {
-  params: Promise<{ slug: string }>  // ← Promise
+  params: Promise<{ slug: string }>
 }
 
+// ✅ generateStaticParams desde Sanity
 export async function generateStaticParams() {
-  return professionalProfilesData.map((p) => ({ slug: p.slug }))
+  const profiles = await getProfessionalProfiles()
+  return profiles.map((p) => ({ slug: p.slug }))
 }
 
 export default async function ProfessionalProfilePage({ params }: Props) {
   const { slug } = await params
-  const profile = professionalProfilesData.find((p) => p.slug === slug)
+  const profile = await getProfessionalProfileBySlug(slug)
 
   if (!profile) return notFound()
 
@@ -32,7 +34,6 @@ export default async function ProfessionalProfilePage({ params }: Props) {
         '& *': { cursor: 'default' },
       }}
     >
-      {/* BACK BUTTON */}
       <Link href="/about" style={{ textDecoration: 'none', cursor: 'default', color: 'inherit' }}>
         <Typography
           sx={{
@@ -48,7 +49,6 @@ export default async function ProfessionalProfilePage({ params }: Props) {
         </Typography>
       </Link>
 
-      {/* TOP SECTION — Foto + Info básica */}
       <Box
         sx={{
           display: 'flex',
@@ -57,26 +57,27 @@ export default async function ProfessionalProfilePage({ params }: Props) {
           mb: 8
         }}
       >
-        {/* FOTO */}
-        <Box
-          sx={{
-            position: 'relative',
-            width: { xs: '100%', md: '22rem' },
-            minWidth: { md: '22rem' },
-            aspectRatio: '1/1',
-            overflow: 'hidden',
-            flexShrink: 0
-          }}
-        >
-          <Image
-            src={profile.image}
-            alt={profile.name}
-            fill
-            style={{ objectFit: 'cover' }}
-          />
-        </Box>
+        {/* ✅ Imagen opcional */}
+        {profile.image && (
+          <Box
+            sx={{
+              position: 'relative',
+              width: { xs: '100%', md: '22rem' },
+              minWidth: { md: '22rem' },
+              aspectRatio: '1/1',
+              overflow: 'hidden',
+              flexShrink: 0
+            }}
+          >
+            <Image
+              src={profile.image}
+              alt={profile.name}
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </Box>
+        )}
 
-        {/* INFO BÁSICA */}
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Typography
             variant='h1'
@@ -85,36 +86,19 @@ export default async function ProfessionalProfilePage({ params }: Props) {
               fontWeight: 400,
               color: 'text.primary',
               mb: 1,
-              '&:hover': { color: 'text.primary' },
             }}
           >
             {profile.name}
           </Typography>
 
-          <Typography
-            sx={{
-              color: 'brand.gold',
-              fontSize: '1.125rem',
-              fontWeight: 700,
-              mb: 3,
-              '&:hover': { color: 'brand.gold' },
-            }}
-          >
+          <Typography sx={{ color: 'brand.gold', fontSize: '1.125rem', fontWeight: 700, mb: 3 }}>
             {profile.role}
           </Typography>
 
           <Divider sx={{ mb: 3 }} />
 
-          {/* EMAIL */}
           {profile.email && (
-            <Typography
-              sx={{
-                fontSize: '0.95rem',
-                color: 'text.secondary',
-                mb: 1,
-                '&:hover': { color: 'text.secondary' },
-              }}
-            >
+            <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary', mb: 1 }}>
               <strong>E</strong>{' '}
               <a href={`mailto:${profile.email}`} style={{ color: 'inherit', cursor: 'pointer', textDecoration: 'none' }}>
                 {profile.email}
@@ -122,30 +106,14 @@ export default async function ProfessionalProfilePage({ params }: Props) {
             </Typography>
           )}
 
-          {/* PHONE */}
           {profile.phone && (
-            <Typography
-              sx={{
-                fontSize: '0.95rem',
-                color: 'text.secondary',
-                mb: 1,
-                '&:hover': { color: 'text.secondary' },
-              }}
-            >
+            <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary', mb: 1 }}>
               <strong>T</strong> {profile.phone}
             </Typography>
           )}
 
-          {/* LINKEDIN */}
           {profile.linkedin && (
-            <Typography
-              sx={{
-                fontSize: '0.95rem',
-                mb: 3,
-                color: 'text.primary',
-                '&:hover': { color: 'text.primary' },
-              }}
-            >
+            <Typography sx={{ fontSize: '0.95rem', mb: 3, color: 'text.primary' }}>
               <a href={profile.linkedin} target="_blank" rel="noopener noreferrer"
                 style={{ color: 'inherit', cursor: 'pointer', textDecoration: 'none' }}>
                 LinkedIn
@@ -155,57 +123,23 @@ export default async function ProfessionalProfilePage({ params }: Props) {
 
           <Divider sx={{ mb: 3 }} />
 
-          {/* QUALIFICATIONS */}
           {profile.qualifications && (
             <Box mb={2}>
-              <Typography
-                sx={{
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08rem',
-                  color: 'text.secondary',
-                  mb: 0.5,
-                  '&:hover': { color: 'text.secondary' },
-                }}
-              >
+              <Typography sx={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08rem', color: 'text.secondary', mb: 0.5 }}>
                 Qualifications
               </Typography>
-              <Typography
-                sx={{
-                  fontSize: '0.95rem',
-                  color: 'text.primary',
-                  '&:hover': { color: 'text.primary' },
-                }}
-              >
+              <Typography sx={{ fontSize: '0.95rem', color: 'text.primary' }}>
                 {profile.qualifications}
               </Typography>
             </Box>
           )}
 
-          {/* LANGUAGES */}
           {profile.languages && profile.languages.length > 0 && (
             <Box mb={2}>
-              <Typography
-                sx={{
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08rem',
-                  color: 'text.secondary',
-                  mb: 0.5,
-                  '&:hover': { color: 'text.secondary' },
-                }}
-              >
+              <Typography sx={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08rem', color: 'text.secondary', mb: 0.5 }}>
                 Languages
               </Typography>
-              <Typography
-                sx={{
-                  fontSize: '0.95rem',
-                  color: 'text.primary',
-                  '&:hover': { color: 'text.primary' },
-                }}
-              >
+              <Typography sx={{ fontSize: '0.95rem', color: 'text.primary' }}>
                 {profile.languages.join(', ')}
               </Typography>
             </Box>
@@ -213,41 +147,18 @@ export default async function ProfessionalProfilePage({ params }: Props) {
         </Box>
       </Box>
 
-      {/* PREVIOUS POSITIONS */}
       {profile.previousPositions && profile.previousPositions.length > 0 && (
         <Box mb={8}>
-          <Typography
-            variant='h2'
-            sx={{
-              fontSize: '1.5rem',
-              fontWeight: 400,
-              color: 'text.primary',
-              mb: 3,
-              '&:hover': { color: 'text.primary' },
-            }}
-          >
+          <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 400, color: 'text.primary', mb: 3 }}>
             Previous Positions
           </Typography>
           <Divider sx={{ mb: 3 }} />
           {profile.previousPositions.map((pos, index) => (
             <Box key={index} mb={2}>
-              <Typography
-                sx={{
-                  fontSize: '0.95rem',
-                  color: 'text.secondary',
-                  fontWeight: 700,
-                  '&:hover': { color: 'text.secondary' },
-                }}
-              >
+              <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary', fontWeight: 700 }}>
                 {pos.period}
               </Typography>
-              <Typography
-                sx={{
-                  fontSize: '0.95rem',
-                  color: 'text.primary',
-                  '&:hover': { color: 'text.primary' },
-                }}
-              >
+              <Typography sx={{ fontSize: '0.95rem', color: 'text.primary' }}>
                 {pos.description}
               </Typography>
             </Box>
@@ -255,33 +166,14 @@ export default async function ProfessionalProfilePage({ params }: Props) {
         </Box>
       )}
 
-      {/* SUMMARY */}
       {profile.summary && profile.summary.length > 0 && (
         <Box>
-          <Typography
-            variant='h2'
-            sx={{
-              fontSize: '1.5rem',
-              fontWeight: 400,
-              color: 'text.primary',
-              mb: 3,
-              '&:hover': { color: 'text.primary' },
-            }}
-          >
+          <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 400, color: 'text.primary', mb: 3 }}>
             Summary
           </Typography>
           <Divider sx={{ mb: 3 }} />
           {profile.summary.map((paragraph, index) => (
-            <Typography
-              key={index}
-              sx={{
-                fontSize: '1rem',
-                color: 'text.secondary',
-                lineHeight: 1.8,
-                mb: 2,
-                '&:hover': { color: 'text.secondary' },
-              }}
-            >
+            <Typography key={index} sx={{ fontSize: '1rem', color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
               {paragraph}
             </Typography>
           ))}
