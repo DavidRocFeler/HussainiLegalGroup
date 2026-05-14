@@ -2,7 +2,7 @@ import { sanityWriteClient } from '@/lib/sanity';
 import { CardProfessionalProfileProps } from '@/types/about';
 
 export const getProfessionalProfiles = async (): Promise<CardProfessionalProfileProps[]> => {
-  const query = `*[_type == "cardProfessionalProfile" && isActive == true] | order(order asc){
+  const query = `*[_type == "cardProfessionalProfile" && isActive == true && !(_id in path("drafts.**"))] | order(order asc){
     _id,
     name,
     role,
@@ -18,7 +18,28 @@ export const getProfessionalProfiles = async (): Promise<CardProfessionalProfile
     order,
     isActive
   }`;
-
   const result = await sanityWriteClient.fetch(query);
   return result as CardProfessionalProfileProps[];
+}
+
+// ✅ Nueva query por slug
+export const getProfessionalProfileBySlug = async (slug: string): Promise<CardProfessionalProfileProps | null> => {
+  const query = `*[_type == "cardProfessionalProfile" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+    _id,
+    name,
+    role,
+    "image": image.asset->url,
+    "slug": slug.current,
+    email,
+    phone,
+    linkedin,
+    qualifications,
+    languages,
+    previousPositions,
+    summary,
+    order,
+    isActive
+  }`;
+  const result = await sanityWriteClient.fetch(query, { slug });
+  return result ?? null;
 }

@@ -41,6 +41,7 @@ export interface CardProfessionalProfileProps {
   languages?: string[]
   previousPositions?: PreviousPosition[]
   summary?: string[]
+  showPlaceholder?: boolean
 }
 
 export interface TimelineItemProps {
