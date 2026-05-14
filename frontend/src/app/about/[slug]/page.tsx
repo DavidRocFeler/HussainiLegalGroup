@@ -116,7 +116,7 @@ export default async function ProfessionalProfilePage({ params }: Props) {
               }}
             >
               <strong>E</strong>{' '}
-              <a href={`mailto:${profile.email}`} style={{ color: 'inherit', cursor: 'default', textDecoration: 'none' }}>
+              <a href={`mailto:${profile.email}`} style={{ color: 'inherit', cursor: 'pointer', textDecoration: 'none' }}>
                 {profile.email}
               </a>
             </Typography>
@@ -147,7 +147,7 @@ export default async function ProfessionalProfilePage({ params }: Props) {
               }}
             >
               <a href={profile.linkedin} target="_blank" rel="noopener noreferrer"
-                style={{ color: 'inherit', cursor: 'default', textDecoration: 'none' }}>
+                style={{ color: 'inherit', cursor: 'pointer', textDecoration: 'none' }}>
                 LinkedIn
               </a>
             </Typography>

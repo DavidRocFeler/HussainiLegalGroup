@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import CardProfessionalProfile from './CardProfessionalProfile'
-import { AboutProfessionalCardContainerProps, CardProfessionalProfileProps } from '@/types/about'
+import { AboutProfessionalCardContainerProps } from '@/types/about'
 
 const AboutProfessionalCardContainer = ({ professionalProfiles }: AboutProfessionalCardContainerProps) => {
 

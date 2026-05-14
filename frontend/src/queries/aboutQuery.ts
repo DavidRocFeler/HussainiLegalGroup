@@ -7,11 +7,18 @@ export const getProfessionalProfiles = async (): Promise<CardProfessionalProfile
     name,
     role,
     "image": image.asset->url,
-    page,
+    "slug": slug.current,
+    email,
+    phone,
+    linkedin,
+    qualifications,
+    languages,
+    previousPositions,
+    summary,
     order,
     isActive
   }`;
-  
+
   const result = await sanityWriteClient.fetch(query);
   return result as CardProfessionalProfileProps[];
 }

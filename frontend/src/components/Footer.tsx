@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import { footerMock } from '@/mock/footer.mock';
 import Logo from './ui/Logo';
 import { getFooterSections, getSocialMediaConfig } from '@/queries/footerQuery'
 import { FooterSection, SocialMediaLink } from '@/types/footer';
@@ -10,7 +9,6 @@ import FooterNewsletter from './FooterNewsLetter';
 export const revalidate = false;
 
 const Footer = async () => {
-
   const currentYear = new Date().getFullYear();
 
   let footerSections: FooterSection[] = [];
@@ -23,12 +21,8 @@ const Footer = async () => {
     ]);
   } catch (error) {}
 
-  const contactSection = footerSections.find(section => section.type === 'contact') || {
-    type: 'contact' as const,
-    title: footerMock.sections.contact.title,
-    items: footerMock.sections.contact.items,
-    isActive: true
-  };
+  const locationsSection = footerSections.find(section => section.type === 'locations');
+  const contactSection = footerSections.find(section => section.type === 'contact');
 
   return (
     <Box
@@ -76,51 +70,55 @@ const Footer = async () => {
             </Box>
           </Box>
 
-          {/* LOCATIONS — siempre desde el mock */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
-            <Box sx={{
-              textAlign: { xs: 'center', desktopMid: 'left' },
-              width: 'fit-content',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: { xs: 'center', desktopMid: 'flex-start' },
-            }}>
-              <Typography variant="h6" mb={2} sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
-                {footerMock.sections.locations.title}
-              </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
-                {footerMock.sections.locations.items.map((location, index) => (
-                  <Typography variant="body2" key={index} sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
-                    {location}
-                  </Typography>
-                ))}
+          {/* LOCATIONS */}
+          {locationsSection && (
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
+              <Box sx={{
+                textAlign: { xs: 'center', desktopMid: 'left' },
+                width: 'fit-content',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: { xs: 'center', desktopMid: 'flex-start' },
+              }}>
+                <Typography variant="h6" mb={2} sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
+                  {locationsSection.title}
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
+                  {locationsSection.items.map((location, index) => (
+                    <Typography variant="body2" key={index} sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
+                      {location}
+                    </Typography>
+                  ))}
+                </Box>
               </Box>
             </Box>
-          </Box>
+          )}
 
-          {/* CONTACT — desde Sanity con fallback al mock */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
-            <Box sx={{
-              textAlign: { xs: 'center', desktopMid: 'left' },
-              width: 'fit-content',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: { xs: 'center', desktopMid: 'flex-start' },
-            }}>
-              <Typography variant="h6" mb={2} sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
-                {footerMock.sections.contact.title}
-              </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
-                {contactSection.items.map((contactInfo, index) => (
-                  <Typography key={index} variant="body2" sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
-                    {contactInfo}
-                  </Typography>
-                ))}
+          {/* CONTACT */}
+          {contactSection && (
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
+              <Box sx={{
+                textAlign: { xs: 'center', desktopMid: 'left' },
+                width: 'fit-content',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: { xs: 'center', desktopMid: 'flex-start' },
+              }}>
+                <Typography variant="h6" mb={2} sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
+                  {contactSection.title}
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, alignItems: { xs: 'center', desktopMid: 'flex-start' } }}>
+                  {contactSection.items.map((contactInfo, index) => (
+                    <Typography key={index} variant="body2" sx={{ textAlign: { xs: 'center', desktopMid: 'left' } }}>
+                      {contactInfo}
+                    </Typography>
+                  ))}
+                </Box>
               </Box>
             </Box>
-          </Box>
+          )}
 
-          {/* NEWSLETTER — Client Component */}
+          {/* NEWSLETTER */}
           <FooterNewsletter socialMedias={socialMedias} />
 
         </Box>

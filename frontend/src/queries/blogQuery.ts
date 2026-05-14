@@ -38,6 +38,10 @@ export const getPublications = async (): Promise<ArticleHighlightItem[]> => {
   return await getBlogByCategory('publications');
 };
 
+export const getBooks = async (): Promise<ArticleHighlightItem[]> => {
+  return await getBlogByCategory('books');
+};
+
 export const getArticleBySlug = async (slug: string, category: string): Promise<ArticleHighlightItem | null> => {
   const query = `*[_type == "blog" && slug.current == "${slug}" && category == "${category}" && isActive == true][0]{
       "id": _id,

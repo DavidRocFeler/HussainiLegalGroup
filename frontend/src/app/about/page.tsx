@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 export const revalidate = false; 
 
 const About = async () => {
-  const heroAboutContent = aboutPageContent;
-  const professionalProfiles = professionalProfilesData; 
+  const heroAboutContent = await getAboutHeroTexts();
+  const professionalProfiles = await getProfessionalProfiles()
 
   return (
     <Box

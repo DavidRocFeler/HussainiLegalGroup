@@ -3,9 +3,8 @@ import { insightTitleData } from '@/mock/insights.mock'
 import Box from '@mui/material/Box'
 import TitleReusable from '@/components/ui/TitleReusableComponent'
 import { InsightBody } from '@/components/insights/InsightBody'
-import { getArticles, getPublications } from '@/queries/blogQuery'
+import { getArticles, getPublications, getBooks } from '@/queries/blogQuery'
 import InsightCoverResponsive from '@/components/insights/InsightCoverResponsive'
-import { booksMock } from '@/mock/books.mock'
 
 export const metadata: Metadata = {
   title: 'Legal Insights & Publications - Hussaini Legal Group',
@@ -23,18 +22,21 @@ export const revalidate = false;
 const Insights = async () => {
   const articlesData = await getArticles();
   const publicationsData = await getPublications();
+  const booksData = await getBooks();
+
   const limitedArticles = articlesData.slice(0, 6);
   const limitedPublications = publicationsData.slice(0, 6);
+  const limitedBooks = booksData.slice(0, 6);
 
   return (
     <>
       <Box
-      sx={{
-        display: {
-          xs: 'block',
-          sm: 'none'
-        }
-      }}
+        sx={{
+          display: {
+            xs: 'block',
+            sm: 'none'
+          }
+        }}
       >
         <InsightCoverResponsive/>
       </Box>
@@ -49,22 +51,6 @@ const Insights = async () => {
           }
         }}
       >
-        
-        {/* <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: {
-            sm: '75rem', 
-            md: '51rem',                     
-          },
-          backgroundColor: 'grey.900',
-          zIndex: 0,
-        }}
-        /> */}
-      
         <Box
           sx={{
             position: 'relative',
@@ -87,27 +73,18 @@ const Insights = async () => {
             }
           }}
         >
-          <Box 
-          sx={{
-            mb: 2
-          }}
-          >
-            <Box
-            mb={{
-                xs: 4,
-                sm: 7
-              }}
-            >
-              <TitleReusable data={insightTitleData} 
-              titleVariant='h13'
-              color='text.primary'
-              descriptionVariant="h5"/>
+          <Box sx={{ mb: 2 }}>
+            <Box mb={{ xs: 4, sm: 7 }}>
+              <TitleReusable
+                data={insightTitleData}
+                titleVariant='h13'
+                color='text.primary'
+                descriptionVariant="h5"
+              />
             </Box>
-
           </Box>
-          
           <InsightBody
-            booksData={booksMock} 
+            booksData={limitedBooks}
             articlesData={limitedArticles}
             publicationsData={limitedPublications}
           />
